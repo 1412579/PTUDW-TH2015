@@ -32,6 +32,18 @@
 
 ******************************/
 
+/******************
+
+Always sticky menu at Home
+
+*******************/
+
+.cat_menu_container > ul{
+	opacity: 1!important;
+	visibility: visible!important;
+}
+
+
 /*********************************
 4. Banner
 *********************************/
