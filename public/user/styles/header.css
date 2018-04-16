@@ -248,7 +248,7 @@ section
 }
 .rating_r i::before
 {
-	font-family: 'FontAwesome';
+	font-family: 'Font Awesome\ 5 Free';
 	content: "\f006";
 	font-style: normal;
 	font-size: 19px;

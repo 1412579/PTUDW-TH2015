@@ -37,11 +37,11 @@
 Always sticky menu at Home
 
 *******************/
-
+/* 
 .cat_menu_container > ul{
 	opacity: 1!important;
 	visibility: visible!important;
-}
+} */
 
 
 /*********************************
@@ -634,7 +634,7 @@ Always sticky menu at Home
 	-ms-transform: translate(-50%, -50%);
 	-o-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
-	font-family: 'FontAwesome';
+	font-family: 'Font Awesome\ 5 Free';
 	content: '\f00c';
 	color: #FFFFFF;
 }
@@ -849,7 +849,7 @@ Always sticky menu at Home
 .popular_categories
 {
 	padding-top: 88px;
-	padding-bottom: 90px;
+	padding-bottom: 40px;
 }
 .popular_categories_title
 {
@@ -1000,7 +1000,7 @@ Always sticky menu at Home
 }
 .rating_r i::before
 {
-	font-family: 'FontAwesome';
+	font-family: 'Font Awesome\ 5 Free';
 	content: "\f006";
 	font-style: normal;
 	font-size: 19px;
@@ -1062,7 +1062,7 @@ Always sticky menu at Home
 {
 	width: 100%;
 	padding-top: 96px;
-	padding-bottom: 96px;
+	/* padding-bottom: 70px; */
 }
 .new_arrivals_title
 {
