@@ -1,0 +1,20 @@
+.no-width {
+	width: auto !important;
+}
+
+@media only screen and (max-width: 1199px)
+{
+	.no-width {
+    width: auto !important;
+	}
+}
+
+.custom-button {
+	font-size: 15px;
+}
+
+.sub-header {
+
+    color: #828282;
+    font-size: 14px;
+}
