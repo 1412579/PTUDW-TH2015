@@ -69,10 +69,10 @@
 {
 	padding-top: 85px;
 }
-.contact_form_container
+/* .contact_form_container
 {
 
-}
+} */
 .contact_form_title
 {
 	font-size: 30px;
@@ -359,7 +359,7 @@
 .footer .logo
 {
 	top: auto;
-	-webkit-transform: transform: none;
+	-webkit-transform: transform: none; 
     -moz-transform: transform: none;
     -ms-transform: transform: none;
     -o-transform: transform: none;
@@ -476,10 +476,10 @@
 {
 	font-weight: 500;
 }
-.logos
+/* .logos
 {
 	
-}
+} */
 .logos_list li
 {
 	display: inline-block;

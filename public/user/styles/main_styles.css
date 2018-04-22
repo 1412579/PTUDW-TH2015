@@ -37,8 +37,8 @@
 Always sticky menu at Home
 
 *******************/
-/* 
-.cat_menu_container > ul{
+
+/* .cat_menu_container > ul{
 	opacity: 1!important;
 	visibility: visible!important;
 } */
@@ -79,10 +79,10 @@ Always sticky menu at Home
 	text-transform: uppercase;
 	letter-spacing: 0.038em;
 }
-.banner_price
+/* .banner_price
 {
 
-}
+} */
 .banner_price
 {
 	font-size: 30px;
@@ -2362,4 +2362,3 @@ Always sticky menu at Home
 {
 	color: #0d82d3;
 }
-
