@@ -6,6 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap-datepicker.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap.min.css">
 
@@ -17,7 +18,9 @@
 
 <link rel="stylesheet" type="text/css" href="../public/user/styles/product_styles.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/product_responsive.css">
+<link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap-slider.min.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/Thi/styles.css">
+
 
 <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 <script src="../public/user/js/recaptcha.js"></script>
@@ -70,7 +73,6 @@
 				</div>
 			</div>		
 		</div>
-
 		<!-- Header Main -->
 
 		<div class="header_main">
@@ -80,7 +82,7 @@
 					<!-- Logo -->
 					<div class="col-lg-2 col-sm-3 col-3 order-1">
 						<div class="logo_container">
-							<div class="logo"><a href="#">OneTech</a></div>
+							<div class="logo"><a href="#">WEBTEAM</a></div>
 						</div>
 					</div>
 
@@ -90,24 +92,18 @@
 							<div class="header_search_content">
 								<div class="header_search_form_container">
 									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Search for products...">
+										<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm sản phẩm...">
 										<div class="custom_dropdown">
 											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">All Categories</span>
+												<span class="custom_dropdown_placeholder clc">Tất cả danh mục</span>
 												<i class="fas fa-chevron-down"></i>
 												<ul class="custom_list clc">
-													<li><a class="clc" href="#">All Categories</a></li>
-													<li><a class="clc" href="#">Computers</a></li>
-													<li><a class="clc" href="#">Laptops</a></li>
-													<li><a class="clc" href="#">Cameras</a></li>
-													<li><a class="clc" href="#">Hardware</a></li>
-													<li><a class="clc" href="#">Smartphones</a></li>
+													<li><a class="clc" href="#">Ba lô</a></li>
+													<li><a class="clc" href="#">Túi Xách</a></li>
 												</ul>
 											</div>
 										</div>
 										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="../public/user/images/search.png" alt=""></button>
-										
-  
 									</form>
 								</div>
 							</div>
@@ -123,11 +119,10 @@
 									<div class="wishlist_text"><a href="#">Wishlist</a></div>
 									<div class="wishlist_count">115</div>
 								</div> -->
-								<button type="button" class="btn btn-circle" data-toggle="collapse" data-target="#demo" style="color: white;"><i class="fas fa-arrow-down"></i>
-
+								<button type="button" class="btn btn-circle" data-toggle="collapse" data-target="#lookup-detail" style="color: white;"><i class="fas fa-arrow-down"></i>
+								
 								</button>
 							</div>
-
 							<!-- Cart -->
 							<div class="cart">
 								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
@@ -136,7 +131,7 @@
 										<div class="cart_count"><span>10</span></div>
 									</div>
 									<div class="cart_content">
-										<div class="cart_text"><a href="#">Cart</a></div>
+										<div class="cart_text"><a href="#">Giỏ hàng</a></div>
 										<div class="cart_price">$85</div>
 									</div>
 								</div>
@@ -146,11 +141,44 @@
 				</div>
 			</div>
 		</div>
-		<div id="demo" class="collapse">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  </div>
+		<div id="lookup-detail" class="collapse">
+			
+			  <div class=" row justify-content-center">
+				  <div class="col-9">
+		              <div class="card card-body mb-2">
+		              	<h4 class="card-title">
+		              		Tìm kiếm chi tiết
+		              	</h4>
+		              	<div class="row">
+		              		<div class="col-sm-6">
+		              			<div class="row">
+		              				<div class="col-sm-6">
+				              			<input type="text" class="form-control" placeholder="Nhà sản xuất">
+					              	</div>
+					              	<div class="col-sm-6">
+					              		<textarea class="form-control" placeholder="Mô tả..."></textarea>
+					              		
+					              	</div>
+		              			</div>
+		              		</div>
+		              		
+			              	<div class="col-sm-6 row">
+			              		<div class="col-sm-12">
+			              			<b>$ 100.000</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="100000" data-slider-max="5000000" data-slider-step="100000" data-slider-value="[250,450]"/> <b>$ 5.000.000</b>
+			              		</div>
+			              		<div class="col-sm-12 text-center">
+			              			<b><span id="min-price">1.000.000</span> <span>VNĐ</span> - <span id="max-price">2.000.000</span> <span>VNĐ</span> </b>
+			              		</div>
+			              		
+			              	</div>
+
+		              	</div>
+		              	
+		              </div>
+		          </div>
+				</div>
+		    
+		</div>
 		
 		<!-- Main Navigation -->
 
@@ -966,6 +994,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="../public/user/styles/bootstrap4/popper.js"></script>
 <script src="../public/user/styles/bootstrap4/bootstrap.min.js"></script>
 <script src="../public/user/styles/bootstrap4/bootstrap-datepicker.js"></script>
+<script src="../public/user/styles/bootstrap4/bootstrap-slider.js"></script>
 <script src="../public/user/plugins/greensock/TweenMax.min.js"></script>
 <script src="../public/user/plugins/greensock/TimelineMax.min.js"></script>
 <script src="../public/user/plugins/scrollmagic/ScrollMagic.min.js"></script>
@@ -975,6 +1004,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="../public/user/plugins/easing/easing.js"></script>
 <script src="../public/user/js/product_custom.js"></script>
 <script src="../public/user/js/Thi/register.js"></script>
+<script src="../public/user/js/Thi/lookup.js"></script>
 </body>
 
 </html>
