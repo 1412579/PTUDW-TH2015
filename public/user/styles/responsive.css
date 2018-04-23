@@ -61,6 +61,7 @@
 4. 1199px
 ************/
 
+
 @media only screen and (max-width: 1199px)
 {
 	.cat_menu_container
@@ -132,7 +133,7 @@
 {
 	.top_bar
 	{
-		/*display: none;*/
+		/* display: none; */
 	}
 	.header_search
 	{
@@ -206,7 +207,7 @@
 	}
 	.cat_menu_container ul
 	{
-		visibility: hidden;
+		visibility: visible !important;
 		opacity: 0;
 	}
 	.char_col:not(:last-child):not(:nth-child(3))
