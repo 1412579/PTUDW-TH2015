@@ -61,32 +61,6 @@
 4. 1199px
 ************/
 
-.site_nav_menu_container{
-	width: 211px;
-	padding-left: 25px;
-}
-.site_nav_menu_title{
-	font-size: 20px;
-	margin-left: 12px;
-    color: #0e8ce4;
-}
-.shop_menu ul{
-	list-style: none;
-    margin-bottom: 0px;
-}
-
-.shop_menu li{
-	height: 36px;
-	padding-left: 15px;
-	padding-right: 15px;
-}
-
-.shop_menu li a{
-	font-size: 16px;
-	line-height: 36px;
-	/* color: */
-}
-
 
 @media only screen and (max-width: 1199px)
 {
