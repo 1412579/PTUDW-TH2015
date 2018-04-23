@@ -6,7 +6,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap-datepicker.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap.min.css">
+
 <link href="../public/user/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="../public/user/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="../public/user/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
@@ -16,6 +18,9 @@
 <link rel="stylesheet" type="text/css" href="../public/user/styles/product_styles.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/product_responsive.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/Thi/styles.css">
+
+<!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
+<script src="../public/user/js/recaptcha.js"></script>
 </head>
 
 <body>
@@ -58,7 +63,7 @@
 							<div class="top_bar_user">
 								<div class="user_icon"><img src="../public/user/images/user.svg" alt=""></div>
 								<div><a href="#" data-toggle="modal" data-target="#myModal">Register</a></div>
-								<div><a href="#">Sign in</a></div>
+								<div><a href="#" data-toggle="modal" data-target="#myModal">Sign in</a></div>
 							</div>
 						</div>
 					</div>
@@ -695,10 +700,10 @@ Thêm vào giỏ</button>
 								    </div>
 								  </div>
 								  <div class="form-group row">
-								  	<div class="offset-sm-2 col-sm-10">
+								  	<div class="offset-sm-2 col-sm-2">
 								  		<button type="submit" class="btn btn-primary">Đăng nhập</button>
 								  	</div>
-								  	
+								  	<button class="btn cancel-button" data-dismiss="modal" aria-label="Close">Hủy bỏ</button>
 								  </div>
 								  
 				        	</form>
@@ -709,28 +714,67 @@ Thêm vào giỏ</button>
 			        	<div class="custom-container">
 			        		<form>
 				        	      <div class="form-group row">
-								    <label for="inputName" class="col-sm-2 col-form-label">Họ tên</label>
+								    <label for="inputName" class="col-sm-2 col-form-label">Họ tên (<span class="needed">*</span>)</label>
 								    <div class="col-sm-10">
-								      <input type="text" class="form-control" id="inputEmail" placeholder="Họ tên">
+								      <input type="text" class="form-control" id="inputName" placeholder="Họ tên" required>
 								    </div>
 								  </div>
 								  <div class="form-group row">
-								    <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
+								    <label for="inputEmail" class="col-sm-2 col-form-label">Email (<span class="needed">*</span>)</label>
 								    <div class="col-sm-10">
-								      <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+								      <input type="email" class="form-control" id="inputEmail" placeholder="Email" required>
 								    </div>
 								  </div>
 								  <div class="form-group row">
-								    <label for="inputPassword" class="col-sm-2 col-form-label">Mật khẩu</label>
+								    <label for="inputPassword" class="col-sm-2 col-form-label">Mật khẩu (<span class="needed">*</span>)</label>
 								    <div class="col-sm-10">
-								      <input type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu">
+								      <input type="password" class="form-control" id="inputPassword" placeholder="Mật khẩu" required>
 								    </div>
 								  </div>
 								  <div class="form-group row">
-								  	<div class="offset-sm-2 col-sm-10">
+								    <label for="inputGender" class="col-sm-2 col-form-label">Giới tính</label>
+								    <div class="col-sm-10 row col-form-label">
+									    <div class="col-sm-6">
+									      <input type="radio" name="options" id="option1" autocomplete="off" checked> Nam
+									    </div>
+									    <div class="col-sm-6">
+									      <input type="radio" name="options" id="option1" autocomplete="off" checked> Nữ
+									    </div>
+								    </div>
+								    
+								  </div>
+								  <div class="form-group row">
+								    <label for="inputDOB" class="col-sm-2 col-form-label">Ngày sinh</label>
+								    <div class="col-sm-10">
+								      <input class="form-control datepicker" id="inputDOB" placeholder="Ngày sinh">
+								    </div>
+
+								  </div>
+								  
+								  <div class="form-group row">
+								    <label for="inputAddress" class="col-sm-2 col-form-label">Địa chỉ</label>
+								    <div class="col-sm-10">
+								      <input type="text" class="form-control" id="inputAddress" placeholder="Địa chỉ" required>
+								    </div>
+								  </div>
+								  <div class="form-group row">
+								  	<label for="inputCity" class="col-sm-2 col-form-label">Tỉnh/Thành phố</label>
+								  	<div class="col-sm-10 row">
+								  		<div class="col-sm-6">
+									  		<input type="text" class="form-control" id="inputAddress" placeholder="Tỉnh/Thành phố">
+									  	</div>
+									  	<div class="col-sm-6">
+									  		<div class="g-recaptcha" data-sitekey="6LfT0FQUAAAAAIY1o0Y78NDDOLPW_HDFWrtqesS_"></div>
+									  	</div>
+								    </div>
+								  	
+								  	
+								  </div>
+								  <div class="form-group row">
+								  	<div class="offset-sm-2 col-sm-2">
 								  		<button type="submit" class="btn btn-primary">Đăng ký</button>
 								  	</div>
-								  	
+								  		<button class="btn" data-dismiss="modal" aria-label="Close">Hủy bỏ</button>
 								  </div>
 								  
 				        	</form>
@@ -741,7 +785,8 @@ Thêm vào giỏ</button>
 		      </div>
 		    </div><!-- /.modal-content -->
 		  </div><!-- /.modal-dialog -->
-		</div><!-- /.modal -->
+	</div>
+	<!-- /.modal -->
 
 
 	<!-- Brands -->
@@ -910,6 +955,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="../public/user/js/jquery-3.3.1.min.js"></script>
 <script src="../public/user/styles/bootstrap4/popper.js"></script>
 <script src="../public/user/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="../public/user/styles/bootstrap4/bootstrap-datepicker.js"></script>
 <script src="../public/user/plugins/greensock/TweenMax.min.js"></script>
 <script src="../public/user/plugins/greensock/TimelineMax.min.js"></script>
 <script src="../public/user/plugins/scrollmagic/ScrollMagic.min.js"></script>
@@ -918,6 +964,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="../public/user/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="../public/user/plugins/easing/easing.js"></script>
 <script src="../public/user/js/product_custom.js"></script>
+<script src="../public/user/js/Thi/register.js"></script>
 </body>
 
 </html>
