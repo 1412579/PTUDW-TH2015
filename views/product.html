@@ -74,65 +74,66 @@
 			</div>		
 		</div>
 		<!-- Header Main -->
+		<form>
+			<div class="header_main">
+				<div class="container">
+					<div class="row">
 
-		<div class="header_main">
-			<div class="container">
-				<div class="row">
-
-					<!-- Logo -->
-					<div class="col-lg-2 col-sm-3 col-3 order-1">
-						<div class="logo_container">
-							<div class="logo"><a href="#">WEBTEAM</a></div>
+						<!-- Logo -->
+						<div class="col-lg-2 col-sm-3 col-3 order-1">
+							<div class="logo_container">
+								<div class="logo"><a href="#">WEBTEAM</a></div>
+							</div>
 						</div>
-					</div>
 
-					<!-- Search -->
-					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
-						<div class="header_search">
-							<div class="header_search_content">
-								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm sản phẩm...">
-										<div class="custom_dropdown">
-											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">Tất cả danh mục</span>
-												<i class="fas fa-chevron-down"></i>
-												<ul class="custom_list clc">
-													<li><a class="clc" href="#">Ba lô</a></li>
-													<li><a class="clc" href="#">Túi Xách</a></li>
-												</ul>
+						<!-- Search -->
+						<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+							<div class="header_search">
+								<div class="header_search_content">
+									<div class="header_search_form_container">
+										<div action="#" class="header_search_form clearfix">
+											<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm sản phẩm...">
+											<div class="custom_dropdown">
+												<div class="custom_dropdown_list">
+													<span class="custom_dropdown_placeholder clc">Tất cả danh mục</span>
+													<i class="fas fa-chevron-down"></i>
+													<ul class="custom_list clc">
+														<li><a class="clc" href="#">Ba lô</a></li>
+														<li><a class="clc" href="#">Túi Xách</a></li>
+													</ul>
+												</div>
 											</div>
+											<button type="submit" class="header_search_button trans_300" value="Submit"><img src="../public/user/images/search.png" alt=""></button>
 										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="../public/user/images/search.png" alt=""></button>
-									</form>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<!-- Wishlist -->
-					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
-						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
-								<!-- <div class="wishlist_icon"><img src="../public/user/images/heart.png" alt=""></div>
-								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="#">Wishlist</a></div>
-									<div class="wishlist_count">115</div>
-								</div> -->
-								<button type="button" class="btn btn-circle" data-toggle="collapse" data-target="#lookup-detail" style="color: white;"><i class="fas fa-arrow-down"></i>
-								
-								</button>
-							</div>
-							<!-- Cart -->
-							<div class="cart">
-								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
-									<div class="cart_icon">
-										<img src="../public/user/images/cart.png" alt="">
-										<div class="cart_count"><span>10</span></div>
-									</div>
-									<div class="cart_content">
-										<div class="cart_text"><a href="#">Giỏ hàng</a></div>
-										<div class="cart_price">$85</div>
+						<!-- Wishlist -->
+						<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
+							<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+								<div class="wishlist d-flex flex-row align-items-center justify-content-end">
+									<!-- <div class="wishlist_icon"><img src="../public/user/images/heart.png" alt=""></div>
+									<div class="wishlist_content">
+										<div class="wishlist_text"><a href="#">Wishlist</a></div>
+										<div class="wishlist_count">115</div>
+									</div> -->
+									<button type="button" class="btn btn-circle" data-toggle="collapse" data-target="#lookup-detail" style="color: white;"><i class="fas fa-arrow-down"></i>
+									
+									</button>
+								</div>
+								<!-- Cart -->
+								<div class="cart">
+									<div class="cart_container d-flex flex-row align-items-center justify-content-end">
+										<div class="cart_icon">
+											<img src="../public/user/images/cart.png" alt="">
+											<div class="cart_count"><span>10</span></div>
+										</div>
+										<div class="cart_content">
+											<div class="cart_text"><a href="#">Giỏ hàng</a></div>
+											<div class="cart_price">$85</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -140,46 +141,47 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div id="lookup-detail" class="collapse">
-			
-			  <div class=" row justify-content-center">
-				  <div class="col-9">
-		              <div class="card card-body mb-2">
-		              	<h4 class="card-title">
-		              		Tìm kiếm chi tiết
-		              	</h4>
-		              	<div class="row">
-		              		<div class="col-sm-6">
-		              			<div class="row">
-		              				<div class="col-sm-6">
-				              			<input type="text" class="form-control" placeholder="Nhà sản xuất">
-					              	</div>
-					              	<div class="col-sm-6">
-					              		<textarea class="form-control" placeholder="Mô tả..."></textarea>
-					              		
-					              	</div>
-		              			</div>
-		              		</div>
-		              		
-			              	<div class="col-sm-6 row">
-			              		<div class="col-sm-12">
-			              			<b>$ 100.000</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="100000" data-slider-max="5000000" data-slider-step="100000" data-slider-value="[250,450]"/> <b>$ 5.000.000</b>
-			              		</div>
-			              		<div class="col-sm-12 text-center">
-			              			<b><span id="min-price">1.000.000</span> <span>VNĐ</span> - <span id="max-price">2.000.000</span> <span>VNĐ</span> </b>
+			<div id="lookup-detail" class="collapse">
+				
+				  <div class=" row justify-content-center">
+					  <div class="col-9">
+			              <div class="card card-body mb-2">
+			              	<h4 class="card-title">
+			              		Tìm kiếm chi tiết
+			              	</h4>
+			              	<div class="row">
+			              		<div class="col-sm-6">
+			              			<div class="row">
+			              				<div class="col-sm-6">
+			              					<label for="inputBrand" class="col-form-label"><b>Nhà sản xuất</b></label>
+					              			<input type="text" class="form-control" placeholder="Nhà sản xuất">
+						              	</div>
+						              	<div class="col-sm-6">
+						              		<label for="inputBrand" class="col-form-label"><b>Đặc điểm</b></label>
+						              		<textarea class="form-control" placeholder="Mô tả..."></textarea>
+						              		
+						              	</div>
+			              			</div>
 			              		</div>
 			              		
-			              	</div>
+				              	<div class="col-sm-6 row">
+				              		<label for="inputBrand" class="col-form-label"><b>Giá cả</b></label>
+				              		<div class="col-sm-12">
+				              			<b>$ 100.000</b> <input id="ex2" type="text" class="span2" value="" data-slider-min="100000" data-slider-max="5000000" data-slider-step="100000" data-slider-value="[250,450]"/> <b>$ 5.000.000</b>
+				              		</div>
+				              		<div class="col-sm-12 text-center">
+				              			<b><span id="min-price">1.000.000</span> <span>VNĐ</span> - <span id="max-price">2.000.000</span> <span>VNĐ</span> </b>
+				              		</div>
+				              		
+				              	</div>
 
-		              	</div>
-		              	
-		              </div>
-		          </div>
-				</div>
-		    
-		</div>
-		
+			              	</div>
+			              	
+			              </div>
+			          </div>
+					</div>
+			</div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+		</form>
 		<!-- Main Navigation -->
 
 		<nav class="main_nav">
