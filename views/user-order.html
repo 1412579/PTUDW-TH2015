@@ -24,7 +24,7 @@
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap-slider.min.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/Thi/styles.css">
-
+<!-- <link rel="stylesheet" type="text/css" href="../public/user/styles/Thi/user.css"> -->
 
 <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 <script src="../public/user/js/recaptcha.js"></script>
@@ -462,19 +462,11 @@
                                             </td>
                                         </tr>
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>Mã số</th>
-                                            <th>Ngày đặt</th>
-                                            <th>Tổng cộng</th>
-                                            <th>Tình trạng</th>
-                                            <th>Thao tác</th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             <!-- /.table-responsive -->
                     </div>
                     <!-- /.col-md-9 -->
+
 
                     <!-- *** LEFT COLUMN END *** -->
 
@@ -484,15 +476,30 @@
                     <div class="col-md-3">
                         <!-- *** CUSTOMER MENU ***
  _________________________________________________________ -->
+
                         <div class="panel panel-default sidebar-menu">
 
                             <div class="panel-heading">
                                 <h3 class="panel-title">Thông tin</h3>
                             </div>
+                            <div class="card" style="width: 18rem;">
+                              <img class="card-img-top profile-picture" src="../public/user/images/avatar.png" alt="Card image cap">
+                              <b class="text-center">Username</b>
+                              <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                        <a href="user-order.html" class="list-group-item list-group-item-action active"><i class="fa fa-list"></i> Đơn hàng</a>
 
-                            
 
-                        </div>
+                                        <a href="user.html" class="list-group-item list-group-item-action" ><i class="fa fa-user"></i> Tài khoản</a>
+
+                                        <a href="index.html" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+
+                                </ul>
+                              </div>
+                            </div>
+                                
+
+
                         <!-- /.col-md-3 -->
 
                         <!-- *** CUSTOMER MENU END *** -->

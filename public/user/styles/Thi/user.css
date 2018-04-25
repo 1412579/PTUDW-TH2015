@@ -1,0 +1,53 @@
+.panel.sidebar-menu {
+    background: #fff;
+    margin: 0 0 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.panel {
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    border: 1px solid transparent;
+    border-radius: 0;
+    -webkit-box-shadow: 0 0 0;
+    box-shadow: 0 0 0;
+}
+
+.panel.sidebar-menu .panel-heading {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    background: none;
+    padding: 0;
+    letter-spacing: 0.08em;
+    border-bottom: none;
+}
+
+.panel-heading {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 15px 15px;
+}
+
+.nav-stacked > li + li {
+    margin-top: 2px;
+    margin-left: 0;
+}
+.nav-pills > li + li {
+    margin-left: 2px;
+}
+
+.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+    color: #ffffff;
+    background-color: #38a7bb;
+}
+
+.nav-pills > li > a {
+    border-radius: 0;
+}
+
+.nav > li > a {
+    padding: 10px 15px;
+}
