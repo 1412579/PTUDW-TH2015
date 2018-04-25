@@ -16,9 +16,13 @@
 <link rel="stylesheet" type="text/css" href="../public/user/styles/header.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap-datepicker.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap.min.css">
+
+
 <link rel="stylesheet" type="text/css" href="../public/user/styles/product_styles.css">
+
 <link rel="stylesheet" type="text/css" href="../public/user/styles/product_responsive.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap-slider.min.css">
+<link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/Thi/styles.css">
 
 
@@ -397,121 +401,78 @@
                     <!-- *** LEFT COLUMN ***
              _________________________________________________________ -->
 
-                    <div class="col-md-9 clearfix" id="customer-account">
 
-                        <h3>Thay đổi thông tin cá nhân và mật khẩu</h3>
-
-                        <div class="box">
-
-                            <div class="heading">
-                                <h3 class="text-uppercase">Đổi mật khẩu</h3>
-                            </div>
-
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="password_old">Mật khẩu cũ</label>
-                                            <input type="password" class="form-control" id="password_old" placeholder="Mật khẩu cũ">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="password_1">Mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="password_1" placeholder="Mật khẩu mới">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="password_2">Nhập lại mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="password_2" placeholder="Nhập lại mật khẩu mới">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i><span>&ensp;Lưu mật khẩu</span></button>
-                                </div>
-                            </form>
-
-                        </div>
-                        <!-- /.box -->
-
-
-                        <div class="box clearfix">
-                            <div class="heading">
-                                <h3 class="text-uppercase">Thông tin cá nhân</h3>
-                            </div>
-
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="firstname">Họ tên</label>
-                                            <input type="text" class="form-control" id="name" placeholder="Họ tên">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="lastname">Email</label>
-                                            <input type="text" class="form-control" id="email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="gender">Giới tính</label>
-                                            <div class="row col-form-label">
-                                                <div class="col-sm-6">
-                                                  <input type="radio" name="options" id="male" autocomplete="off" checked> Nam
-                                                </div>
-                                                <div class="col-sm-6">
-                                                  <input type="radio" name="options" id="female" autocomplete="off" checked> Nữ
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="street">Ngày sinh</label>
-                                            <input class="form-control datepicker" id="dob" placeholder="Ngày sinh">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-
-                                <div class="row">
-
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="address">Địa chỉ</label>
-                                            <input type="text" class="form-control" id="address" placeholder="Địa chỉ">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="city">Tỉnh/Thành phố</label>
-                                            <input type="text" class="form-control" id="city" placeholder="Thành phố">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 text-center">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&ensp;Lưu thay đổi</button>
-
-                                    </div>
-
-                                </div>
-
-                            </form>
-
-                        </div>
-
+                    <div class="col-md-9" id="customer-orders">
+                        <h3>Danh sách các đơn hàng</h3>
+                        <p class="text-muted lead">Nếu có bất cứ thắc mắc nào, xin vui lòng <a href="contact.html">liên hệ chúng tôi</a>, hệ thống chăm sóc khách hàng luôn sẵn sàng 24/7.</p>
+                             <table class="table table-bordered display" style="width:100%" id="user-order">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã số</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Tổng cộng</th>
+                                            <th>Tình trạng</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-info">Đang giao hàng</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-info">Đang giao hàng</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-success">Đã giao</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-danger">Đã hủy</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-warning">Đang xử lý</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Mã số</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Tổng cộng</th>
+                                            <th>Tình trạng</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            <!-- /.table-responsive -->
                     </div>
                     <!-- /.col-md-9 -->
 
@@ -682,6 +643,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="../public/user/js/jquery-3.3.1.min.js"></script>
 <script src="../public/user/styles/bootstrap4/popper.js"></script>
 <script src="../public/user/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="../public/admin/js/jquery.dataTables.min.js"></script>
+
+<script src="../public/user/styles/bootstrap4/dataTables.bootstrap.min.js"></script>
+
+
 <script src="../public/user/styles/bootstrap4/bootstrap-datepicker.js"></script>
 <script src="../public/user/styles/bootstrap4/bootstrap-slider.js"></script>
 <script src="../public/user/plugins/greensock/TweenMax.min.js"></script>
@@ -694,9 +660,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="../public/user/js/product_custom.js"></script>
 <script src="../public/user/js/Thi/register.js"></script>
 <script src="../public/user/js/Thi/lookup.js"></script>
+<script src="../public/user/js/Thi/user-order.js"></script>
 </body>
 
 </html>
 
 
         
+
+
