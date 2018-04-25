@@ -16,6 +16,7 @@ $(document).ready(function(){
         if(!Number.isInteger(parseInt(val)) || val < 1){
             _.val(1);
         }
+        val = _.val();
 		parent.find("#total").text('$' + (val * price))
 		var subTotal = 0;
         $('.cart_item_total .total').each(function () {
