@@ -7,4 +7,6 @@ $("document").ready(function() {
 		$("#min-price").text(values[0]);
 		$("#max-price").text(values[1]);
 	});
+
+	$("#expand").tooltip();
 });
