@@ -8,6 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
+
 <link href="../public/user/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="../public/user/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="../public/user/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
@@ -15,14 +16,18 @@
 <link rel="stylesheet" type="text/css" href="../public/user/styles/header.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap-datepicker.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap.min.css">
+
+
 <link rel="stylesheet" type="text/css" href="../public/user/styles/product_styles.css">
+
 <link rel="stylesheet" type="text/css" href="../public/user/styles/product_responsive.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/bootstrap-slider.min.css">
+<link rel="stylesheet" type="text/css" href="../public/user/styles/bootstrap4/dataTables.bootstrap4.min.css">
 <link rel="stylesheet" type="text/css" href="../public/user/styles/Thi/styles.css">
-
+<!-- <link rel="stylesheet" type="text/css" href="../public/user/styles/Thi/user.css"> -->
 
 <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
-<script src="/user/js/recaptcha.js"></script>
+<script src="../public/user/js/recaptcha.js"></script>
 </head>
 
 <body>
@@ -39,8 +44,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col d-flex flex-row">
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="/user/images/phone.png" alt=""></div>+38 068 005 3570</div>
-                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="/user/images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="../public/user/images/phone.png" alt=""></div>+38 068 005 3570</div>
+                        <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="../public/user/images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
                         <div class="top_bar_content ml-auto">
                             <div class="top_bar_menu">
                                 <ul class="standard_dropdown top_bar_dropdown">
@@ -63,7 +68,7 @@
                                 </ul>
                             </div>
                             <div class="top_bar_user">
-                                <div class="user_icon"><img src="/user/images/user.svg" alt=""></div>
+                                <div class="user_icon"><img src="../public/user/images/user.svg" alt=""></div>
                                 <div><a href="user.html">Username</a></div>
                             </div>
                         </div>
@@ -101,7 +106,7 @@
                                                     </ul>
                                                 </div>
                                             </div>
-                                            <button type="submit" class="header_search_button trans_300" value="Submit"><img src="/user/images/search.png" alt=""></button>
+                                            <button type="submit" class="header_search_button trans_300" value="Submit"><img src="../public/user/images/search.png" alt=""></button>
                                         </div>
                                     </div>
                                 </div>
@@ -112,7 +117,7 @@
                         <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
                             <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
                                 <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                                    <!-- <div class="wishlist_icon"><img src="/user/images/heart.png" alt=""></div>
+                                    <!-- <div class="wishlist_icon"><img src="../public/user/images/heart.png" alt=""></div>
                                     <div class="wishlist_content">
                                         <div class="wishlist_text"><a href="#">Wishlist</a></div>
                                         <div class="wishlist_count">115</div>
@@ -125,7 +130,7 @@
                                 <div class="cart">
                                     <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                                         <div class="cart_icon">
-                                            <img src="/user/images/cart.png" alt="">
+                                            <img src="../public/user/images/cart.png" alt="">
                                             <div class="cart_count"><span>10</span></div>
                                         </div>
                                         <div class="cart_content">
@@ -374,8 +379,8 @@
                             </ul>
                             
                             <div class="menu_contact">
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="/user/images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="/user/images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="../public/user/images/phone_white.png" alt=""></div>+38 068 005 3570</div>
+                                <div class="menu_contact_item"><div class="menu_contact_icon"><img src="../public/user/images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
                             </div>
                         </div>
                     </div>
@@ -396,123 +401,72 @@
                     <!-- *** LEFT COLUMN ***
              _________________________________________________________ -->
 
-                    <div class="col-md-9 clearfix" id="customer-account">
 
-                        <h3>Thay đổi thông tin cá nhân và mật khẩu</h3>
-
-                        <div class="box">
-
-                            <div class="heading">
-                                <h3 class="text-uppercase">Đổi mật khẩu</h3>
-                            </div>
-
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="password_old">Mật khẩu cũ</label>
-                                            <input type="password" class="form-control" id="password_old" placeholder="Mật khẩu cũ">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="password_1">Mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="password_1" placeholder="Mật khẩu mới">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="password_2">Nhập lại mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="password_2" placeholder="Nhập lại mật khẩu mới">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i><span>&ensp;Lưu mật khẩu</span></button>
-                                </div>
-                            </form>
-
-                        </div>
-                        <!-- /.box -->
-
-
-                        <div class="box clearfix">
-                            <div class="heading">
-                                <h3 class="text-uppercase">Thông tin cá nhân</h3>
-                            </div>
-
-                            <form>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="firstname">Họ tên</label>
-                                            <input type="text" class="form-control" id="name" placeholder="Họ tên">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="lastname">Email</label>
-                                            <input type="text" class="form-control" id="email" placeholder="Email">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="gender">Giới tính</label>
-                                            <div class="row col-form-label">
-                                                <div class="col-sm-6">
-                                                  <input type="radio" name="options" id="male" autocomplete="off" checked> Nam
-                                                </div>
-                                                <div class="col-sm-6">
-                                                  <input type="radio" name="options" id="female" autocomplete="off" checked> Nữ
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="street">Ngày sinh</label>
-                                            <input class="form-control datepicker" id="dob" placeholder="Ngày sinh">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- /.row -->
-
-                                <div class="row">
-
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="address">Địa chỉ</label>
-                                            <input type="text" class="form-control" id="address" placeholder="Địa chỉ">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label for="city">Tỉnh/Thành phố</label>
-                                            <input type="text" class="form-control" id="city" placeholder="Thành phố">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-12 text-center">
-                                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>&ensp;Lưu thay đổi</button>
-
-                                    </div>
-
-                                </div>
-
-                            </form>
-
-                        </div>
-
+                    <div class="col-md-9" id="customer-orders">
+                        <h3>Danh sách các đơn hàng</h3>
+                        <p class="text-muted lead">Nếu có bất cứ thắc mắc nào, xin vui lòng <a href="contact.html">liên hệ chúng tôi</a>, hệ thống chăm sóc khách hàng luôn sẵn sàng 24/7.</p>
+                             <table class="table table-bordered display" style="width:100%" id="user-order">
+                                    <thead>
+                                        <tr>
+                                            <th>Mã số</th>
+                                            <th>Ngày đặt</th>
+                                            <th>Tổng cộng</th>
+                                            <th>Tình trạng</th>
+                                            <th>Thao tác</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-info">Đang giao hàng</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-info">Đang giao hàng</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-success">Đã giao</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-danger">Đã hủy</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th># 1735</th>
+                                            <td>22/06/2013</td>
+                                            <td>$ 150.00</td>
+                                            <td><span class="label label-warning">Đang xử lý</span>
+                                            </td>
+                                            <td><a href="customer-order.html" class="btn btn-primary">Chi tiết</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            <!-- /.table-responsive -->
                     </div>
                     <!-- /.col-md-9 -->
+
 
                     <!-- *** LEFT COLUMN END *** -->
 
@@ -522,7 +476,8 @@
                     <div class="col-md-3">
                         <!-- *** CUSTOMER MENU ***
  _________________________________________________________ -->
-                         <div class="panel panel-default sidebar-menu">
+
+                        <div class="panel panel-default sidebar-menu">
 
                             <div class="panel-heading">
                                 <h3 class="panel-title">Thông tin</h3>
@@ -532,10 +487,10 @@
                               <b class="text-center">Username</b>
                               <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                        <a href="user-order.html" class="list-group-item list-group-item-action"><i class="fa fa-list"></i> Đơn hàng</a>
+                                        <a href="user-order.html" class="list-group-item list-group-item-action active"><i class="fa fa-list"></i> Đơn hàng</a>
 
 
-                                        <a href="user.html" class="list-group-item list-group-item-action active" ><i class="fa fa-user"></i> Tài khoản</a>
+                                        <a href="user.html" class="list-group-item list-group-item-action" ><i class="fa fa-user"></i> Tài khoản</a>
 
                                         <a href="index.html" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
 
@@ -545,10 +500,6 @@
                                 
 
 
-                        <!-- /.col-md-3 -->
-
-                        <!-- *** CUSTOMER MENU END *** -->
-                        </div>
                         <!-- /.col-md-3 -->
 
                         <!-- *** CUSTOMER MENU END *** -->
@@ -574,7 +525,7 @@
                 <div class="col">
                     <div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
                         <div class="newsletter_title_container">
-                            <div class="newsletter_icon"><img src="/user/images/send.png" alt=""></div>
+                            <div class="newsletter_icon"><img src="../public/user/images/send.png" alt=""></div>
                             <div class="newsletter_title">Sign up for Newsletter</div>
                             <div class="newsletter_text"><p>...and receive %20 coupon for first shopping.</p></div>
                         </div>
@@ -682,10 +633,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </div>
                         <div class="logos ml-sm-auto">
                             <ul class="logos_list">
-                                <li><a href="#"><img src="/user/images/logos_1.png" alt=""></a></li>
-                                <li><a href="#"><img src="/user/images/logos_2.png" alt=""></a></li>
-                                <li><a href="#"><img src="/user/images/logos_3.png" alt=""></a></li>
-                                <li><a href="#"><img src="/user/images/logos_4.png" alt=""></a></li>
+                                <li><a href="#"><img src="../public/user/images/logos_1.png" alt=""></a></li>
+                                <li><a href="#"><img src="../public/user/images/logos_2.png" alt=""></a></li>
+                                <li><a href="#"><img src="../public/user/images/logos_3.png" alt=""></a></li>
+                                <li><a href="#"><img src="../public/user/images/logos_4.png" alt=""></a></li>
                             </ul>
                         </div>
                     </div>
@@ -696,24 +647,32 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 </div>
 
 
-<script src="/user/js/jquery-3.3.1.min.js"></script>
-<script src="/user/styles/bootstrap4/popper.js"></script>
-<script src="/user/styles/bootstrap4/bootstrap.min.js"></script>
-<script src="/user/styles/bootstrap4/bootstrap-datepicker.js"></script>
-<script src="/user/styles/bootstrap4/bootstrap-slider.js"></script>
-<script src="/user/plugins/greensock/TweenMax.min.js"></script>
-<script src="/user/plugins/greensock/TimelineMax.min.js"></script>
-<script src="/user/plugins/scrollmagic/ScrollMagic.min.js"></script>
-<script src="/user/plugins/greensock/animation.gsap.min.js"></script>
-<script src="/user/plugins/greensock/ScrollToPlugin.min.js"></script>
-<script src="/user/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="/user/plugins/easing/easing.js"></script>
-<script src="/user/js/product_custom.js"></script>
-<script src="/user/js/Thi/register.js"></script>
-<script src="/user/js/Thi/lookup.js"></script>
+<script src="../public/user/js/jquery-3.3.1.min.js"></script>
+<script src="../public/user/styles/bootstrap4/popper.js"></script>
+<script src="../public/user/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="../public/admin/js/jquery.dataTables.min.js"></script>
+
+<script src="../public/user/styles/bootstrap4/dataTables.bootstrap.min.js"></script>
+
+
+<script src="../public/user/styles/bootstrap4/bootstrap-datepicker.js"></script>
+<script src="../public/user/styles/bootstrap4/bootstrap-slider.js"></script>
+<script src="../public/user/plugins/greensock/TweenMax.min.js"></script>
+<script src="../public/user/plugins/greensock/TimelineMax.min.js"></script>
+<script src="../public/user/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="../public/user/plugins/greensock/animation.gsap.min.js"></script>
+<script src="../public/user/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="../public/user/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="../public/user/plugins/easing/easing.js"></script>
+<script src="../public/user/js/product_custom.js"></script>
+<script src="../public/user/js/Thi/register.js"></script>
+<script src="../public/user/js/Thi/lookup.js"></script>
+<script src="../public/user/js/Thi/user-order.js"></script>
 </body>
 
 </html>
 
 
         
+
+
