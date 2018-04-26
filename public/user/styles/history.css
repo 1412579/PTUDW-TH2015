@@ -1,0 +1,12 @@
+.btn-view{
+    border-color: rgb(173, 255, 251);
+    background-color: #fff;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+    color:rgb(133, 187, 248);
+} 
+
+span{
+    font-size: 30px;
+}
