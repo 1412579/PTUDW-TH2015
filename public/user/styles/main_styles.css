@@ -914,8 +914,9 @@ Always sticky menu at Home
 }
 .popular_category_image img
 {
-	max-height: 100%;
 	max-width: 100%;
+	max-height: 70px;
+	width: auto;
 }
 .popular_category_text
 {
