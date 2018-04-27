@@ -7,19 +7,21 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="WEBTEAM Project">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="user/styles/bootstrap4/bootstrap.min.css">
   <link href="user/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="user/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
   <link rel="stylesheet" type="text/css" href="user/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
   <link rel="stylesheet" type="text/css" href="user/plugins/OwlCarousel2-2.2.1/animate.css">
-  <link rel="stylesheet" type="text/css" href="user/plugins/slick-1.8.0/slick.css">
-  <link rel="stylesheet" type="text/css" href="user/styles/bootstrap4/bootstrap-datepicker.css">
-  <link href="user/plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="user/styles/header.css">
-  <link rel="stylesheet" type="text/css" href="user/styles/user-order-detail.css">  
+  <link rel="stylesheet" type="text/css" href="user/styles/bootstrap4/bootstrap-datepicker.css">
+  <link rel="stylesheet" type="text/css" href="user/styles/bootstrap4/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="user/styles/product_styles.css">
+  <link rel="stylesheet" type="text/css" href="user/styles/product_responsive.css">
+  <link rel="stylesheet" type="text/css" href="user/styles/bootstrap4/bootstrap-slider.min.css">
   <link rel="stylesheet" type="text/css" href="user/styles/Thi/styles.css">
+  <link rel="stylesheet" type="text/css" href="user/styles/user-order-detail.css">  
   <link rel="stylesheet" type="text/css" href="user/styles/responsive.css">
   <link rel="stylesheet" type="text/css" href="user/styles/bootstrap4/dataTables.bootstrap4.min.css">
+  
   
   
 </head>
@@ -362,107 +364,167 @@
   
     </header>
   
+
     <div class="container">
       <div class="py-5 text-center">
         </div>
     <div class="row">
-      <div class="col-md-8 order-md-1">
-        <span>Đơn hàng của tôi</span>
-        <!-- <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Mã đơn hàng</th>
-              <th scope="col">Ngày mua</th>
-              <th scope="col">Sản phầm</th>
-              <th scope="col">Giá tiền</th>
-              <th scope="col">Trạng thái</th>
-              <th scope="col">Chi tiết</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>14/10/20xx</td>
-              <td>Ba lô</td>
-              <td>100,000đ</td>
-              <td>Đã giao</td>
-              <td><button class="btn-view">Xem chi tiết</button></td>              
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>14/10/20xx</td>
-              <td>Ba lô</td>
-              <td>100,000đ</td>
-              <td>Đang giao</td>
-              <td><button class="btn-view">Xem chi tiết</button></td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>14/10/20xx</td>
-              <td>Ba lô</td>
-              <td>100,000đ</td>
-              <td>Hủy</td>
-              <td><button class="btn-view">Xem chi tiết</button></td>  
-            </tr>
-          </tbody>
-        </table> -->
-        <table class="table table-bordered display" style="width:100%" id="user-order">
-            <thead>
-                <tr>
-                    <th>Mã số</th>
-                    <th>Ngày đặt</th>
-                    <th>Sản phẩm</th>
-                    <th>Giá tiền</th>
-                    <th>Tình trạng</th>
-                    <th>Thao tác</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th># 1735</th>
-                    <td>22/06/2013</td>
-                    <td>Ba lô</td>
-                    <td>225,000 đ</td>
-                    <td><span class="label label-success">Đã giao</span>
-                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                </tr>
-                <tr>
-                    <th># 1735</th>
-                    <td>22/06/2013</td>
-                    <td>Ba lô</td>
-                    <td>225,000 đ</td>
-                    <td><span class="label label-info">Đang giao hàng</span></td>
-                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                </tr>
-                <tr>
-                    <th># 1735</th>
-                    <td>22/06/2013</td>
-                    <td>Ba lô</td>
-                    <td>225,000 đ</td>
-                    <td><span class="label label-danger">Đã hủy</span>
-                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                </tr>
-                <tr>
-                    <th># 1735</th>
-                    <td>22/06/2013</td>
-                    <td>Ba lô</td>
-                    <td>225,000 đ</td>
-                    <td><span class="label label-info">Đang giao hàng</span></td>
-                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                </tr>
-                <tr>
-                    <th># 1735</th>
-                    <td>22/06/2013</td>
-                    <td>Ba lô</td>
-                    <td>225,000 đ</td>
-                    <td><span class="label label-info">Đang giao hàng</span></td>
-                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                </tr>
-            </tbody>
-        </table>
+
+        <!-- *** LEFT COLUMN ***
+ _________________________________________________________ -->
+
+
+        <div class="col-md-9" id="customer-orders">
+          <!-- <div class="infor-order"> -->
+              <h4 class="infor-detail"><b>Mã đơn hàng: </b>#1234</h4>
+              <h4 class="infor-detail"><b>Ngày đặt: </b>20/10/20xx</h4>
+              <h4 class="infor-detail"><b>Tổng cộng: </b>10000000 đ</h4>
+          <!-- </div> -->
+            <table class="table display" style="width:100%" id="user-order">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                        <th>Thao tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>
+                            <div class="detail_item_image">
+                              <img src="/user/images/new_1.jpg" alt="">
+                            </div>
+                        </th>
+                        <td>Ba lô</td>
+                        <td>2</td>
+                        <td>225,000 đ</td>
+                        <td>450,000 đ</td>                    
+                        <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="detail_item_image">
+                              <img src="/user/images/new_1.jpg" alt="">
+                            </div>
+                        </th>
+                        <td>Ba lô</td>
+                        <td>2</td>
+                        <td>225,000 đ</td>
+                        <td>450,000 đ</td>                    
+                        <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="detail_item_image">
+                              <img src="/user/images/new_1.jpg" alt="">
+                            </div>
+                        </th>
+                        <td>Ba lô</td>
+                        <td>2</td>
+                        <td>225,000 đ</td>
+                        <td>450,000 đ</td>                    
+                        <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="detail_item_image">
+                              <img src="/user/images/new_1.jpg" alt="">
+                            </div>
+                        </th>
+                        <td>Ba lô</td>
+                        <td>2</td>
+                        <td>225,000 đ</td>
+                        <td>450,000 đ</td>                    
+                        <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
+                    </tr>
+                    <tr>
+                        <th>
+                            <div class="detail_item_image">
+                              <img src="/user/images/new_1.jpg" alt="">
+                            </div>
+                        </th>
+                        <td>Ba lô</td>
+                        <td>2</td>
+                        <td>225,000 đ</td>
+                        <td>450,000 đ</td>                    
+                        <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
+                    </tr>
+                </tbody>
+            </table>
+                <!-- /.table-responsive -->
+        </div>
+        <!-- /.col-md-9 -->
+
+
+        <!-- *** LEFT COLUMN END *** -->
+
+        <!-- *** RIGHT COLUMN ***
+ _________________________________________________________ -->
+
+        <div class="col-md-3">
+            <!-- *** CUSTOMER MENU ***
+_________________________________________________________ -->
+
+            <div class="panel panel-default sidebar-menu">
+
+                <div class="panel-heading">
+                    <h3 class="panel-title">Thông tin</h3>
+                </div>
+                <div class="card" style="width: 18rem;">
+                  <img class="card-img-top profile-picture" src="user/images/avatar.png" alt="Card image cap">
+                  <b class="text-center">Username</b>
+                  <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                            <a href="user-order.html" class="list-group-item list-group-item-action active"><i class="fa fa-list"></i> Đơn hàng</a>
+
+
+                            <a href="user.html" class="list-group-item list-group-item-action" ><i class="fa fa-user"></i> Tài khoản</a>
+
+                            <a href="index.html" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+
+                    </ul>
+                  </div>
+                </div>
+                    
+
+
+            <!-- /.col-md-3 -->
+
+            <!-- *** CUSTOMER MENU END *** -->
+        </div>
+
+        <!-- *** RIGHT COLUMN END *** -->
+
+    </div>
+    <!-- /.row -->
+  </div>
+
+  <!-- Newsletter -->
+
+	<div class="newsletter">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="newsletter_container d-flex flex-lg-row flex-column align-items-lg-center align-items-center justify-content-lg-start justify-content-center">
+              <div class="newsletter_title_container">
+                <div class="newsletter_icon"><img src="user/images/send.png" alt=""></div>
+                <div class="newsletter_title">Đăng ký nhận tin</div>
+                <div class="newsletter_text"><p>...để nhanh chóng nhận thông báo khuyến mãi nhanh nhất.</p></div>
+              </div>
+              <div class="newsletter_content clearfix">
+                <form action="#" class="newsletter_form">
+                  <input type="email" class="newsletter_input" required="required" placeholder="Nhập địa chỉ email của bạn">
+                  <button class="newsletter_button">Đăng ký nhận tin</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
 
   <!-- footer -->
   <footer class="footer">
@@ -558,6 +620,22 @@
       </div>
     </div>
   </footer>
+
+  <script src="user/js/jquery-3.3.1.min.js"></script>
+<script src="user/styles/bootstrap4/popper.js"></script>
+<script src="user/styles/bootstrap4/bootstrap.min.js"></script>
+<script src="user/styles/bootstrap4/bootstrap-datepicker.js"></script>
+<script src="user/styles/bootstrap4/bootstrap-slider.js"></script>
+<script src="user/plugins/greensock/TweenMax.min.js"></script>
+<script src="user/plugins/greensock/TimelineMax.min.js"></script>
+<script src="user/plugins/scrollmagic/ScrollMagic.min.js"></script>
+<script src="user/plugins/greensock/animation.gsap.min.js"></script>
+<script src="user/plugins/greensock/ScrollToPlugin.min.js"></script>
+<script src="user/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+<script src="user/plugins/easing/easing.js"></script>
+<script src="user/js/product_custom.js"></script>
+<script src="user/js/Thi/register.js"></script>
+<script src="user/js/Thi/lookup.js"></script>
 </body>
 
 </html>

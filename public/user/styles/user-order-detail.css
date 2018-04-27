@@ -1,12 +1,22 @@
-.btn-view{
-    border-color: rgb(173, 255, 251);
-    background-color: #fff;
-    width: 100px;
-    text-align: center;
-    font-weight: bold;
-    color:rgb(133, 187, 248);
+.detail_item_image{
+    width: 133px;
+    height: 133px;
+    position: relative;
 } 
 
-span{
-    font-size: 30px;
+.detail_item_image img{
+    max-width: 100%;
+    vertical-align: middle;
+    border-style: none;
 }
+
+.table td, .table th {
+    vertical-align: text-bottom;
+}
+
+/* .infor-order {
+    display: block;
+    float: left;
+    font-size: 20px;
+} */
+
