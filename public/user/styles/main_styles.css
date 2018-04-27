@@ -915,6 +915,10 @@ Always sticky menu at Home
 	padding-left: 40px;
 	padding-right: 40px;
 }
+.popular_lables{
+	text-decoration: none;
+	color: #000;
+}
 .popular_categories_slider .owl-item:nth-child(even)
 {
 	background: #eff6fa;
