@@ -665,6 +665,13 @@ Always sticky menu at Home
 {
 	background: rgba(14, 140, 228, 0.8);
 }
+.product_cart_button a{
+	/* position: relative; */
+	width: 100%;
+	height: 48px;
+	text-decoration: none;
+	color: #fff;
+}
 .featured_slider .slick-dots
 {
 	position: absolute;
@@ -1225,6 +1232,10 @@ Always sticky menu at Home
 .arrivals_single_button:hover
 {
 	background: rgba(14, 140, 228, 0.8);
+}
+.arrivals_single_button a{
+	text-decoration: none;
+	color: #fff;
 }
 .arrivals_single_category
 {
