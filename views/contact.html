@@ -28,10 +28,10 @@
 			<div class="container">
 				<div class="row">
 					<div class="col d-flex flex-row">
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="../public/user/images/phone.png" alt=""></div>+38 068 005 3570</div>
-						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="../public/user/images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+						<!-- <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="user/images/phone.png" alt=""></div>+38 068 005 3570</div>
+						<div class="top_bar_contact_item"><div class="top_bar_icon"><img src="user/images/mail.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div> -->
 						<div class="top_bar_content ml-auto">
-							<div class="top_bar_menu">
+							<!-- <div class="top_bar_menu">
 								<ul class="standard_dropdown top_bar_dropdown">
 									<li>
 										<a href="#">English<i class="fas fa-chevron-down"></i></a>
@@ -50,11 +50,11 @@
 										</ul>
 									</li>
 								</ul>
-							</div>
+							</div> -->
 							<div class="top_bar_user">
-								<div class="user_icon"><img src="../public/user/images/user.svg" alt=""></div>
-								<div><a href="#">Register</a></div>
-								<div><a href="#">Sign in</a></div>
+								<div class="user_icon"><img src="user/images/user.svg" alt=""></div>
+								<div><a href="#" data-toggle="modal" data-target="#myModal" id="registerBtn">Đăng ký</a></div>
+								<div><a href="#" data-toggle="modal" data-target="#myModal" id="loginBtn">Đăng nhập</a></div>
 							</div>
 						</div>
 					</div>
@@ -63,67 +63,63 @@
 		</div>
 
 		<!-- Header Main -->
+		<form>
+			<div class="header_main">
+				<div class="container">
+					<div class="row">
 
-		<div class="header_main">
-			<div class="container">
-				<div class="row">
-
-					<!-- Logo -->
-					<div class="col-lg-2 col-sm-3 col-3 order-1">
-						<div class="logo_container">
-							<div class="logo"><a href="#">OneTech</a></div>
+						<!-- Logo -->
+						<div class="col-lg-2 col-sm-12">
+							<div class="logo_container">
+								<div class="logo"><a href="#">WEBTEAM</a></div>
+							</div>
 						</div>
-					</div>
 
-					<!-- Search -->
-					<div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
-						<div class="header_search">
-							<div class="header_search_content">
-								<div class="header_search_form_container">
-									<form action="#" class="header_search_form clearfix">
-										<input type="search" required="required" class="header_search_input" placeholder="Search for products...">
-										<div class="custom_dropdown">
-											<div class="custom_dropdown_list">
-												<span class="custom_dropdown_placeholder clc">All Categories</span>
-												<i class="fas fa-chevron-down"></i>
-												<ul class="custom_list clc">
-													<li><a class="clc" href="#">All Categories</a></li>
-													<li><a class="clc" href="#">Computers</a></li>
-													<li><a class="clc" href="#">Laptops</a></li>
-													<li><a class="clc" href="#">Cameras</a></li>
-													<li><a class="clc" href="#">Hardware</a></li>
-													<li><a class="clc" href="#">Smartphones</a></li>
-												</ul>
+						<!-- Search -->
+						<div class="col-lg-6 col-sm-12 text-sm-left text-right">
+							<div class="header_search">
+								<div class="header_search_content">
+									<div class="header_search_form_container">
+										<div action="#" class="header_search_form clearfix">
+											<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm sản phẩm...">
+											<div class="custom_dropdown">
+												<div class="custom_dropdown_list">
+													<span class="custom_dropdown_placeholder clc">Tất cả danh mục</span>
+													<i class="fas fa-chevron-down"></i>
+													<ul class="custom_list clc">
+														<li><a class="clc" href="#">Ba lô</a></li>
+														<li><a class="clc" href="#">Túi Xách</a></li>
+													</ul>
+												</div>
 											</div>
+											<button type="submit" class="header_search_button trans_300" value="Submit"><img src="user/images/search.png" alt=""></button>
 										</div>
-										<button type="submit" class="header_search_button trans_300" value="Submit"><img src="../public/user/images/search.png" alt=""></button>
-									</form>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<!-- Wishlist -->
-					<div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
-						<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
-							<div class="wishlist d-flex flex-row align-items-center justify-content-end">
-								<div class="wishlist_icon"><img src="../public/user/images/heart.png" alt=""></div>
-								<div class="wishlist_content">
-									<div class="wishlist_text"><a href="#">Wishlist</a></div>
-									<div class="wishlist_count">115</div>
-								</div>
+						<!-- Wishlist -->
+						<div class="col-lg-2 col-sm-6 text-sm-left text-right">
+						    <div class="wishlist_cart d-flex flex-row align-items-center">
+						        							<button type="button" class="btn btn-circle" data-toggle="collapse" data-target="#lookup-detail" style="color: white;" title="" id="expand" data-original-title="Mở rộng tìm kiếm" aria-expanded="true"><i class="fas fa-arrow-down"></i>
+															
+													</button>
 							</div>
-
-							<!-- Cart -->
-							<div class="cart">
-								<div class="cart_container d-flex flex-row align-items-center justify-content-end">
-									<div class="cart_icon">
-										<img src="../public/user/images/cart.png" alt="">
-										<div class="cart_count"><span>10</span></div>
-									</div>
-									<div class="cart_content">
-										<div class="cart_text"><a href="#">Cart</a></div>
-										<div class="cart_price">$85</div>
+						</div>
+						<div class="col-lg-2 col-sm-6 text-sm-left text-right">
+							<div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
+								<!-- Cart -->
+								<div class="cart">
+									<div class="cart_container d-flex flex-row align-items-center justify-content-end">
+										<div class="cart_icon">
+											<img src="user/images/cart.png" alt="">
+											<div class="cart_count"><span>10</span></div>
+										</div>
+										<div class="cart_content">
+											<div class="cart_text"><a href="#">Giỏ hàng</a></div>
+											<div class="cart_price">$85</div>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -131,7 +127,56 @@
 					</div>
 				</div>
 			</div>
-		</div>
+			<div id="lookup-detail" class="collapse">
+				
+				  <div class=" row justify-content-center">
+					  <div class="col-9">
+			              <div class="card card-body mb-2">
+			              	<h4 class="card-title">
+			              		Tìm kiếm chi tiết
+			              	</h4>
+			              	<div class="row">
+			              		<div class="col-lg-5 col-md-12">
+			              			<div class="row">
+			              				<div class="col-sm-6">
+			              					<label for="inputBrand" class="col-form-label"><b>Nhà sản xuất</b></label>
+					              			<input type="text" class="form-control" placeholder="Nhà sản xuất">
+						              	</div>
+						              	<div class="col-sm-6">
+						              		<label for="inputBrand" class="col-form-label"><b>Đặc điểm</b></label>
+						              		<textarea class="form-control" placeholder="Mô tả..."></textarea>
+						              		
+						              	</div>
+			              			</div>
+			              		</div>
+			              		
+				              	<div class="col-lg-7 col-md-12">
+
+					              		<label for="inputBrand" class="col-form-label"><b>Giá cả</b></label>
+					              		<div class="col-sm-12">
+					              			<div class="row">
+					              				<b>$ 100.000</b>
+					              				<div class="col-sm-8">
+					              					<input id="ex2" type="text" class="span2" value="" data-slider-min="100000" data-slider-max="5000000" data-slider-step="100000" data-slider-value="[250,450]"/> 
+					              				</div> 
+					              				
+					              				<b>$ 5.000.000</b>
+					              			</div>
+
+					              		</div>
+					              		<div class="col-sm-12 text-center">
+					              			<b><span id="min-price">1.000.000</span> <span>VNĐ</span> - <span id="max-price">2.000.000</span> <span>VNĐ</span> </b>
+					              		</div>
+
+				              		
+				              	</div>
+
+			              	</div>
+			              	
+			              </div>
+			          </div>
+					</div>
+			</div>                                                                                                         </form>
 		
 		<!-- Main Navigation -->
 
@@ -146,36 +191,44 @@
 
 							<div class="cat_menu_container">
 								<div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
-									<div class="cat_burger"><span></span><span></span><span></span></div>
-									<div class="cat_menu_text">categories</div>
+									<div class="cat_burger"><span></span><span></span><span></span></div> 
+									<div class="cat_menu_text">Danh mục</div>
 								</div>
 
 								<ul class="cat_menu">
-									<li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-									<li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
 									<li class="hassubs">
-										<a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
+										<a href="#">Ba lô<i class="fas fa-chevron-right"></i></a>
 										<ul>
-											<li class="hassubs">
-												<a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-												<ul>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-												</ul>
-											</li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
+											<li><a href="./category/bag.html">Ba lô nam<i class="fas fa-chevron-right"></i></a></li>
+											<li><a href="./category/bag.html">Ba lô nữ<i class="fas fa-chevron-right"></i></a></li>
+											<li><a href="./category/bag.html">Ba lô đi phượt<i class="fas fa-chevron-right"></i></a></li>
+											<li><a href="./category/bag.html">Ba lô chéo<i class="fas fa-chevron-right"></i></a></li>
+											<li><a href="./category/bag.html">Ba lô đựng laptop<i class="fas fa-chevron-right"></i></a></li>
+											<li><a href="./category/bag.html">Ba lô khác<i class="fas fa-chevron-right"></i></a></li>											
 										</ul>
 									</li>
-									<li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
-									<li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
+									<li class="hassubs">
+										<a href="#">Túi Xách<i class="fas fa-chevron-right"></i></a>
+										<ul>
+											<li class="hassubs"><a href="./category/bag.html">Túi xách nam<i class="fas fa-chevron-right"></i></a>
+												<ul>
+													<li><a href="./category/bag.html">Túi đeo chéo<i class="fas fa-chevron-right"></i></a>
+													<li><a href="./category/bag.html">Túi xách nam<i class="fas fa-chevron-right"></i></a>
+													<li><a href="./category/bag.html">Túi xách khác<i class="fas fa-chevron-right"></i></a>
+												</ul>
+											</li>	
+											<li class="hassubs"><a href="./category/bag.html">Túi xách nữ<i class="fas fa-chevron-right"></i></a>
+												<ul>
+													<li><a href="./category/bag.html">Túi đeo chéo<i class="fas fa-chevron-right"></i></a>
+													<li><a href="./category/bag.html">Túi handmade, thổ cẩm<i class="fas fa-chevron-right"></i></a>
+													<li><a href="./category/bag.html">Túi oversize<i class="fas fa-chevron-right"></i></a>
+													<li><a href="./category/bag.html">Túi bucket<i class="fas fa-chevron-right"></i></a>
+													<li><a href="./category/bag.html">Túi xách tay<i class="fas fa-chevron-right"></i></a>
+													<li><a href="./category/bag.html">Túi xách khác<i class="fas fa-chevron-right"></i></a>
+												</ul>
+											</li>								
+										</ul>
+									</li>
 								</ul>
 							</div>
 
@@ -183,9 +236,9 @@
 
 							<div class="main_nav_menu ml-auto">
 								<ul class="standard_dropdown main_nav_dropdown">
-									<li><a href="index.html">Home<i class="fas fa-chevron-down"></i></a></li>
+									<li><a href="#">Trang chủ<i class="fas fa-chevron-down"></i></a></li>
 									<li class="hassubs">
-										<a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
+										<a href="#">Khuyến mãi Hot<i class="fas fa-chevron-down"></i></a>
 										<ul>
 											<li>
 												<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
@@ -200,36 +253,7 @@
 											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
 										</ul>
 									</li>
-									<li class="hassubs">
-										<a href="#">Featured Brands<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li>
-												<a href="#">Menu Item<i class="fas fa-chevron-down"></i></a>
-												<ul>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-													<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-												</ul>
-											</li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="#">Menu Item<i class="fas fa-chevron-down"></i></a></li>
-										</ul>
-									</li>
-									<li class="hassubs">
-										<a href="#">Pages<i class="fas fa-chevron-down"></i></a>
-										<ul>
-											<li><a href="shop.html">Shop<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="product.html">Product<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="blog_single.html">Blog Post<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="regular.html">Regular Post<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="cart.html">Cart<i class="fas fa-chevron-down"></i></a></li>
-											<li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
-										</ul>
-									</li>
-									<li><a href="blog.html">Blog<i class="fas fa-chevron-down"></i></a></li>
-									<li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li>
+									<!-- <li><a href="contact.html">Contact<i class="fas fa-chevron-down"></i></a></li> -->
 								</ul>
 							</div>
 
@@ -284,7 +308,7 @@
 									</ul>
 								</li>
 								<li class="page_menu_item">
-									<a href="index.html">Home<i class="fa fa-angle-down"></i></a>
+									<a href="#">Home<i class="fa fa-angle-down"></i></a>
 								</li>
 								<li class="page_menu_item has-children">
 									<a href="#">Super Deals<i class="fa fa-angle-down"></i></a>
@@ -327,8 +351,8 @@
 							</ul>
 							
 							<div class="menu_contact">
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="../public/user/images/phone_white.png" alt=""></div>+38 068 005 3570</div>
-								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="../public/user/images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="user/images/phone_white.png" alt=""></div>+38 068 005 3570</div>
+								<div class="menu_contact_item"><div class="menu_contact_icon"><img src="user/images/mail_white.png" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
 							</div>
 						</div>
 					</div>
@@ -337,6 +361,7 @@
 		</div>
 
 	</header>
+	
 
 	<!-- Contact Info -->
 

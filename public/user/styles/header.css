@@ -537,11 +537,12 @@ section
 }
 .logo a
 {
-	font-size: 36px;
+	font-family: 'Lily Script One';
+	font-size: 45px;
 	font-weight: 500;
 	color: #0e8ce4;
 	font-weight: 600;
-	text-transform: uppercase;
+	text-transform: capitalize;
 }
 .header_search
 {
@@ -1360,4 +1361,18 @@ select option
 .logos_list li:last-child
 {
 	margin-right: 0px;
+}
+
+/* lily-script-one-regular - latin-ext_latin */
+@font-face {
+  font-family: 'Lily Script One';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../fonts/lily-script-one-v5-latin-ext_latin-regular.eot'); /* IE9 Compat Modes */
+  src: local('Lily Script One'), local('LilyScriptOne-Regular'),
+       url('../fonts/lily-script-one-v5-latin-ext_latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/lily-script-one-v5-latin-ext_latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../fonts/lily-script-one-v5-latin-ext_latin-regular.woff') format('woff'), /* Modern Browsers */
+       url('../fonts/lily-script-one-v5-latin-ext_latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+       url('../fonts/lily-script-one-v5-latin-ext_latin-regular.svg#LilyScriptOne') format('svg'); /* Legacy iOS */
 }
