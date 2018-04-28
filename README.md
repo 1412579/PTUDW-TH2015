@@ -15,33 +15,33 @@ Yêu cầu và phân công công việc:
 
 * 1 Phân hệ trang chủ
 
-** [x] 1.1 Trang chủ. (**1412579**)
+   [x] 1.1 Trang chủ. (**1412579**)
 
-** [x] 1.2 Hệ thống Menu. (**1512555 và 1412579**)
+   [x] 1.2 Hệ thống Menu. (**1512555 và 1412579**)
 
-** [x] 1.3 Xem danh sách sản phẩm. (**1512555**)
+   [x] 1.3 Xem danh sách sản phẩm. (**1512555**)
 
-** [x] 1.4 Xem chi tiết sản phẩm. (**1412520**)
+   [x] 1.4 Xem chi tiết sản phẩm. (**1412520**)
 
-** [x] 1.5 Tìm kiếm sản phẩm. (**1412520**)
+   [x] 1.5 Tìm kiếm sản phẩm. (**1412520**)
 
-** [x] 1.6 Đăng nhập. (**1412520**)
-
-** [x] 1.7 Đăng ký. (**1412520**)
+   [x] 1.6 Đăng nhập. (**1412520**)
+   
+   [x] 1.7 Đăng ký. (**1412520**)
 
 * 2 Phân hệ người dùng đã đăng nhập
 
-** [x] 2.1 Có đầy đủ chức năng của phân hệ khách. (**Chung**)
+   [x] 2.1 Có đầy đủ chức năng của phân hệ khách. (**Chung**)
 
-** [x] 2.2 Cập nhật thông tin cá nhân. (**1412520**)
+   [x] 2.2 Cập nhật thông tin cá nhân. (**1412520**)
 
-** [x] 2.3 Chọn mua sản phẩm. (**Chung**)
+   [x] 2.3 Chọn mua sản phẩm. (**Chung**)
 
-** [x] 2.4 Điều chỉnh thông tin sản phẩm trong giỏ hàng. (**1412579**)
+   [x] 2.4 Điều chỉnh thông tin sản phẩm trong giỏ hàng. (**1412579**)
 
-** [x] 2.5 Thanh toán. (**1512555**)
+   [x] 2.5 Thanh toán. (**1512555**)
 
-** [x] 2.5 Xem lịch sử mua hàng. (**1512555 và 1412520**)
+   [x] 2.5 Xem lịch sử mua hàng. (**1512555 và 1412520**)
 
 * 2 Phân hệ quản trị (Admin) (**1412579**)
 
