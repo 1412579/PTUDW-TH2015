@@ -1,7 +1,9 @@
 
 module.exports = function(app,hbs,express, session,morgan,cookieParser,bodyParser,passport,flash) {
-    app.engine('handlebars', hbs.engine);
-    app.set('view engine', 'handlebars');// set up ejs for templating
+
+    app.engine('hbs', hbs.engine);
+    app.set('view engine', 'hbs');// set up ejs for templating
+
 
     app.use(express.static('public'));
     app.use(express.static('views'));

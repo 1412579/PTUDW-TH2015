@@ -18,7 +18,8 @@ var flash    = require('connect-flash');
 
 //require('./config/passport')(passport,pool);
 
-var hbs = exphbs.create({ defaultLayout: 'main-user' ,
+var hbs = exphbs.create({ defaultLayout: 'main-user' , 
+ 	extname: '.hbs',
 	helpers: {
 		inc : function(value, options)
 			{
@@ -80,7 +81,7 @@ var hbs = exphbs.create({ defaultLayout: 'main-user' ,
 require('./config/express')(app,hbs,express, session,morgan,cookieParser,bodyParser,flash);
 
 // routes ======================================================================
-//require('./route/routes.js')(app, passport,pool); // load our routes and pass in our app and fully configured passport
+require('./route/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
 
 //require('./app/controller/ImageController.js')(app) //load controller hỗ trợ up ảnh
 
