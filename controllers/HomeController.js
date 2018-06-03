@@ -1,4 +1,4 @@
-var homeController = 
+var homeController =  
 {
 	index: function(req, res)
 	{

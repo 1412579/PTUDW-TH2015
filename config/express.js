@@ -6,7 +6,7 @@ module.exports = function(app,hbs,express, session,morgan,cookieParser,bodyParse
 
 
     app.use(express.static('public'));
-    app.use(express.static('views'));
+    //app.use(express.static('views'));
     //set up application
     app.use(morgan('dev')); // log every request to the console -> need to debug
     app.use(cookieParser()); // read cookie => for auth
@@ -21,9 +21,9 @@ module.exports = function(app,hbs,express, session,morgan,cookieParser,bodyParse
         resave: true,
         saveUninitialized: true
      } )); // session secret
-    //app.use(passport.initialize());
-    //app.use(passport.session()); // persistent login sessions
-    //app.use(flash()); // session flash message
+    app.use(passport.initialize());
+    app.use(passport.session()); // persistent login sessions
+    app.use(flash()); // session flash message
 
     app.use(function(req,res,next){
         res.locals = ({
