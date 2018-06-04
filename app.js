@@ -14,9 +14,9 @@ var port     = process.env.PORT || 8080;
 
 var passport = require('passport');
 var flash    = require('connect-flash');
-// const pool = require('./app/model/pg');
+ const pool = require('./model/pg');
 
-//require('./config/passport')(passport,pool);
+require('./config/passport')(passport,pool);
 
 var hbs = exphbs.create({ defaultLayout: 'main-user' , 
  	extname: '.hbs',
@@ -77,8 +77,8 @@ var hbs = exphbs.create({ defaultLayout: 'main-user' ,
 
 
 
-//require('./config/express')(app,hbs,express, session,morgan,cookieParser,bodyParser,passport,flash);
-require('./config/express')(app,hbs,express, session,morgan,cookieParser,bodyParser,flash);
+require('./config/express')(app,hbs,express, session,morgan,cookieParser,bodyParser,passport,flash);
+//require('./config/express')(app,hbs,express, session,morgan,cookieParser,bodyParser,flash);
 
 // routes ======================================================================
 require('./route/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
