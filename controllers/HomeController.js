@@ -1,11 +1,18 @@
+var category = require('../model/category.js')
+
 var homeController =  
 {
 	index: function(req, res)
 	{
-		var model = {
-			title: 'Trang chủ'
-		};
-		res.render('home', model);
+		let categories = [];
+		category.getDetailedCategory(categories)
+			.then((result) => {
+				var model = {
+						title: 'Trang chủ',
+						categories: result
+					};
+					res.render('home', model);
+			});
 	}
 }
 
