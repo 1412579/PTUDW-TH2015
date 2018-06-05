@@ -182,7 +182,7 @@ module.exports = function(passport,pool) {
                     console.log("Account banned!!!")
                     return done(null, false, req.flash('loginMessage', 'Tài khoản này đã bị cấm!!!')); // req.flash is the way to set flashdata using connect-flash
                 }
-                if(rows.rows.length > 0 && rows.rows[0].role_id < 2){
+                if(rows.rows.length > 0 && rows.rows[0].role_id > 2){
                     console.log("Denied Access!!!")
                     return done(null, false, req.flash('loginMessage', 'Bạn không đủ quyền để truy cập vào hệ thống!!!')); // req.flash is the way to set flashdata using connect-flash
                 }

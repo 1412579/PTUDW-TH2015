@@ -1,0 +1,68 @@
+<div class="col-md-12">
+            <div class="row">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Danh sách loại sản phẩm</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="row">
+                      <div class="col-sm-6"></div>
+                      <div class="col-sm-6"></div>
+                    </div>
+                    <div class="row">
+                      
+                      <div class="col-sm-12">
+                        {{#if message}}
+                          <div class="alert alert-success">{{message}}</div>
+                      {{/if}}
+                      {{#if messageDestroy}}
+                          <div class="alert alert-danger">{{messageDestroy}}</div>
+                      {{/if}}
+                        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                          <thead>
+                            <tr role="row">
+                              <th>Mã loại SP</th>
+                              <th>Tên loại sản phẩm</th>
+                                <th>Đường link</th>
+                              <th >Ẩn/hiện</th>
+                              <th >ID Loại SP cha</th>
+                                <th>Thao tác</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#each list}}
+                              <tr role="row" class="even">
+                                  <td>{{this.id}}</td>
+                                  <td>{{this.name}}</td>
+                                  <td>{{this.alias}}</td>
+                                  <td>{{this.hide}}</td>
+                                  <td>{{this.parent_id}}</td>
+                                  <td>
+                                    <a href="/admin/category/edit/{{this.id}}" class="label label-success">Sửa</button>
+                                    <a onclick="confirm('Bạn chắc chắn muốn xoá: {{this.name}}?');" href="/admin/category/delete/{{this.id}}" class="label label-danger">Xoá</button>
+                                  </td>
+                                </tr>
+                            {{/each}}
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                              <th rowspan="1" colspan="1">Mã loại SP</th>
+                              <th rowspan="1" colspan="1">Tên loại sản phẩm</th>
+                                <th>Đường link</th>
+                              <th rowspan="1" colspan="1">Ẩn</th>
+                              <th rowspan="1" colspan="1">ID Loại SP cha</th>
+                              <th rowspan="1" colspan="1">Thao tác</th>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+            </div>
+          </div>
