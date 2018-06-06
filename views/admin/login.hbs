@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>TechGame | Admin Login</title>
+  
+  <link rel="stylesheet" href="/admin/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/admin/css/login.css">
+  <script src="/admin/js/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+  <div class="login">
+	<h1>Đăng nhập hệ thống</h1>
+    <form method="post">
+    	<input type="email" name="email" placeholder="email" required="required" />
+        <input type="password" name="password" placeholder="password" required="required" />
+        <button type="submit" class="btn btn-primary btn-block btn-large">Đăng nhập</button>
+    </form>
+    <br>
+    {{#if message}}
+        <div class="alert alert-danger">{{message}}</div>
+    {{/if}}
+</div>
+    <script type="text/javascript">
+      $('div.alert').delay(5000).slideUp();
+    </script>
+
+</body>
+</html>
+

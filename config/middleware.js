@@ -42,7 +42,7 @@ var middleware = {
         // if user isnt authenticated in the session, carry on
         if (req.isAuthenticated())
         {
-            if (req.user.role_id == 1)
+            if (req.user.role > 0)
                 return res.redirect('/admin/dashboard');
                 
         }
@@ -53,7 +53,7 @@ var middleware = {
         // if user isnt authenticated in the session, carry on
         if (req.isAuthenticated())
         {
-            if (req.user.role_id != 4)
+            if (req.user.role != 0)
                 return res.redirect('/admin/dashboard');
                 
         }
@@ -64,7 +64,7 @@ var middleware = {
             // if user isnt authenticated in the session, carry on
             if (req.isAuthenticated())
             {
-                if (req.user.role_id == 1 || req.user.role_id == 2)
+                if (req.user.role > 2)
                     return res.redirect('/admin/dashboard');
                     
             }
