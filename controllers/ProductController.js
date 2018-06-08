@@ -2,6 +2,7 @@ var productController =
 {
 	index: function(req, res)
 	{
+		res.render('shop');
 	},
 	detail: function(req, res)
 	{

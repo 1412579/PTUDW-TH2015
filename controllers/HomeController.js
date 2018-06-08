@@ -5,7 +5,7 @@ var homeController =
 	index: function(req, res)
 	{
 		let categories = [];
-		category.getDetailedCategory(categories)
+		category.getDetailedCategory()
 			.then((result) => {
 				var model = {
 						title: 'Trang chủ',
