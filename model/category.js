@@ -113,7 +113,31 @@ var Category = {
                 resolve( result);
             });
         });
-	}, 
+	},
+    getDetailedCategory: function() {
+        let categories = [];
+        return this.getAll()
+            .then((result) => {
+                categories = result;
+                let promises = [];
+                for (var i =0; i < result.length; i++)
+                {
+                    let index = i;
+                    promises.push(this.getAllChild(result[i].id)
+                                        .then((children) => { 
+                                            categories[index].children = children;
+                                        })
+                                        .catch(err => {
+                                            console.log(err);
+                                        })); 
+                }
+                return Promise.all(promises)
+                    .then(() => {
+                        return categories;
+                    }, Promise.resolve());
+                
+            })
+    }
 }
 
 module.exports = Category;

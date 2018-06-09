@@ -147,7 +147,8 @@ module.exports = function(passport,pool) {
                 }
                 // if the user is found but the password is wrong
                 if (!bcrypt.compareSync(password, rows.rows[0].password)){
-                    console.log("Password not matched")
+
+                    console.log("Password not matched: " + rows.rows[0].password)
                     return done(null, false, req.flash('loginMessage', 'Thông tin đăng nhập không chính xác!')); // create the loginMessage and save it to session as flashdata
                 }
                 console.log('Auth successful!!!');

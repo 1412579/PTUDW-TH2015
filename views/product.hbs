@@ -13,14 +13,14 @@
 
 				<!-- Selected Image -->
 				<div class="col-lg-5 order-lg-2 order-1">
-					<div class="image_selected"><img src="{{photos.0.url}}" alt=""></div>
+					<div class="image_selected"><img src="{{product.main_picture}}" alt=""></div>
 				</div>
 
 				<!-- Description -->
 				<div class="col-lg-5 order-3">
 					<div class="product_description">
-						<div class="product_category" style="font-size: 30px;">Túi xách</div>
-						<div class="product_name">Túi xách thời thượng</div>
+						<div class="product_category" style="font-size: 30px;">{{product.category}} <small><i class="fas fa-angle-double-right sub-cate" ></i></small> {{product.type}}</div>
+						<div class="product_name">{{product.name}}</div>
 						<div class="row sub-header">
 					        <div class="col-lg-6 col-md-6">
 					            <div>Nhà sản xuất: {{product.brand}}</div>
@@ -30,7 +30,7 @@
 					        </div>
 					    </div>
 						<div class="product_text"><p>{{product.description}}</p></div>
-						<div class="sub-header"><p><i class="fas fa-eye"></i>    {{product.views}}</p></div>
+						<div class="sub-header"><p><i class="fas fa-eye"></i>    {{product.view}}</p></div>
 						<div class="order_info d-flex flex-row" style="margin-top: 20px;">
 							<form action="#">
 								<div class="product_price" style="margin-bottom: 50px; margin-top: 20px;">{{product.price}} VND</div>

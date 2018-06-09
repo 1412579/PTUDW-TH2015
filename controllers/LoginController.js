@@ -1,7 +1,7 @@
 var passport = require('passport');
 const pool = require('../model/pg');
 
-var LoginController =  
+var logInController =  
 {
 	login: function(req, res,next)
 	{
@@ -67,4 +67,5 @@ var LoginController =
 	},
 }
 
-module.exports = LoginController;
+module.exports = logInController;
+
