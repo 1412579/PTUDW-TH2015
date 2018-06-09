@@ -19,7 +19,7 @@ var product = {
 	},
 	getBestSellerProducts: function(numberOfProducts) {
 		return new Promise((resolve,reject)=>{
-			var query = `select p.id, p.name as product_name, price, p.created_at, image, b.name as brand, counting_sell
+			var query = `select p.id, p.name as product_name, price, p.created_at, image, b.name as brand, sold_quantity
 						from products p
 						left join brand b
 						on p.brand_id = b.id
