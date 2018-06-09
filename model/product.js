@@ -59,8 +59,12 @@ var product = {
 								b.origin, 
 								b.id brand_id, 
 								sc.id sub_category_id, 
+								sc.name as type,
 								c.id category_id,
-								p.image main_picture 
+								c.name category,
+								p.image main_picture,
+								b.name brand,
+								p.name
 						from products p
 						left join brand b on p.brand_id = b.id
 						left join category sc on p.cate_id = sc.id
@@ -94,11 +98,12 @@ var product = {
 		return new Promise((resolve,reject)=>{
 			var query = `select p.name,
 							   p.id,
-							   p.price
+							   p.price,
+							   p.image photo
 						from products p
 						where p.brand_id = ${brandId}`;
 			if (numberOfProducts != undefined)
-				query += `limit ${numberOfProducts}`
+				query += ` limit ${numberOfProducts}`
             pool.query(query, function(err, result){
                 if (err){
                     reject(err);
@@ -109,7 +114,23 @@ var product = {
         })
 	},
 	getProductsByProductType: function(productTypeId, numberOfProducts) {
-
+		return new Promise((resolve,reject)=>{
+			var query = `select p.name,
+							   p.id,
+							   p.price,
+							   p.image photo
+						from products p
+						where p.cate_id = ${productTypeId}`;
+			if (numberOfProducts != undefined)
+				query += ` limit ${numberOfProducts}`
+            pool.query(query, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else
+                    resolve(result.rows);
+            });
+        })
 	}
 }
 

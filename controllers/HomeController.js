@@ -1,5 +1,5 @@
 var category = require('../model/category.js');
-var product = require('../model/product.js')
+var product = require('../model/product.js');
 
 var homeController =  
 {
