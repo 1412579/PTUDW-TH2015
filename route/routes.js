@@ -8,6 +8,7 @@ module.exports = function (app, passport, pool) {
 	var adminController = require('../controllers/AdminController');
 	var categoryController = require('../controllers/CategoryController');
 	var brandController = require('../controllers/BrandController');
+	var userBrandController = require('../controllers/UserBrandController');
 	var adminProductController = require('../controllers/AdminProductController');
 	var mw = require('../config/middleware');
 
@@ -23,7 +24,7 @@ module.exports = function (app, passport, pool) {
 	app.get('/user/orders', userController.orders);
 	app.get('/user/order/:orderId', userController.orderDetail)
 	app.get('/product/:productId', productController.detail);
-
+	app.get('/brand', userBrandController.index);
 	app.get('/show-all', productController.index);
 	
 	app.use("/admin", adminController);

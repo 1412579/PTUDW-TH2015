@@ -1,6 +1,20 @@
 const pool = require('../model/pg');
 
+
 var product = {
+  getAll: ()=>{
+        return new Promise((resolve,reject)=>{
+            pool.query(`select * from products order by id desc`, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else{
+                    resolve(result.rows);
+                }
+            });
+        })
+		
+    },
 	getNewestProducts: function(numberOfProducts) {
 		return new Promise((resolve,reject)=>{
 			var query = `select p.id, p.name as product_name, price, p.created_at, image, b.name as brand
