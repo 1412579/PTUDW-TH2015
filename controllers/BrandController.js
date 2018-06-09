@@ -3,6 +3,7 @@
 var express = require('express');
 var router = express.Router();
 var Brand = require('../model/brand.js');
+var Category = require('../model/category.js');
 var moment = require('moment');
 var multer = require('multer');
 var slug = require('slug');
@@ -20,7 +21,7 @@ var upload = multer({ storage : storage }).single('brandimg');
 
 
 router.get('/new', (req, res) => {
-    Brand.getAllIndex()
+    Category.getAllIndex()
     .then(result => {
         res.render('admin/new-brand',{
             layout: 'main-admin',
@@ -49,8 +50,6 @@ router.post('/new', (req, res) => {
             name: req.body.name,
             description: req.body.description,
             alias: alias,
-            created_at: getTimeNow,
-            parent_id: req.body.parent
         };
         if(req.file && req.file.filename){
             cateInfo.image_brand = '/user/images/brand/' + req.file.filename;
@@ -110,7 +109,7 @@ router.get('/list', (req, res) =>{
 router.get('/edit/:id', (req, res) => {
     let catalog;
     let cateIn;
-    Brand.getAll()
+    Category.getAllIndex()
     .then(result => {
         catalog = result;
         return Brand.getById(req.params.id);
@@ -120,21 +119,19 @@ router.get('/edit/:id', (req, res) => {
         return Brand.getAllChild(req.params.id);
     })
     .then(result => {
+        console.log(result);
         let select;
-        console.log(result.length);
-        if(result.length === 0){
-            for (var i = 0; i < catalog.length; i++) {
-                if(catalog[i].id == cateIn.parent_id){
-                    select += '<option selected value="'+ catalog[i].id +'">'+ catalog[i].name +'</option>';
-                }
-                else
-                select += '<option value="'+ catalog[i].id +'">'+ catalog[i].name +'</option>';
+        for (var i = 0; i < catalog.length; i++) {
+            if(i < result.length && catalog[i].id == result[i].cates_id){
+                select += '<option selected value="'+ catalog[i].id +'">'+ catalog[i].name +'</option>';
             }
+            else
+            select += '<option value="'+ catalog[i].id +'">'+ catalog[i].name +'</option>';
         }
-        res.render('admin/edit-cate',{
+        res.render('admin/edit-brand',{
             layout: 'main-admin',
             title: 'Sửa thương hiệu',
-            cate: cateIn,
+            brand: cateIn,
             catelist: select
         }); 
     })
@@ -142,27 +139,56 @@ router.get('/edit/:id', (req, res) => {
 });
 
 router.post('/edit/:id', (req,res)=>{
-    var temp = req.body.checkbox ? 1 : 0;
-    console.log(req.body.checkbox);
-    console.log(temp);
-    var getTimeNow = moment().format('YYYY-MM-DD HH:mm:ss');
-    var alias = req.body.slug ? req.body.slug : slug(req.body.name,"-").toLowerCase();
-    
-    var cataInfo = {
-        id: req.body.id,
-        name: req.body.name,
-        alias: alias,
-        ishide: temp,
-        updated_at: getTimeNow,
-        parent_id: req.body.parent
-    };
-    console.log(cataInfo);
-    Brand.updateById(cataInfo)
-    .then(() => {
-        req.flash('messageCate', 'Đã sửa thương hiệu thành công!');
-        res.redirect('/admin/category/list');
-    })
-    .catch(err => console.log(err));
+    upload(req,res,(err) => {
+        if(err) {
+            return console.log(err);
+        }
+        var getTimeNow = moment().format('YYYY-MM-DD HH:mm:ss');
+        var alias = req.body.slug ? req.body.slug : slug(req.body.name,"-").toLowerCase();
+        var cateInfo = {
+            id: req.body.id,
+            name: req.body.name,
+            description: req.body.description,
+            alias: alias,
+            created_at: getTimeNow,
+        };
+        if(req.file && req.file.filename){
+            cateInfo.image_brand = '/user/images/brand/' + req.file.filename;
+        }
+        else{
+            cateInfo.image_brand = req.body.currentImg;
+        }
+        Brand.updateById(cateInfo)
+        .then((result) => {
+            return Brand.deleteCateBrand(req.body.id);
+        })
+        .then((result)=>{
+            console.log(req.body.cate);
+            var asyncCalls = [];
+            for (var i = 0; i < req.body.cate.length; i++) {
+                var data = {
+                    cate:  req.body.cate[i],
+                    brand: req.body.id
+                }
+                asyncCalls.push(
+                    Brand.insertCateBrand(data).then(function(productObj){
+                        console.log(`Thêm brand ${data.brand} và cate ${data.cate} `);
+                    })
+                )
+            }
+            Promise.all(asyncCalls).then(function(value) { 
+                req.flash('messageCate', 'Đã sửa thương hiệu thành công!');
+                res.redirect('/admin/brand/list');
+            }, function(reason) {
+                console.log(reason);
+                res.end("Lỗi: " + reason);
+            });
+            
+        })
+        .catch(err=>console.log(err));
+        
+        
+    });
 })
 
 router.get('/delete/:id',(req,res) => {

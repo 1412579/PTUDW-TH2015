@@ -67,7 +67,43 @@ var Brand = {
                 resolve( result);
             });
         });
-	}, 
+    }, 
+    getById: (id)=>{
+        return new Promise((resolve,reject)=>{
+            pool.query(`select * from brand where id=${id}`, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else
+                    resolve(result.rows[0]);
+            });
+        });
+    },
+    getAllChild: (id)=>{
+        return new Promise((resolve,reject)=>{
+            pool.query(`select cates_id from brand_category where brand_id = ${id}`, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else
+                    resolve(result.rows);
+            });
+        })
+		
+    },
+    updateById: function(cateInfo){
+        return new Promise((resolve,reject)=>{
+            var query = `update brand set name = '${ cateInfo.name }', alias = '${ cateInfo.alias }', description = '${ cateInfo.description }', image_brand = '${ cateInfo.image_brand }' where id = ${ cateInfo.id}`;
+            console.log(query);
+            pool.query(query, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else
+                    resolve( result.rows);
+            });
+        });
+    },
 }
 
 module.exports = Brand;
