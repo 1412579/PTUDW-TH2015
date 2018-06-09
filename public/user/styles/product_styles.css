@@ -128,7 +128,8 @@
 }
 .image_selected img
 {
-	max-width: 100%;
+	/*max-width: 100%;*/
+	width: 100%;
 }
 .product_description
 {
@@ -924,4 +925,9 @@
 .logos_list li:last-child
 {
 	margin-right: 0px;
+}
+
+.sub-cate {
+	margin-left: 20px;
+    margin-right: 20px;
 }

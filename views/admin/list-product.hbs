@@ -1,0 +1,98 @@
+<div class="col-md-12">
+            <div class="row">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">Danh sách sản phẩm</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                    <div class="row">
+                      <div class="col-sm-6"></div>
+                      <div class="col-sm-6"></div>
+                    </div>
+                    <div class="row">
+                      
+                      <div class="col-sm-12">
+                        {{#if message}}
+                          <div class="alert alert-success">{{message}}</div>
+                      {{/if}}
+                      {{#if messageDestroy}}
+                          <div class="alert alert-danger">{{messageDestroy}}</div>
+                      {{/if}}
+                        <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                          <thead>
+                            <tr role="row">
+                             <th rowspan="1" colspan="1">Mã SP</th>
+                             <th rowspan="1" colspan="1">Thumbnail</th>
+                              <th rowspan="1" colspan="1">Tên Sản phẩm</th>
+                              <th rowspan="1" colspan="1">Loại SP</th>
+                              <th rowspan="1" colspan="1">Nhà sản xuất</th>
+                              <th rowspan="1" colspan="1">Trạng thái</th>
+                              <th rowspan="1" colspan="1">Giá</th>
+                              <th rowspan="1" colspan="1">Giá giảm</th>
+                              <th rowspan="1" colspan="1">Ngày tạo</th>
+                              <th rowspan="1" colspan="1">Thao tác</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {{#each list}}
+                              <tr role="row" class="even">
+                                  <td>{{this.id}}</td>
+                                  <td>{{#if this.image}}
+                                      <img src="{{this.image}}" height="50" width="50" class="img-responsive" alt="">
+                                    {{else}}
+                                    No Image
+                                    {{/if}}
+                                  </td>
+                                  <td>{{this.name}}</td>
+                                  <td>{{this.catename}}</td>
+                                  <td>{{this.brandname}}</td>
+                                  <td>
+                                    {{#if this.brand}}
+                                    Ẩn
+                                    {{else}}
+                                    Hiện
+                                    {{/if}}
+                                  </td>
+                                  <td>{{this.price}}</td>
+                                  <td>
+                                    {{this.discount}}
+                                    {{#ifCond this.discount "<=" 100}}
+                                    %
+                                    {{/ifCond}}
+                                  </td>
+                                  <td>
+                                    {{this.created_at}}
+                                  </td>
+                                  <td>
+                                    <a href="/admin/product/edit/{{this.id}}" class="label label-success">Sửa</button>
+                                    <a onclick="confirm('Bạn chắc chắn muốn xoá: {{this.name}}?');" href="/admin/product/delete/{{this.id}}" class="label label-danger">Xoá</button>
+                                  </td>
+                                </tr>
+                            {{/each}}
+                          </tbody>
+                          <tfoot>
+                            <tr>
+                             <th rowspan="1" colspan="1">Mã SP</th>
+                             <th rowspan="1" colspan="1">Thumbnail</th>
+                              <th rowspan="1" colspan="1">Tên Sản phẩm</th>
+                              <th rowspan="1" colspan="1">Loại SP</th>
+                              <th rowspan="1" colspan="1">Nhà sản xuất</th>
+                              <th rowspan="1" colspan="1">Trạng thái</th>
+                              <th rowspan="1" colspan="1">Giá</th>
+                              <th rowspan="1" colspan="1">Giá giảm</th>
+                              <th rowspan="1" colspan="1">Ngày tạo</th>
+                              <th rowspan="1" colspan="1">Thao tác</th>
+                            </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                <!-- /.box-body -->
+              </div>
+            </div>
+          </div>

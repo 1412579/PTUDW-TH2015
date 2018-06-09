@@ -1,8 +1,8 @@
 const pool = require('../model/pg');
-var Category = {
-	newCate: (cateInfo) => {
+var AdminProduct = {
+	new: (cateInfo) => {
         return new Promise((resolve,reject)=>{
-            var query = `insert into category(name,alias,orderb,hide,created_at,updated_at,parent_id) values('${ cateInfo.name }','${ cateInfo.alias }', ${cateInfo.orderb },${ cateInfo.isHide},'${ cateInfo.created_at }','${ cateInfo.updated_at }',${ cateInfo.parent_id })`;
+            var query = `insert into products(name,alias,price,description,user_id,cate_id,created_at,updated_at,hide,brand_id,counting_sell,general_inventory,discount) values('${ cateInfo.name }','${ cateInfo.alias }', ${cateInfo.price },'${ cateInfo.description}',${ cateInfo.user_id },${ cateInfo.cate_id },'${ cateInfo.created_at }','${ cateInfo.updated_at }',${ cateInfo.hide },${ cateInfo.brand_id },${ cateInfo.counting_sell },${ cateInfo.inventory },${ cateInfo.discount })`;
             console.log(query);
             pool.query(query, function(err, res){
                 if (err){
@@ -18,7 +18,7 @@ var Category = {
 	},
 	getAll: ()=>{
         return new Promise((resolve,reject)=>{
-            pool.query(`select * from category where parent_id = 0 order by orderb asc, id desc`, function(err, result){
+            pool.query(`select products.id,products.discount,products.general_inventory,products.name,products.price,fullname,category.name as catename,products.created_at,products.updated_at,products.hide,products.image,brand.name as brandname from products,category,users,brand where products.user_id = users.id and cate_id = category.id and products.brand_id = brand.id`, function(err, result){
                 if (err){
                     reject(err);
                 }
@@ -54,7 +54,7 @@ var Category = {
 	},
 	getById: (id)=>{
         return new Promise((resolve,reject)=>{
-            pool.query(`select * from category where id=${id}`, function(err, result){
+            pool.query(`select * from products where id=${id}`, function(err, result){
                 if (err){
                     reject(err);
                 }
@@ -104,7 +104,7 @@ var Category = {
 	},
 	delete: function(id){
         return new Promise((resolve,reject)=>{
-            var query = `delete from category where id= ${id}`;
+            var query = `delete from products where id= ${id}`;
             pool.query(query, function(err, result){
                 if (err){
                     reject(err);
@@ -113,31 +113,7 @@ var Category = {
                 resolve( result);
             });
         });
-	},
-    getDetailedCategory: function() {
-        let categories = [];
-        return this.getAll()
-            .then((result) => {
-                categories = result;
-                let promises = [];
-                for (var i =0; i < result.length; i++)
-                {
-                    let index = i;
-                    promises.push(this.getAllChild(result[i].id)
-                                        .then((children) => { 
-                                            categories[index].children = children;
-                                        })
-                                        .catch(err => {
-                                            console.log(err);
-                                        })); 
-                }
-                return Promise.all(promises)
-                    .then(() => {
-                        return categories;
-                    }, Promise.resolve());
-                
-            })
-    }
+	}, 
 }
 
-module.exports = Category;
+module.exports = AdminProduct;

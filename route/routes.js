@@ -9,6 +9,7 @@ module.exports = function (app, passport, pool) {
 	var categoryController = require('../controllers/CategoryController');
 	var brandController = require('../controllers/BrandController');
 	var userBrandController = require('../controllers/UserBrandController');
+	var adminProductController = require('../controllers/AdminProductController');
 	var mw = require('../config/middleware');
 
 	app.use(function (req, res, next) {
@@ -24,12 +25,15 @@ module.exports = function (app, passport, pool) {
 	app.get('/user/order/:orderId', userController.orderDetail)
 	app.get('/product/:productId', productController.detail);
 	app.get('/brand', userBrandController.index);
+	app.get('/show-all', productController.index);
 	
 	app.use("/admin", adminController);
 	app.use("/admin/category", categoryController);
 	app.use("/admin/brand", brandController);
 	//app.use("/admin/category", mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, categoryController);
 	
+	app.use("/admin/product", adminProductController);
+
 	app.get('/logout', loginController.logout);
 	//app.use("/admin/category", mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, CategoryController);
 	//login
