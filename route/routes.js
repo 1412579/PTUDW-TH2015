@@ -8,6 +8,7 @@ module.exports = function (app, passport, pool) {
 	var adminController = require('../controllers/AdminController');
 	var categoryController = require('../controllers/CategoryController');
 	var brandController = require('../controllers/BrandController');
+	var adminProductController = require('../controllers/AdminProductController');
 	var mw = require('../config/middleware');
 
 	app.use(function (req, res, next) {
@@ -30,6 +31,8 @@ module.exports = function (app, passport, pool) {
 	app.use("/admin/brand", brandController);
 	//app.use("/admin/category", mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, categoryController);
 	
+	app.use("/admin/product", adminProductController);
+
 	app.get('/logout', loginController.logout);
 	//app.use("/admin/category", mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, CategoryController);
 	//login
