@@ -1,24 +1,30 @@
-{{!-- {{#if noProducts}} --}}
-<div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12">
-        Không có sản phẩm thoả yêu cầu.
-    </div>
-</div>
-{{!-- {{else}} --}}
-<div class="row">
-    {{#each products}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Brand</title>
+    <link rel="stylesheet" type="text/css" href="/user/styles/bootstrap4/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/user/styles/shop_styles.css">
+</head>
+
+<body>
+    {{>cat_menu}}
+    {{#each list}}
     <div class="product_item">
         <div class="product_border"></div>
         <div class="product_image d-flex flex-column align-items-center justify-content-center">
-            <img src="/user/images/category/bag/bag_for_female/bag_for_female_1_id07.jpg" alt="">
+            <img src="{{this.image}}" alt="">
         </div>
         <div class="product_content">
-            <div class="product_price">439,000 đ
-                <span>500,000 đ</span>
+            <div class="product_price">
+                <span>{{this.price}}</span>
             </div>
             <div class="product_name">
                 <div>
-                    <a href="/product.html" tabindex="0">Balo nữ dây rút H227 - Đen</a>
+                    <a href="/product.html" tabindex="0">{{this.name}}</a>
                 </div>
             </div>
         </div>
@@ -27,50 +33,10 @@
         </div>
         <ul class="product_marks">
             <li class="product_mark product_discount">-25%</li>
+            <!-- <li class="product_mark product_new">new</li> -->
         </ul>
     </div>
-
-
-    <div class="col-sm-6 col-md-4">
-        <div class="thumbnail">
-            <img src="/imgs/sp/{{ProID}}/main_thumbs.jpg" alt="{{ProName}}" title="{{ProName}}">
-            <div class="caption">
-                <h4>{{ProName}}</h4>
-                <h4>{{number_format Price}}</h4>
-                <p style="min-height: 60px">{{TinyDes}}</p>
-                <p>
-                    <a href="#" class="btn btn-primary" role="button">
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                        Details
-                    </a>
-                    <a href="#" class="btn btn-danger" role="button">
-                        <span class="glyphicon glyphicon-shopping-cart"></span>
-                    </a>
-                </p>
-            </div>
-        </div>
-    </div>
     {{/each}}
-</div>
-<ul class="pagination">
-    <li class="disabled">
-        <a href="#" aria-label="Previous">
-            <span aria-hidden="true">«</span>
-        </a>
-    </li>
-    {{#each page_numbers}} {{#if isCurPage}}
-    <li class="active">
-        <a href="javascript:;">{{value}}</a>
-    </li>
-    {{else}}
-    <li>
-        <a href="?page={{value}}">{{value}}</a>
-    </li>
-    {{/if}} {{/each}}
-    <li>
-        <a href="#" aria-label="Next">
-            <span aria-hidden="true">»</span>
-        </a>
-    </li>
-</ul>
-</nav>
+</body>
+
+</html>
