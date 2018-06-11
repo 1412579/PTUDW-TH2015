@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var morgan = require('morgan');
 var exphbs = require('express-handlebars')
 
+var moment = require('moment');
 
 var app      = express();
 var port     = process.env.PORT || 8080;
@@ -71,6 +72,15 @@ var hbs = exphbs.create({ defaultLayout: 'main-user' ,
 			if(!this._sections) this._sections = {};
 			this._sections[name] = options.fn(this); 
 			return null;
+		},
+		dateFormat: function(date){ 
+			return moment(date).format("YYYY-MM-DD HH:mm:ss").toUpperCase()
+		},
+		for: function(n, block){ 
+			var accum = '';
+			for(var i = 0; i < n; ++i)
+				accum += block.fn(i);
+			return accum;
 		}
 	},
 });
