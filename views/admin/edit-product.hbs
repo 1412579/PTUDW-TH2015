@@ -1,4 +1,4 @@
-<form role="form" action="" method="POST">
+<form role="form" action="" method="POST" enctype="multipart/form-data">
   <div class="col-md-12 row">
     <div class="col-md-8">
       <div class="box box-primary">
@@ -8,6 +8,11 @@
         <!-- /.box-header -->
         <!-- form start -->
         <div class="box-body">
+           <div class="form-group">
+            <label for="exampleInputEmail1">ID</label>
+            <input value="{{product.id}}" disabled type="text" required name="name" class="form-control" placeholder="Nhập tên sản phẩm">
+            <input value="{{product.id}}" type="hidden" name="id">
+          </div>
           <div class="form-group">
             <label>Loại sản phẩm</label>
             <select class="form-control" name="cate">
@@ -36,14 +41,24 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Số lượng hàng</label>
-            <input value="{{product.general_inventory}}" type="number" required value="0" min="0" name="inventory" class="form-control" placeholder="Nhập số lượng hàng">
+            <input value="{{product.quantity}}" type="number" required value="0" min="0" name="inventory" class="form-control" placeholder="Nhập số lượng hàng">
           </div>
+          {{#if product.image}}
+          <div class="form-group">
+            <label for="exampleInputFile">Ảnh thumbnail hiện tại</label>
+            <br>
+            <img src="{{product.image}}" height="100" width="auto" alt="">
+            <input type="hidden" name="currentThumb" value="{{product.image}}">
+            <a href="/admin/product/deletethumb/{{product.id}}">Xoá ảnh</a>
+          </div>
+          {{else}}
           <div class="form-group">
             <label for="exampleInputFile">Ảnh thumbnail</label>
             <input type="file" name="productimg">
-
             <p class="help-block">Ảnh thumbnail hiển thị ở trang chủ hoặc trang ngành hàng.</p>
           </div>
+          {{/if}}
+          
           <div class="form-group">
             <label class=" control-label">Mô tả sản phẩm</label>
             <textarea name="description" class="textarea" placeholder="Thông tin mô tả sản phẩm" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{product.description}}</textarea>
@@ -71,24 +86,25 @@
     <div class="col-md-4">
       <div class="box box-success">
         <div class="box-header with-border">
-          <h3 class="box-title">Upload hình sản phẩm</h3>
-          <p class="help-block">Chọn tối đa 3 ảnh.</p>
+          <h3 class="box-title">Hình chi tiết sản phẩm</h3>
+          <p class="help-block">Tối đa 3 ảnh.</p>
         </div>
         <div class="box-body">
-          <div class="form-group">
-            <label for="exampleInputFile">Ảnh sản phẩm</label>
-            <input type="file" name="productimg">
-          </div>
+          {{#each images}}
+              <div class="form-group">
+                <label for="exampleInputFile">Ảnh sản phẩm</label>
+                <br>
+                <img src="{{this.image}}" height="100" width="auto" alt="">
+                <a href="/admin/product/deleteimg/{{this.id}}">Xoá ảnh</a>
+              </div>
+          {{/each}}
 
+          {{#for numLeft}}
           <div class="form-group">
             <label for="exampleInputFile">Ảnh sản phẩm</label>
             <input type="file" name="productimg">
           </div>
-
-          <div class="form-group">
-            <label for="exampleInputFile">Ảnh sản phẩm</label>
-            <input type="file" name="productimg">
-          </div>
+          {{/for}}
         </div>
         <!-- /.box-body -->
       </div>
