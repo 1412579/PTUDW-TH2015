@@ -1,7 +1,7 @@
 	<link rel="stylesheet" type="text/css" href="/user/styles/shop_styles.css">
 	<link rel="stylesheet" type="text/css" href="/user/styles/shop_responsive.css">
 	<div class="home">
-		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/shop_background.jpg"></div>
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="/images/shop_background.jpg"></div>
 		<div class="home_overlay"></div>
 		<div class="home_content d-flex flex-column align-items-center justify-content-center">
 			<h2 class="home_title">Ba Lô và Túi Xách</h2>
@@ -41,17 +41,13 @@
 							<div class="sidebar_subtitle brands_subtitle">Thương hiệu</div>
 							<ul class="brands_list">
 								{{#each brands}}
-									<li class="brand"><a href="#">{{this.name}}</a></li>
+									{{#ifCond ../selectedBrandId '==' this.id}}
+									<li class="brand selected"><a href="/products/{{../selectedCateId}}/{{this.id}}">{{this.name}}</a></li>
+									{{else}}
+									<li class="brand"><a href="/products/{{../selectedCateId}}/{{this.id}}">{{this.name}}</a></li>									
+									{{/ifCond}}
 								{{/each}}
 							</ul>
-
-							{{!-- <ul class="brands_list">
-								<li class="brand"><a href="#">GUCCI</a></li>
-								<li class="brand"><a href="#">HERMET</a></li>
-								<li class="brand"><a href="#">The North Face</a></li>
-								<li class="brand"><a href="#">HERSHEL</a></li>
-								<li class="brand"><a href="#">TUCANO</a></li>
-							</ul> --}}
 						</div>
 					</div>
 
@@ -79,309 +75,22 @@
 							</div>
 						</div>
 
+
 						<div class="product_grid">
 							<div class="product_grid_border"></div>
+							{{#each products}}
 
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_male/bag_for_male_1_id01.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">199,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">BALO BTS KPOP</a></div></div>
+								<div class="product_item is_new">
+									<div class="product_border"></div>
+									<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="{{this.photo}}" alt=""></div>
+									<div class="product_content">
+										<div class="product_price">{{this.price}} đ</div>
+										<div class="product_name"><div><a href="/product/{{this.id}}" tabindex="0">{{this.name}}</a></div></div>
+									</div>
+									<div class="product_fav"><i class="fas fa-heart"></i></div>
 								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item discount">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_male/bag_for_male_2_id02.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">359,000 đ<span>400,000 đ</span></div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Balo Unisex Cao Cấp PRAZA</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_male/bag_for_male_3_id03.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">259,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Ba lô - B074</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_male/bag_for_male_4_id04.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">179,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Blo đen</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_male/bag_for_male_5_id05.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">299,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">BALO NAM THỜI TRANG</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_male/bag_for_male_5_id05.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">199,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Ba lô - B031</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_female/bag_for_female_1_id07.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">439,000 đ<span>500,000 đ</span></div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Balo nữ dây rút H227 - Đen</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_female/bag_for_female_2_id08.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">255,000 đ<span>300,000 đ</span></div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">BaLô bầu bĩnh</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_female/bag_for_female_3_id09.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">439,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Balo nữ dây rút H227 - Hồng Đỏ</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<!-- <li class="product_mark product_discount">-25%</li> -->
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_female/bag_for_female_4_id10.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">199,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Ba lô thời trang , khóa kéo hình gấu</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<!-- <li class="product_mark product_discount">-25%</li> -->
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_female/bag_for_female_5_id11.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">320,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">BALO DA MINI</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<!-- <li class="product_mark product_discount">-25%</li> -->
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_laptop/bag_for_laptop_01_id12.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">280,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0"> Balo đựng laptop03</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<!-- <li class="product_mark product_discount">-25%</li> -->
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_laptop/bag_for_laptop_02_id13.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">219, 000</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Balo Laptop - BL18</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_laptop/bag_for_laptop_03_id14.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">400,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Balo Hàn Quốc - BL06</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<li class="product_mark product_new">new</li>
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item discount">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_backpacking/bag_for_backpacking_01_id15.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">299,000 đ<span>359,000 đ</span></div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Ba lô - B073</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<li class="product_mark product_new">new</li>
-								</ul>
-							</div>
+							{{/each}}
 							
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_laptop/bag_for_laptop_03_id14.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">400,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Balo Hàn Quốc - BL06</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<li class="product_mark product_new">new</li>
-								</ul>
-							</div>
-							
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_male/bag_for_male_1_id01.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">199,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">BALO BTS KPOP</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_male/bag_for_male_1_id01.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">199,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">BALO BTS KPOP</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item discount">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_male/bag_for_male_2_id02.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">359,000 đ<span>400,000 đ</span></div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Balo Unisex Cao Cấp PRAZA</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<!-- <li class="product_mark product_new">new</li> -->
-								</ul>
-							</div>
-
-							<!-- Product Item -->
-							<div class="product_item is_new">
-								<div class="product_border"></div>
-								<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="/user/images/category/bag/bag_for_laptop/bag_for_laptop_03_id14.jpg" alt=""></div>
-								<div class="product_content">
-									<div class="product_price">400,000 đ</div>
-									<div class="product_name"><div><a href="/product.html" tabindex="0">Balo Hàn Quốc - BL06</a></div></div>
-								</div>
-								<div class="product_fav"><i class="fas fa-heart"></i></div>
-								<ul class="product_marks">
-									<li class="product_mark product_discount">-25%</li>
-									<li class="product_mark product_new">new</li>
-								</ul>
-							</div>
-
 						</div>
 
 						<!-- Shop Page Navigation -->

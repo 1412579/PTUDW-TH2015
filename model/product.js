@@ -145,6 +145,28 @@ var product = {
                     resolve(result.rows);
             });
         })
+	},
+	getProducts: function(parameters) {
+		return new Promise((resolve,reject)=>{
+			console.log(parameters);
+			var query = `select p.name,
+								p.price,
+								p.id,
+								p.image photo
+						 from products p`;
+			if (parameters.subCategoryId != undefined)
+				query += ` inner join category c on p.cate_id = c.id and c.id = ${parameters.subCategoryId}`;
+			if (parameters.brandId != undefined)
+				query += ` inner join brand b on p.brand_id = b.id and b.id = ${parameters.brandId}`;
+			query +=  ` limit 20`;
+            pool.query(query, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else
+                    resolve(result.rows);
+            });
+        })
 	}
 }
 

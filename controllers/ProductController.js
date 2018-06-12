@@ -14,19 +14,24 @@ var productController =
 			subCategoryId = 3;
 		promises.push(categoryBusiness.getDetailedCategory());
 		promises.push(brandBusiness.getAllBrandByCategory(subCategoryId));
+		promises.push(productBusiness.getProducts(req.params));
 		Promise.all(promises)
 			.then(function(result) {
 				var categories = result[0];
 				var brands = result[1];
+				var products = result[2];
 				var model = {
 					categories: categories,
 					brands: brands,
-					selectedCateId: subCategoryId
+					selectedCateId: subCategoryId,
+					selectedBrandId: req.params.brandId,
+					products: products
 				};
 				res.render('shop', model);
 			})
 			.catch(function(error) {
 				console.log(error);
+				res.end();
 			});
 		
 	},
@@ -61,10 +66,12 @@ var productController =
 					})
 					.catch(function(error) {
 						console.log(error);
+						res.end();
 					});
 			})
 			.catch(function(error) {
 				console.log(error);
+				res.end();
 			});
 	}
 };

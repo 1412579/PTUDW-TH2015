@@ -25,7 +25,7 @@ module.exports = function (app, passport, pool) {
 	app.get('/user/order/:orderId', userController.orderDetail)
 	app.get('/product/:productId', productController.detail);
 	app.get('/brand', userBrandController.index);
-	app.get('/products/:subCategoryId?', productController.index);
+	app.get('/products/:subCategoryId?/:brandId?', productController.index);
 	
 	app.use("/admin", adminController);
 	app.use("/admin/category", categoryController);
