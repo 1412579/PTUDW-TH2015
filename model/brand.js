@@ -104,6 +104,21 @@ var Brand = {
             });
         });
     },
+    getAllBrandByCategory: (categoryId) => {
+        return new Promise((resolve,reject)=>{
+            pool.query(`select brand_id, b.name  
+                        from brand_category bc
+                        inner join brand b
+                        on bc.brand_id = b.id
+                        where cates_id = ${categoryId}`, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else
+                    resolve(result.rows);
+            });
+        })
+    }
 }
 
 module.exports = Brand;

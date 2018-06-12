@@ -19,28 +19,39 @@
 					<div class="shop_sidebar">
 						<div class="sidebar_section">
 							<div class="sidebar_title">Danh mục</div>
-							<ul class="sidebar_categories">
-								<li><a href="#">Ba lô nam</a></li>
-								<li><a href="#">Ba lô nữ</a></li>
-								<li><a href="#">Ba lô đeo chéo</a></li>
-								<li><a href="#">Ba lô đi phượt</a></li>
-								<li><a href="#">Ba lô đựng lap top</a></li>
-								<li><a href="#">Túi xách nam</a></li>
-								<li><a href="#">Túi xách nữ</a></li>
-								<li><a href="#">Túi đeo chéo</a></li>
-								<li><a href="#">Túi oversize</a></li>
-								<li><a href="#">Túi bucket</a></li>
-							</ul>
+							{{#each categories}}
+								<div class="sidebar_subtitle brands_subtitle">{{this.name}}</div>
+								<ul class="sidebar_categories">
+								{{#each this.children}}
+									{{#ifCond ../../selectedCateId '==' this.id}}
+										<li><a href="/products/{{this.id}}" class="selected">{{this.name}}</a></li>
+									{{else}}
+										<li><a href="/products/{{this.id}}">{{this.name}}</a></li>
+									{{/ifCond}}
+										{{!-- <li><a href="/products/{{this.id}}">{{this.name}}</a></li>
+									{{/ifCond}} --}}
+									
+									
+								{{/each}}
+								</ul>
+
+							{{/each}}
 						</div>
 						<div class="sidebar_section">
 							<div class="sidebar_subtitle brands_subtitle">Thương hiệu</div>
 							<ul class="brands_list">
+								{{#each brands}}
+									<li class="brand"><a href="#">{{this.name}}</a></li>
+								{{/each}}
+							</ul>
+
+							{{!-- <ul class="brands_list">
 								<li class="brand"><a href="#">GUCCI</a></li>
 								<li class="brand"><a href="#">HERMET</a></li>
 								<li class="brand"><a href="#">The North Face</a></li>
 								<li class="brand"><a href="#">HERSHEL</a></li>
 								<li class="brand"><a href="#">TUCANO</a></li>
-							</ul>
+							</ul> --}}
 						</div>
 					</div>
 

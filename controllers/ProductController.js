@@ -1,11 +1,34 @@
 var productBusiness = require('../model/product.js');
 var categoryBusiness = require('../model/category.js');
+var brandBusiness = require('../model/brand.js');
 
 var productController = 
 {
 	index: function(req, res)
 	{
-		res.render('shop');
+		var promises =  [];
+		var subCategoryId;
+		if (req.params.subCategoryId != undefined)
+			subCategoryId = req.params.subCategoryId;
+		else
+			subCategoryId = 3;
+		promises.push(categoryBusiness.getDetailedCategory());
+		promises.push(brandBusiness.getAllBrandByCategory(subCategoryId));
+		Promise.all(promises)
+			.then(function(result) {
+				var categories = result[0];
+				var brands = result[1];
+				var model = {
+					categories: categories,
+					brands: brands,
+					selectedCateId: subCategoryId
+				};
+				res.render('shop', model);
+			})
+			.catch(function(error) {
+				console.log(error);
+			});
+		
 	},
 	detail: function(req, res)
 	{
