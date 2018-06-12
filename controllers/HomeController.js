@@ -13,7 +13,7 @@ var homeController =
 		promises.push(product.getMostViewdProducts(10));
 		Promise.all(promises)
 			.then(function(result) {
-				console.log(result);
+				// console.log(result);
 				var model = {
 						title: 'Trang chủ',
 						categories: result[0],

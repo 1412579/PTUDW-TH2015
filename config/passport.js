@@ -88,6 +88,7 @@ module.exports = function(passport,pool) {
             passReqToCallback : true // allows us to pass back the entire request to the callback
         },
         function(req, email, password, done) {
+            console.log('start passport js');
             //check user input
             pool.query(`SELECT * FROM users WHERE email = '${email}'`, function(err, rows) {
                 if (err) //error
@@ -103,6 +104,8 @@ module.exports = function(passport,pool) {
                     var newUser = {
                         email: email,
                         fullname: req.body.fullname,
+                        address: req.body.address,
+                        bod: req.body.bod,
                         password: bcrypt.hashSync(password, null, null),  // use the generateHash function in our user model
                     };
                     console.log(newUser);
