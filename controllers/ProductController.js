@@ -8,10 +8,9 @@ var productController =
 	{
 		var promises =  [];
 		var subCategoryId;
-		if (req.params.subCategoryId != undefined)
-			subCategoryId = req.params.subCategoryId;
-		else
-			subCategoryId = 3;
+		if (req.params.subCategoryId == undefined)
+			req.params.subCategoryId = 3;
+		subCategoryId = req.params.subCategoryId;
 		promises.push(categoryBusiness.getDetailedCategory());
 		promises.push(brandBusiness.getAllBrandByCategory(subCategoryId));
 		promises.push(productBusiness.getProducts(req.params));
@@ -68,6 +67,36 @@ var productController =
 						console.log(error);
 						res.end();
 					});
+			})
+			.catch(function(error) {
+				console.log(error);
+				res.end();
+			});
+	},
+	search: function(req, res) {
+		console.log(req.body);
+		var promises = [];
+		var subCategoryId;
+		if (req.params.subCategoryId != undefined)
+			subCategoryId = req.params.subCategoryId;
+		else
+			subCategoryId = 3;
+		promises.push(categoryBusiness.getDetailedCategory());
+		promises.push(brandBusiness.getAllBrandByCategory(subCategoryId));
+		promises.push(productBusiness.getProducts(req.body));
+		Promise.all(promises)
+			.then(function(result) {
+				var categories = result[0];
+				var products = result[2];
+				var brands = result[1];
+				var model = {
+					categories: categories,
+					brands: brands,
+					selectedCateId: subCategoryId,
+					selectedBrandId: req.params.brandId,
+					products: products
+				};
+				res.render('shop', model);
 			})
 			.catch(function(error) {
 				console.log(error);

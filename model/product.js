@@ -149,16 +149,56 @@ var product = {
 	getProducts: function(parameters) {
 		return new Promise((resolve,reject)=>{
 			console.log(parameters);
+			let subCate, brandId, productBrand, productName, price, description;
+			if (parameters.subCategoryId != undefined)
+				subCate = ` inner join category c on p.cate_id = c.id and c.id = ${parameters.subCategoryId}`;
+			else
+				subCate = '';
+
+			if (parameters.brandId != undefined)
+				brandId =  ` inner join brand b on p.brand_id = b.id and b.id = ${parameters.brandId}`;
+			else
+				brandId = '';
+
+			if (parameters.productBrand != undefined && parameters.productBrand != '')
+				productBrand =  ` inner join brand b on p.brand_id = b.id and b.name ilike '%${parameters.productBrand}%'`;
+			else
+				productBrand = '';
+
+			if (parameters.productName != undefined && parameters.productName != '')
+				productName = ` and p.name ilike '%${parameters.productName}%'`;
+			else
+				productName = '';
+
+			if (parameters.description != undefined && parameters.description != '')
+				productName = ` and p.description ilike '%${parameters.description}%'`;
+			else
+				productName = '';
+
+
+			if (parameters.priceRange != undefined)
+			{
+				var prices = parameters.priceRange.split(',');
+				price = ` and p.price >= ${prices[0]} and p.price <= ${prices[1]}`;
+			}
+			else
+				price = '';
+
+
 			var query = `select p.name,
 								p.price,
 								p.id,
 								p.image photo
-						 from products p`;
-			if (parameters.subCategoryId != undefined)
-				query += ` inner join category c on p.cate_id = c.id and c.id = ${parameters.subCategoryId}`;
-			if (parameters.brandId != undefined)
-				query += ` inner join brand b on p.brand_id = b.id and b.id = ${parameters.brandId}`;
-			query +=  ` limit 20`;
+						 from products p
+						 ${subCate}
+						 ${brandId}
+						 ${productBrand}
+						 where 1 = 1
+						 ${productName}
+						 ${price}
+						  limit 20`;
+			//query +=  ` limit 20`;
+			console.log(query);
             pool.query(query, function(err, result){
                 if (err){
                     reject(err);
