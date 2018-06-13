@@ -1,3 +1,6 @@
+var Brand = require('../model/brand.js');
+
+
 var userController = 
 {
 	detail: function(req, res){

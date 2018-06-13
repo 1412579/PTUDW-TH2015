@@ -13,17 +13,18 @@ var logInController =
 			req.logIn(user, function(err) {
 				if (err) { return next(err); }
 				// Redirect if it succeeds
-					return res.json({status: 1,msg: "Đăng nhập thành công!"});
+					return res.json({status: 1,msg: "Đăng nhập thành công!",username: user.email });
 				});
 			})(req, res, next),
 			function(req, res) {
 	            //console.log("hello");
-	            //remember me
+							//remember me
 	            if (req.body.remember) {
 	              req.session.cookie.maxAge = 1000 * 60 * 3;
 	            } else {
 	              req.session.cookie.expires = false;
-	            }
+							}
+							return res.json({username: user.email});
         }
 	},
 	formLoginAdmin : function(req, res) {
