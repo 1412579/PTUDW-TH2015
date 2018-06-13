@@ -105,11 +105,14 @@ module.exports = function(passport,pool) {
                         email: email,
                         fullname: req.body.fullname,
                         address: req.body.address,
-                        bod: req.body.bod,
+                        birth: req.body.birth.toString(),
+                        province: req.body.province,
+                        sexual: req.body.sexual,
                         password: bcrypt.hashSync(password, null, null),  // use the generateHash function in our user model
                     };
                     console.log(newUser);
-                    var insertQuery = `insert into users(email,password,fullname,role_id,active,created_at) values('${newUser.email }','${newUser.password}','${newUser.fullname}',1,true,'${timestamp}') RETURNING id`;
+                    var insertQuery = `insert into users(email,password,fullname,sexual,address,province,birth,role,active,created_at) values('${newUser.email }','${newUser.password}','${newUser.fullname}',
+                    '${newUser.sexual}','${newUser.address}','${newUser.province}','${newUser.birth}',1,true,'${timestamp}') RETURNING id`;
                     pool.query(insertQuery,function(err, rows) {
                          if (err)
                             return done(err);

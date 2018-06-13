@@ -7,19 +7,21 @@ function UserSignUp(e){
     let dob = $('#inputDOB').val();
     let address = $('#inputAddressSU').val();
     let province = $('#inputProvince').val();
+    let sexual;
+    (isGenderMale) ? sexual = 'male' : sexual ='female';
 
-    console.log(userName);
     var url = "/sign-up";
     $.ajax({
         url: url,
         type: 'POST',
         cache: false,
-        data: { email: email, password: passWord },
+        data: { email: email, password: passWord, fullname: userName, address: address, birth: dob, sexual: sexual, province: province  },
         success: function (data) {
             if (data.status == 0) {
                 alert(data.msg);
             }
             else if(data.status == 1){
+                console.log('vao ham');
                 location.reload(false);
             }
         }
