@@ -5,6 +5,7 @@ module.exports = function (app, passport, pool) {
 	var userController = require('../controllers/UserController');
 	var productController = require('../controllers/productController');
 	var loginController = require('../controllers/LoginController');
+	var signUpController = require('../controllers/SignUpController');
 	var adminController = require('../controllers/AdminController');
 	var categoryController = require('../controllers/CategoryController');
 	var brandController = require('../controllers/BrandController');
@@ -38,6 +39,8 @@ module.exports = function (app, passport, pool) {
 	//app.use("/admin/category", mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, CategoryController);
 	//login
 	app.post('/login', loginController.login);
+	app.post('/sign-up', signUpController.sign_up);
+	
 };
 
 // route middleware to make sure
