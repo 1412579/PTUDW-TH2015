@@ -1,9 +1,21 @@
 var express = require('express');
-var router = express.Router();
-var Category = require('../model/category.js');
+var mw = require('../config/middleware');
+var products = require('../model/product.js')
+var cartRepo = require('../model/cart.js');
 
-router.get('/', (req, res) => {
-   res.render('cart',{title: "giohanng"});
-});
 
-module.exports = router;
+let cartController = {
+    index: function(req, res){
+        res.render('cart');
+    },
+
+    addCart: function(req, res){
+        var item = {
+            ProId: req.body.proId,
+            Quantity: req.body.quantity
+        };
+       // cartRepo.add(req.session, item);
+    },
+}
+
+module.exports = cartController;

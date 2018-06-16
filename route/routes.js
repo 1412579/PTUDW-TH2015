@@ -32,7 +32,11 @@ module.exports = function (app, passport, pool) {
 	app.use("/admin", adminController);
 	app.use("/admin/category", categoryController);
 	app.use("/admin/brand", brandController);
-	app.use("/cart", userCartController);
+	
+	app.get("/cart", userCartController.index);
+	app.post("/addCart", userCartController.addCart);
+	
+	
 	//app.use("/admin/category", mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, categoryController);
 	
 	app.use("/admin/product", adminProductController);
