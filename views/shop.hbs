@@ -24,9 +24,9 @@
 								<ul class="sidebar_categories">
 								{{#each this.children}}
 									{{#ifCond ../../selectedCateId '==' this.id}}
-										<li><a href="/products/{{this.id}}" class="selected">{{this.name}}</a></li>
+										<li><a href="/products?subCategoryId={{this.id}}" class="category selected" data-id={{this.id}}>{{this.name}}</a></li>
 									{{else}}
-										<li><a href="/products/{{this.id}}">{{this.name}}</a></li>
+										<li><a href="/products?subCategoryId={{this.id}}">{{this.name}}</a></li>
 									{{/ifCond}}
 										{{!-- <li><a href="/products/{{this.id}}">{{this.name}}</a></li>
 									{{/ifCond}} --}}
@@ -42,9 +42,9 @@
 							<ul class="brands_list">
 								{{#each brands}}
 									{{#ifCond ../selectedBrandId '==' this.id}}
-									<li class="brand selected"><a href="/products/{{../selectedCateId}}/{{this.id}}">{{this.name}}</a></li>
+									<li class="brand selected" data-id={{this.id}}><a href="/products?subCategoryId={{../selectedCateId}}&brandId={{this.id}}">{{this.name}}</a></li>
 									{{else}}
-									<li class="brand"><a href="/products/{{../selectedCateId}}/{{this.id}}">{{this.name}}</a></li>									
+									<li class="brand"><a href="/products?subCategoryId={{../selectedCateId}}&brandId={{this.id}}">{{this.name}}</a>									
 									{{/ifCond}}
 								{{/each}}
 							</ul>
@@ -76,7 +76,7 @@
 						</div>
 
 
-						<div class="product_grid">
+						<div class="product_grid" id="all_products" data-from-searching={{isFromSearching}}>
 							<div class="product_grid_border"></div>
 							{{#each products}}
 
@@ -95,18 +95,35 @@
 
 						<!-- Shop Page Navigation -->
 
-						<div class="shop_page_nav d-flex flex-row">
+{{!-- 						<div class="shop_page_nav d-flex flex-row">
 							<div class="page_prev d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-left"></i></div>
 							<ul class="page_nav d-flex flex-row">
 								<li><a href="#">1</a></li>
 								<li><a href="#">2</a></li>
 								<li><a href="#">3</a></li>
-								<!-- <li><a href="#">...</a></li>
-								<li><a href="#">21</a></li> -->
+								<li class="page-item disabled"><a href="#">...</a></li>
+								<li><a href="#">21</a></li>
 							</ul>
 							<div class="page_next d-flex flex-column align-items-center justify-content-center"><i class="fas fa-chevron-right"></i></div>
-						</div>
+						</div> --}}
 
+
+						<nav aria-label="Page navigation example" class="shop_page_nav" id="shop_pagination" data-total = {{numberOfProducts}}>
+						  <ul class="pagination justify-content-center">
+						    {{!-- <li class="page-item disabled">
+						      <a class="page-link" href="#" tabindex="-1">Previous</a>
+						    </li>
+
+						    <li class="page-item"><a class="page-link" href="#">1</a></li>
+						    <li class="page-item"><a class="page-link" href="#">2</a></li>
+						    <li class="page-item active"><a class="page-link" href="#">3</a></li>
+						    <li class="page-item disabled"><a class="page-link" href="#">...</a></li>
+							<li><a class="page-link" href="#">21</a></li>
+						    <li class="page-item">
+						      <a class="page-link" href="#">Next</a>
+						    </li> --}}
+						  </ul>
+						</nav>
 					</div>
 
 				</div>
@@ -248,3 +265,4 @@
 			</div>
 		</div>
 	</div>
+

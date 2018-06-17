@@ -7,13 +7,19 @@ var productController =
 	index: function(req, res)
 	{
 		var promises =  [];
-		var subCategoryId;
-		if (req.params.subCategoryId == undefined)
-			req.params.subCategoryId = 3;
-		subCategoryId = req.params.subCategoryId;
+		var subCategoryId, brandId;
+		console.log(req.query);
+		subCategoryId = req.query.subCategoryId;
+		brandId = req.query.brandId;
+		if (subCategoryId == undefined)
+		{
+			if (brandId == undefined)
+				subCategoryId = 3;
+		}
+
 		promises.push(categoryBusiness.getDetailedCategory());
 		promises.push(brandBusiness.getAllBrandByCategory(subCategoryId));
-		promises.push(productBusiness.getProducts(req.params));
+		promises.push(productBusiness.getProducts(req.query));
 		Promise.all(promises)
 			.then(function(result) {
 				var categories = result[0];
@@ -23,8 +29,10 @@ var productController =
 					categories: categories,
 					brands: brands,
 					selectedCateId: subCategoryId,
-					selectedBrandId: req.params.brandId,
-					products: products
+					selectedBrandId: brandId,
+					products: products,
+					isFromSearching: false,
+					numberOfProducts: products.length
 				};
 				res.render('shop', model);
 			})
@@ -77,12 +85,8 @@ var productController =
 		console.log(req.body);
 		var promises = [];
 		var subCategoryId;
-		if (req.params.subCategoryId != undefined)
-			subCategoryId = req.params.subCategoryId;
-		else
-			subCategoryId = 3;
 		promises.push(categoryBusiness.getDetailedCategory());
-		promises.push(brandBusiness.getAllBrandByCategory(subCategoryId));
+		promises.push(brandBusiness.getAll());
 		promises.push(productBusiness.getProducts(req.body));
 		Promise.all(promises)
 			.then(function(result) {
@@ -94,7 +98,9 @@ var productController =
 					brands: brands,
 					selectedCateId: subCategoryId,
 					selectedBrandId: req.params.brandId,
-					products: products
+					products: products,
+					isFromSearching: true,
+					numberOfProducts: products.length
 				};
 				res.render('shop', model);
 			})

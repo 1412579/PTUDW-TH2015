@@ -104,8 +104,13 @@ var Brand = {
             });
         });
     },
-    getAllBrandByCategory: (categoryId) => {
+    getAllBrandByCategory: function(categoryId) {
+        var _self = this;
+        console.log(_self);
+        if (categoryId == undefined || categoryId == '')
+            return _self.getAll();
         return new Promise((resolve,reject)=>{
+
             pool.query(`select b.id, b.name  
                         from brand_category bc
                         inner join brand b
