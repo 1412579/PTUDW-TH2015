@@ -85,30 +85,64 @@ var productController =
 		console.log(req.body);
 		var promises = [];
 		var subCategoryId;
-		promises.push(categoryBusiness.getDetailedCategory());
-		promises.push(brandBusiness.getAll());
-		promises.push(productBusiness.getProducts(req.body));
-		Promise.all(promises)
-			.then(function(result) {
-				var categories = result[0];
-				var products = result[2];
-				var brands = result[1];
-				var model = {
-					categories: categories,
-					brands: brands,
-					selectedCateId: subCategoryId,
-					selectedBrandId: req.params.brandId,
-					products: products,
-					isFromSearching: true,
-					numberOfProducts: products.length
-				};
-				res.render('shop', model);
-			})
-			.catch(function(error) {
-				console.log(error);
-				res.end();
-			});
+		if (req.body.isAjax != undefined && req.body.isAjax == 1)
+		{
+			productBusiness.getProducts(req.body)
+				.then(function(result) {
+					res.send(result);
+				})
+				.catch(function(error) {
+					console.log(error);
+					res.end();
+				});
+		}
+		else
+		{
+			promises.push(categoryBusiness.getDetailedCategory());
+			promises.push(brandBusiness.getAll());
+			promises.push(productBusiness.getProducts(req.body));
+			Promise.all(promises)
+				.then(function(result) {
+					var categories = result[0];
+					var products = result[2];
+					var brands = result[1];
+					var model = {
+						categories: categories,
+						brands: brands,
+						selectedCateId: subCategoryId,
+						selectedBrandId: req.params.brandId,
+						products: products,
+						isFromSearching: true,
+						filters: req.body,
+						numberOfProducts: products.length
+					};
+					res.render('shop', model);
+				})
+				.catch(function(error) {
+					console.log(error);
+					res.end();
+				});
+		}
 	}
+	// search: function(req, res) {
+	// 	console.log(req.body);
+	// 	var promises = [];
+	// 	promises.push(productBusiness.getProducts(req.body));
+	// 	Promise.all(promises)
+	// 		.then(function(result) {
+	// 			var products = result[0];
+	// 			var model = {
+	// 				products: products,
+	// 				isFromSearching: true,
+	// 				numberOfProducts: products.length
+	// 			};
+	// 			res.send(model);
+	// 		})
+	// 		.catch(function(error) {
+	// 			console.log(error);
+	// 			res.end();
+	// 		});
+	// }
 };
 
 module.exports = productController;

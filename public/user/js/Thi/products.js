@@ -1,7 +1,7 @@
 $("document").ready(function() {
 	var numberOfProductsPerPage = 5;
 	LoadPagination(numberOfProductsPerPage);
-	BindPaginationEvents();
+	BindPaginationEvents(numberOfProductsPerPage);
 });
 
 function LoadPagination(numberOfProductsPerPage) {
@@ -18,22 +18,20 @@ function LoadPagination(numberOfProductsPerPage) {
 	}
 	var noResult = numberOfPages === 0 ? "disabled" : "";
 	$pages.append(`<li class='page-item ${noResult}'><a class='page-link' href='#' tabindex='-1' id="next_page">Next</a></li>`);
-	DisablePrevNextPagination(1);
+	ActivatePageNumber(1);
 };
 
-function BindPaginationEvents() {
+function BindPaginationEvents(numberOfProductsPerPage) {
 	$('.page-number').on('click', function () {
 		var pageNumber = $(this).text();
-		$(`.page-number:eq(${pageNumber - 2})`).parent().removeClass('active');
-		$(this).parent().addClass('active');
-		SendAjaxRequestToGetProducts(pageNumber);
+		SendAjaxRequestToGetProducts(pageNumber, numberOfProductsPerPage);
 	});
 	$('#previous_page').on('click', function() {
 		if (!$(this).parent().hasClass('disabled'))
 		{
 			var $currentPage = $('.page-item.active:eq(0)');
-			var currentPageNumber = $currentPage.text();
-			SendAjaxRequestToGetProducts(currentPageNumber - 1);			
+			var currentPageNumber = parseInt($currentPage.text());
+			SendAjaxRequestToGetProducts(currentPageNumber - 1, numberOfProductsPerPage);			
 		}
 
 	});
@@ -41,39 +39,121 @@ function BindPaginationEvents() {
 		if (!$(this).parent().hasClass('disabled'))
 		{
 			var $currentPage = $('.page-item.active:eq(0)');
-			var currentPageNumber = $currentPage.text();
-			SendAjaxRequestToGetProducts(currentPageNumber + 1);			
+			var currentPageNumber = parseInt($currentPage.text());
+			SendAjaxRequestToGetProducts(currentPageNumber + 1, numberOfProductsPerPage);			
 		}
 	});
 };
 
-function SendAjaxRequestToGetProducts(pageNumber) {
+function SendAjaxRequestToGetProducts(pageNumber, numberOfProductsPerPage) {
 	var isFromSearching = $('#all_products').data('from-searching');
 	var url = '/products';
+	var data;
 	if (!isFromSearching)
 	{
 		var subCategoryId = $('.category.selected').data('id');
 		var brandId = $('.brand.selected').data('id');
-		url += `?subCategoryId=${subCategoryId}&brandId=${brandId}`;
-		var data = {};
+		url += `?subCategoryId=${subCategoryId}&brandId=${brandId}&page=${pageNumber}&perPage=${numberOfProductsPerPage}`;
+		data = {
+			isAjax: 1
+		};
+	}
+	else
+	{
+		data = {
+			productBrand: $('#productBrand').val(),
+			productName: $('#productName').val(),
+			description: $('#description').val(),
+			priceRange: $('#ex2').val(),
+			page: pageNumber,
+			perPage: numberOfProductsPerPage,
+			isAjax: 1,
+			productCategoryId: ""
+		};
 	}
 	$.ajax({
         url: url,
         type: isFromSearching ? 'POST' : 'GET',
         cache: false,
         data: data,
-        success: function (data) {
-        	DisablePrevNextPagination(pageNumber);
+        success: function (products) {
+        	console.log(products);
+        	ActivatePageNumber(pageNumber);
+        	if (products != undefined && products.length > 0)
+        	{
+        		var $content = $('#all_products');
+        		$content.empty();
+        		$content.append('<div class="product_grid_border"></div>');
+        		for (var i = 0; i<products.length; i++)
+        		{
+        			var product = products[i];
+        			var html = SetUpProduct(product);
+        			$content.append(html);
+        		}
+        		$('.product_grid').isotope('destroy');
+        		$('.product_grid').isotope({
+					itemSelector: '.product_item',
+		            getSortData: {
+		            	price: function(itemElement)
+		            	{
+		            		var priceEle = $(itemElement).find('.product_price').text().replace( '$', '' );
+		            		return parseFloat(priceEle);
+		            	},
+		            	name: '.product_name div a'
+		            },
+		            animationOptions: {
+		                duration: 750,
+		                easing: 'linear',
+		                queue: false
+		            }
+		        });
+		        $('.shop_sorting_button').each(function()
+		        {
+		        	$(this).on('click', function()
+		        	{
+		        		$('.sorting_text').text($(this).text());
+		        		var option = $(this).attr('data-isotope-option');
+		        		option = JSON.parse(option);
+						$('.product_grid').isotope(option);
+		        	});
+		        });
+        	}
+        	else
+        	{
+        		alert('There is something wrong. Please try again!!');
+        	}
         }
     });
 };
 
-function DisablePrevNextPagination(pageNumber)
+function ActivatePageNumber(pageNumber)
 {
+	$('#previous_page').parent().removeClass('disabled');
+	$('#next_page').parent().removeClass('disabled');
+
 	if (pageNumber == 1)
         $('#previous_page').parent().addClass('disabled');
     if (pageNumber == $('.page-number').last().text())
         $('#next_page').parent().addClass('disabled');
-    if ($("#shop_pagination").data('total') != 1)
-    	$(`.page-number:eq(${pageNumber})`).parent().addClass('active');
+    if ($("#shop_pagination").data('total') > 1)
+    {
+    	$('.page-item.active:eq(0)').removeClass('active');
+    	$(`.page-number:eq(${pageNumber - 1})`).parent().addClass('active');
+
+    }
+}
+
+function SetUpProduct(product)
+{
+
+	var html = `<div class="product_item is_new">
+					<div class="product_border"></div>
+						<div class="product_image d-flex flex-column align-items-center justify-content-center"><img src="${product.photo}" alt=""></div>
+							<div class="product_content">
+								<div class="product_price">${product.price} đ</div>
+								<div class="product_name"><div><a href="/product/${product.id}" tabindex="0">${product.name}</a></div></div>
+							</div>
+						<div class="product_fav"><i class="fas fa-heart"></i></div>
+				</div>`;
+	return html;							
 }

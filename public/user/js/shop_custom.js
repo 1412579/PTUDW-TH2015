@@ -321,6 +321,10 @@ $(document).ready(function()
 	{
 		var sortingButtons = $('.shop_sorting_button');
 
+		// $('document').on('isotope', '.product_grid', function() {
+
+		// })
+
 		$('.product_grid').isotope({
 			itemSelector: '.product_item',
             getSortData: {
@@ -337,7 +341,6 @@ $(document).ready(function()
                 queue: false
             }
         });
-
         // Sort based on the value from the sorting_type dropdown
         sortingButtons.each(function()
         {
