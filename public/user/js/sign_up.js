@@ -10,6 +10,11 @@ function UserSignUp(e){
     let sexual;
     (isGenderMale) ? sexual = 'male' : sexual ='female';
 
+    // if(req.body['g-recaptcha-response'] === undefined || req.body['g-recaptcha-response'] === '' || req.body['g-recaptcha-response'] === null) {
+    //     return res.json({"responseCode" : 1,"responseDesc" : "Please select captcha"});
+    //   }
+    // let isCheckRecaptcha = $
+    // // let secretKey ='';
     var url = "/sign-up";
     $.ajax({
         url: url,
@@ -21,7 +26,6 @@ function UserSignUp(e){
                 alert(data.msg);
             }
             else if(data.status == 1){
-                console.log('vao ham');
                 location.reload(false);
             }
         }
