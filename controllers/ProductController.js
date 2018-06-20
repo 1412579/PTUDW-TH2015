@@ -1,6 +1,7 @@
 var productBusiness = require('../model/product.js');
 var categoryBusiness = require('../model/category.js');
 var brandBusiness = require('../model/brand.js');
+const itemsPerPage = 5;
 
 var productController = 
 {
@@ -9,37 +10,55 @@ var productController =
 		var promises =  [];
 		var subCategoryId, brandId;
 		console.log(req.query);
-		subCategoryId = req.query.subCategoryId;
+		//subCategoryId = req.query.subCategoryId;
 		brandId = req.query.brandId;
-		if (subCategoryId == undefined)
+		if (req.query.subCategoryId == undefined)
 		{
 			if (brandId == undefined)
-				subCategoryId = 3;
+				req.query.subCategoryId = 3;
 		}
 
-		promises.push(categoryBusiness.getDetailedCategory());
-		promises.push(brandBusiness.getAllBrandByCategory(subCategoryId));
-		promises.push(productBusiness.getProducts(req.query));
-		Promise.all(promises)
-			.then(function(result) {
-				var categories = result[0];
-				var brands = result[1];
-				var products = result[2];
-				var model = {
-					categories: categories,
-					brands: brands,
-					selectedCateId: subCategoryId,
-					selectedBrandId: brandId,
-					products: products,
-					isFromSearching: false,
-					numberOfProducts: products.length
-				};
-				res.render('shop', model);
-			})
-			.catch(function(error) {
-				console.log(error);
-				res.end();
-			});
+		if (req.query.isAjax != undefined && req.query.isAjax == 1)
+		{
+			productBusiness.getProducts(req.query)
+				.then(function(result) {
+					res.send(result);
+				})
+				.catch(function(error) {
+					console.log(error);
+					res.end();
+				});
+		}
+		else
+		{
+			req.query.perPage = itemsPerPage;
+			promises.push(categoryBusiness.getDetailedCategory());
+			promises.push(brandBusiness.getAllBrandByCategory(req.query.subCategoryId));
+			promises.push(productBusiness.getProducts(req.query));
+			Promise.all(promises)
+				.then(function(result) {
+					var categories = result[0];
+					var brands = result[1];
+					var products = result[2].values;
+					console.log(result[2].count);
+					var model = {
+						categories: categories,
+						brands: brands,
+						selectedCateId: req.query.subCategoryId,
+						selectedBrandId: brandId,
+						products: products,
+						isFromSearching: false,
+						numberOfProducts: result[2].count
+					};
+					res.render('shop', model);
+				})
+				.catch(function(error) {
+					console.log(error);
+					res.end();
+				});
+		}
+
+		
 		
 	},
 	detail: function(req, res)
@@ -98,14 +117,16 @@ var productController =
 		}
 		else
 		{
+			req.body.perPage = itemsPerPage;
 			promises.push(categoryBusiness.getDetailedCategory());
 			promises.push(brandBusiness.getAll());
 			promises.push(productBusiness.getProducts(req.body));
 			Promise.all(promises)
 				.then(function(result) {
 					var categories = result[0];
-					var products = result[2];
+					var products = result[2].values;
 					var brands = result[1];
+					console.log(result[2].count);
 					var model = {
 						categories: categories,
 						brands: brands,
@@ -114,7 +135,7 @@ var productController =
 						products: products,
 						isFromSearching: true,
 						filters: req.body,
-						numberOfProducts: products.length
+						numberOfProducts: result[2].count
 					};
 					res.render('shop', model);
 				})

@@ -51,8 +51,8 @@ function SendAjaxRequestToGetProducts(pageNumber, numberOfProductsPerPage) {
 	var data;
 	if (!isFromSearching)
 	{
-		var subCategoryId = $('.category.selected').data('id');
-		var brandId = $('.brand.selected').data('id');
+		var subCategoryId = $('.category.selected').data('id') != undefined ? $('.category.selected').data('id') : '';
+		var brandId = $('.brand.selected').data('id') != undefined ? $('.brand.selected').data('id') : '';
 		url += `?subCategoryId=${subCategoryId}&brandId=${brandId}&page=${pageNumber}&perPage=${numberOfProductsPerPage}`;
 		data = {
 			isAjax: 1
@@ -76,14 +76,15 @@ function SendAjaxRequestToGetProducts(pageNumber, numberOfProductsPerPage) {
         type: isFromSearching ? 'POST' : 'GET',
         cache: false,
         data: data,
-        success: function (products) {
+        success: function (result) {
         	console.log(products);
         	ActivatePageNumber(pageNumber);
-        	if (products != undefined && products.length > 0)
+        	if (result != undefined && result.count > 0)
         	{
         		var $content = $('#all_products');
         		$content.empty();
         		$content.append('<div class="product_grid_border"></div>');
+        		var products = result.values;
         		for (var i = 0; i<products.length; i++)
         		{
         			var product = products[i];

@@ -1,5 +1,5 @@
 const pool = require('../model/pg');
-
+const itemsPerPage = 5;
 
 var product = {
   getAll: ()=>{
@@ -184,22 +184,56 @@ var product = {
 			else
 				price = '';
 
+			var offset = '';
+			if (parameters.isAjax != undefined && parameters.isAjax == 1)
+				offset = ` offset ${(parameters.page - 1) * parameters.perPage}`;
 
-			var query = `select p.name,
-								p.price,
-								p.id,
-								p.image photo
-						 from products p
+			var condition = `from products p
 						 ${subCate}
 						 ${brandId}
 						 ${productBrand}
 						 where 1 = 1
 						 ${productName}
 						 ${description}
-						 ${price}
-						  limit 20`;
-			//query +=  ` limit 20`;
+						 ${price}`;
+
+
+
+			var query = `
+						(select cast(count(*) as text) as name, 
+								0 price, 
+								0 id, 
+								'0' photo
+						${condition})
+						union
+						(select p.name,
+								p.price,
+								p.id,
+								p.image photo
+						 ${condition}
+						 order by p.id
+						 limit ${parameters.perPage}
+						 ${offset})
+						 order by id`;
+			
+
 			console.log(query);
+            pool.query(query, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else
+                {
+                	var products = { count: result.rows[0].name, values: result.rows.slice(1)};
+                    resolve(products);
+                }
+            });
+        })
+	},
+	getTotalNumberOfProducts: function() {
+		return new Promise((resolve,reject)=>{
+			var query = `select count(*)
+						 from products`;
             pool.query(query, function(err, result){
                 if (err){
                     reject(err);
