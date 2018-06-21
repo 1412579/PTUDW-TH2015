@@ -17,13 +17,13 @@
 								<li class="cart_item clearfix">
 									{{#each items}}
 										<div class="cart_item_image">
-											<img src="{{items.main_picture}}" alt="">
+											<img src="{{items.Product.main_picture}}" alt="">
 											<a href="javascript:" class="del">✖</a>
 										</div>
 										<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
 											<div class="cart_item_name cart_info_col">
 												<div class="cart_item_title">Tên sản phẩm</div>
-												<div class="cart_item_text">{{items.name}}</div>
+												<div class="cart_item_text">{{items.Product.name}}</div>
 											</div>
 											<div class="cart_item_color cart_info_col">
 												<div class="cart_item_title">Màu</div>
@@ -31,15 +31,15 @@
 											</div>
 											<div class="cart_item_quantity cart_info_col">
 												<div class="cart_item_title">Số lượng</div>
-												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" value="1"></div>
+												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" value="{{items.Quantity}}"></div>
 											</div>
 											<div class="cart_item_price cart_info_col">
 												<div class="cart_item_title">Giá</div>
-												<div class="cart_item_text" id="price">40000000 đ</div>
+												<div class="cart_item_text" id="price">{{items.Product.price}}</div>
 											</div>
 											<div class="cart_item_total cart_info_col">
 												<div class="cart_item_title">Tổng tiền</div>
-												<div class="cart_item_text total" id="total">40000000 đ</div>
+												<div class="cart_item_text total" id="total">{{items.Total}}</div>
 											</div>
 										</div>
 									{{/each}}

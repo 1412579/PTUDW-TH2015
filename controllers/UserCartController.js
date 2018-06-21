@@ -6,31 +6,29 @@ var cartRepo = require('../model/cart.js');
 
 let cartController = {
     index: function(req, res){
-        var arr_p = [];
-    for (var i = 0; i < req.cookies.cart.length; i++) {
-        var cartItem = req.cookies.cart[i];
-        var p = productsRepo.getProductById(cartItem.ProId);
-        arr_p.push(p);
+    let arr_products = [];
+    let resProductToCartCookie = JSON.parse(req.cookies.productToCart);
+    for (let i = 0; i < resProductToCartCookie.length; i++) {
+        let p = productsRepo.getProductById(resProductToCartCookie[i].ProId);
+        arr_products.push(p);
     }
-    res.cookie('cart',arr_p);
 
-    // var items = [];
-    // Promise.all(arr_p).then(result => {
-    //     for (var i = result.length - 1; i >= 0; i--) {
-    //         var pro = result[i][0];
-    //         var item = {
-    //             Product: pro,
-    //             Quantity: req.session.cart[i].Quantity,
-    //             Amount: pro.Price * req.session.cart[i].Quantity
-    //         };
-    //         items.push(item);
-    //     }
-    // });
-
+    let items = [];
+    Promise.all(arr_products).then(result => {
+        for(let i = result.length -1; i >= 0; i--){
+            let item = {
+                Product: result[i],
+                Quantity: resProductToCartCookie[i].Quantity,
+                Total: result[i].price * resProductToCartCookie[i].Quantity
+            }
+        }
         var vm = {
             items: items
         };
-        res.render('cart');
+        res.render('cart', vm);
+    });
+   
+       
     },
 
     addCart: function(req, res){
@@ -38,21 +36,24 @@ let cartController = {
             ProId: req.body.proId,
             Quantity: req.body.quantity
         };
-       let productsAddToCart =[];
-        productsAddToCart.push(item);
-        // if(req.cookie.cart){
-            res.cookie('cart', JSON.stringify(productsAddToCart));
-        // }
         
-        var ketqua = req.cookies.cart;
-        console.log(ketqua);
-        // var kq = JSON.parse(ketqua);
-        // console.log(kq);
-        // console.log(kq.ProId);
-        // cartRepo.add(req.cookies.cart, item);
+       
+        let productsAddToCart =[];
+        if(req.cookies.productToCart === undefined){
+            productsAddToCart.push(item);
+        }
+        else{
+            productsAddToCart = JSON.parse(req.cookies.productToCart);
+            for(let i = 0; i < productsAddToCart.length; i++){
+                (productsAddToCart[i].proId === item.ProId) ? productsAddToCart[i].Quantity++ : productsAddToCart.push(item);
+            }
+            productsAddToCart.push(item);
+        }
+        res.cookie('productToCart', JSON.stringify(productsAddToCart), {maxAge: 1000 * 60 * 3 });
+        res.json({'demo': 1})
+        
+        console.log(req.cookies);
     },
-
-    
 }
 
 module.exports = cartController;
