@@ -145,6 +145,9 @@ $(document).ready(function()
 			var index = $(this).parent().index();
 
 			placeholder.text( $(this).text() ).css('opacity', '1');
+			$('#categoryId').val($(this).data('id'));
+			//placeholder.attr('placeholder', $(this).text() ).css('opacity', '1');
+			//placeholder.val(4);
 
 			if(list.hasClass('active'))
 			{

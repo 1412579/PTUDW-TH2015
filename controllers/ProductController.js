@@ -9,7 +9,7 @@ var productController =
 	{
 		var promises =  [];
 		var subCategoryId, brandId;
-		console.log(req.query);
+		
 		//subCategoryId = req.query.subCategoryId;
 		brandId = req.query.brandId;
 		if (req.query.subCategoryId == undefined)
@@ -17,7 +17,7 @@ var productController =
 			if (brandId == undefined)
 				req.query.subCategoryId = 3;
 		}
-
+		console.log(req.query);
 		if (req.query.isAjax != undefined && req.query.isAjax == 1)
 		{
 			productBusiness.getProducts(req.query)

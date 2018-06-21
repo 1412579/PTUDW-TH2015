@@ -148,8 +148,8 @@ var product = {
 	},
 	getProducts: function(parameters) {
 		return new Promise((resolve,reject)=>{
-			console.log(parameters.productName);
-			let subCate, brandId, productBrand, productName, price, description;
+			//console.log(parameters.subCategoryId);
+			let subCate, brandId, productBrand, productName, price, description, category;
 			if (parameters.subCategoryId != undefined && parameters.subCategoryId != '')
 				subCate = ` inner join category c on p.cate_id = c.id and c.id = ${parameters.subCategoryId}`;
 			else
@@ -175,6 +175,12 @@ var product = {
 			else
 				description = '';
 
+			if (parameters.categoryId != undefined && parameters.categoryId != '')
+				category = ` inner join category s on p.cate_id = s.id
+							inner join category c on s.parent_id = c.id and c.id = ${parameters.categoryId}`;
+			else
+				category = '';
+
 
 			if (parameters.priceRange != undefined)
 			{
@@ -192,6 +198,7 @@ var product = {
 						 ${subCate}
 						 ${brandId}
 						 ${productBrand}
+						 ${category}
 						 where 1 = 1
 						 ${productName}
 						 ${description}
