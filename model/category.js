@@ -42,7 +42,7 @@ var Category = {
     },
     getAllChild: (id)=>{
         return new Promise((resolve,reject)=>{
-            pool.query(`select * from category where parent_id = ${id} order by orderb asc, id desc`, function(err, result){
+            pool.query(`select * from category where parent_id = ${id} order by orderb asc, id asc`, function(err, result){
                 if (err){
                     reject(err);
                 }
