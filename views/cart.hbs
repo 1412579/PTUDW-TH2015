@@ -17,29 +17,29 @@
 								<li class="cart_item clearfix">
 									{{#each items}}
 										<div class="cart_item_image">
-											<img src="{{items.Product.main_picture}}" alt="">
+											<img src="{{Product.main_picture}}" alt="">
 											<a href="javascript:" class="del">✖</a>
 										</div>
 										<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
 											<div class="cart_item_name cart_info_col">
 												<div class="cart_item_title">Tên sản phẩm</div>
-												<div class="cart_item_text">{{items.Product.name}}</div>
+												<div class="cart_item_text">{{Product.name}}</div>
 											</div>
 											<div class="cart_item_color cart_info_col">
 												<div class="cart_item_title">Màu</div>
-												<div class="cart_item_text"><span style="background-color:#000000;"></span>Đen</div>
+												<div class="cart_item_text"><span style="background-color:#cf7979;"></span>Đen</div>
 											</div>
 											<div class="cart_item_quantity cart_info_col">
 												<div class="cart_item_title">Số lượng</div>
-												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" value="{{items.Quantity}}"></div>
+												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" value="{{Quantity}}"></div>
 											</div>
 											<div class="cart_item_price cart_info_col">
 												<div class="cart_item_title">Giá</div>
-												<div class="cart_item_text" id="price">{{items.Product.price}}</div>
+												<div class="cart_item_text" id="price">{{Product.price}}</div>
 											</div>
 											<div class="cart_item_total cart_info_col">
 												<div class="cart_item_title">Tổng tiền</div>
-												<div class="cart_item_text total" id="total">{{items.Total}}</div>
+												<div class="cart_item_text total" id="total">{{Amount}}</div>
 											</div>
 										</div>
 									{{/each}}
@@ -51,7 +51,7 @@
 						<div class="order_total">
 							<div class="order_total_content text-md-right">
 								<div class="order_total_title">Tổng tiền của giỏ hàng:</div>
-								<div class="order_total_amount" id="subtotal">1000000đ</div>
+								<div class="order_total_amount" id="subtotal">{{TotalAmount}}</div>
 							</div>
 						</div>
 
