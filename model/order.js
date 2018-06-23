@@ -15,7 +15,7 @@ var Category = {
     },
 	getById: (id)=>{
         return new Promise((resolve,reject)=>{
-            pool.query(`select * from category where id=${id}`, function(err, result){
+            pool.query(`select orders.created_at as timeorder, orders.id as orderid, users.address as useraddress, users.fullname as username, users.phone as userphone,order_status.name as status,order_status.id as statusid, orders.total as total from orders,users,order_status where orders.order_status_id = order_status.id and orders.user_id = users.id and orders.id=${id}`, function(err, result){
                 if (err){
                     reject(err);
                 }
@@ -23,10 +23,21 @@ var Category = {
                     resolve(result.rows[0]);
             });
         });
-	},
-	updateById: function(cateInfo){
+    },
+    getProducts: (id)=>{
         return new Promise((resolve,reject)=>{
-            var query = `update category set parent_id = ${cateInfo.parent_id},name = '${ cateInfo.name }', alias = '${ cateInfo.alias }', updated_at = '${ cateInfo.updated_at }', hide = ${ cateInfo.ishide } where id = ${ cateInfo.id}`;
+            pool.query(`select * from order_details where order_id=${id}`, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else
+                    resolve(result.rows);
+            });
+        });
+	},
+	updateStatusById: function(cateInfo){
+        return new Promise((resolve,reject)=>{
+            var query = `update orders set order_status_id = ${cateInfo.status} where id = ${ cateInfo.id}`;
             console.log(query);
             pool.query(query, function(err, result){
                 if (err){

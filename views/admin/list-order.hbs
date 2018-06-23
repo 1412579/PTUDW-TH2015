@@ -45,7 +45,7 @@
                     <td>{{this.total}}</td>
                     <td>{{dateFormat this.timeorder}}</td>
                     <td>
-                      <a href="/admin/order/detail" class="label label-success">Sửa</button>
+                      <a href="/admin/order/edit/{{this.orderid}}" class="label label-success">Sửa</button>
                     </td>
                   </tr>
                   {{/each}}
@@ -54,7 +54,7 @@
                   <tr>
                     <th rowspan="1" colspan="1">Mã đơn hàng</th>
                     <th rowspan="1" colspan="1">Tên khách hàng</th>
-                    <th rowspan="1" colspan="1">số điện thoại</th>
+                    <th rowspan="1" colspan="1">Số điện thoại</th>
                     <th rowspan="1" colspan="1">Trạng thái</th>
                     <th rowspan="1" colspan="1">Tổng tiền</th>
                     <th rowspan="1" colspan="1">Thời gian đặt</th>
