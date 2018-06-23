@@ -6,77 +6,46 @@ var productsRepo = require('../model/product.js')
 
 let cartController = {
     index: function(req, res){
-
-    // let arr_products = [];
-    // let resProductToCartCookie = JSON.parse(req.cookies.productToCart);
-    // for (let i = 0; i < resProductToCartCookie.length; i++) {
-    //     let p = productsRepo.getProductById(resProductToCartCookie[i].ProId);
-    //     arr_products.push(p);
-    // }
-    // let items = [];
-    // Promise.all(arr_products).then(result => {
-    //     for(let i = result.length -1; i >= 0; i--){
-    //         let item = {
-    //             Product: result[i],
-    //             Quantity: resProductToCartCookie[i].Quantity,
-    //             Total: result[i].price * resProductToCartCookie[i].Quantity
-    //         }
-    //     }
-    //     var vm = {
-    //         items: items
-    //     };
-    //     res.render('cart', vm);
-    // });
         let productsAddToCartCookie =[];
         let arr_products = [];
+        if(req.cookies.cart === undefined){
+            req.cookies.cart ={}
+        }
         productsAddToCartCookie = JSON.parse(req.cookies.cart);
+
         for (let i = 0; i < productsAddToCartCookie.length; i++) {
             arr_products.push(productsRepo.getProductById(parseInt(productsAddToCartCookie[i].ProId)));
         }
         let items = [];
         Promise.all(arr_products).then(result => {
-            var product = result[0];
-            for(let i = result[0].length -1; i >= 0; i--){
+            for(let i = result.length -1; i >= 0; i--){
+                let pro = result[i][0];
                 let item = {
-                    Product: product[i],
+                    Product: pro,
                     Quantity: productsAddToCartCookie[i].Quantity,
-                    Amount: (parseInt(product[i].price) * parseInt(productsAddToCartCookie[i].Quantity)).toString()
+                    Amount: (parseInt(pro.price) * parseInt(productsAddToCartCookie[i].Quantity)).toString()
                 }
                 items.push(item)
             }
-            let TotalAmount = 10029302
+            let TotalAmount = 0;
+            for(let i = 0; i < items.length; i++){
+                TotalAmount+= parseInt(items[i].Amount);
+            }
             var vm = {
                 items: items,
                 TotalAmount: TotalAmount
             };
             res.render('cart', vm);
-            //res.render('cart');
         }).catch(function(error){console.log(error);});
     },
 
-    addCart: function(req, res){
-        // var item = {
-        //     ProId: req.body.proId,
-        //     Quantity: req.body.quantity
-        // };
-        
-       
-        // let productsAddToCart =[];
-        // if(req.cookies.productToCart === undefined){
-        //     productsAddToCart.push(item);
-        // }
-        // else{
-        //     productsAddToCart = JSON.parse(req.cookies.productToCart);
-        //     for(let i = 0; i < productsAddToCart.length; i++){
-        //         (productsAddToCart[i].proId === item.ProId) ? productsAddToCart[i].Quantity++ : productsAddToCart.push(item);
-        //     }
-        //     productsAddToCart.push(item);
-        // }
-        // res.cookie('productToCart', JSON.stringify(productsAddToCart), {maxAge: 1000 * 60 * 3 });
-        // res.json({'demo': 1})
-        
-        // console.log(req.cookies);
+    update: function(req, res){
+
     },
+
+    delete: (req,res) =>{
+        
+    }
 }
 
 module.exports = cartController;
