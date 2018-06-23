@@ -115,7 +115,7 @@
                   <!-- /.box-body -->
                   <div class="box-footer clearfix">
                     <!-- <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Place New Order</a> -->
-                    <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả đơn hàng</a>
+                    <a href="/admin/order/list" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả đơn hàng</a>
                   </div>
                   <!-- /.box-footer -->
                 </div>
@@ -124,7 +124,7 @@
               <div class="col-md-4">
                 <div class="box box-primary">
                   <div class="box-header with-border">
-                    <h3 class="box-title">Loại sản phẩm mới</h3>
+                    <h3 class="box-title">Nhà sản xuất mới</h3>
 
                     <!-- <div class="box-tools pull-right">
                       <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -138,64 +138,30 @@
                   <!-- /.box-header -->
                   <div class="box-body">
                     <ul class="products-list product-list-in-box">
+                      {{#each brands}}
                       <li class="item">
                         <div class="product-img">
+                          {{#if this.image_brand}}
+                          <img src="{{this.image_brand}}" alt="Product Image">
+                          {{else}}
                           <img src="/admin/images/default-50x50.gif" alt="Product Image">
+                          {{/if}}
                         </div>
                         <div class="product-info">
-                          <a href="javascript:void(0)" class="product-title">Balo X-Now
-                            <span class="label label-warning pull-right">Balo</span>
+                          <a href="/admin/brand/edit/{{this.id}}" class="product-title">
+                            {{this.name}}
                           </a>
                           <span class="product-description">
-                            Thương hiệu lớn nhất thế giới về Balo
+                            {{this.description}}
                           </span>
                         </div>
                       </li>
-                      <li class="item">
-                          <div class="product-img">
-                            <img src="/admin/images/default-50x50.gif" alt="Product Image">
-                          </div>
-                          <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title">Balo X-Now
-                              <span class="label label-warning pull-right">Balo</span>
-                            </a>
-                            <span class="product-description">
-                              Thương hiệu lớn nhất thế giới về Balo
-                            </span>
-                          </div>
-                        </li>
-                        <li class="item">
-                            <div class="product-img">
-                              <img src="/admin/images/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                              <a href="javascript:void(0)" class="product-title">Balo X-Now
-                                <span class="label label-warning pull-right">Balo</span>
-                              </a>
-                              <span class="product-description">
-                                Thương hiệu lớn nhất thế giới về Balo
-                              </span>
-                            </div>
-                          </li>
-                          <li class="item">
-                              <div class="product-img">
-                                <img src="/admin/images/default-50x50.gif" alt="Product Image">
-                              </div>
-                              <div class="product-info">
-                                <a href="javascript:void(0)" class="product-title">Balo X-Now
-                                  <span class="label label-warning pull-right">Balo</span>
-                                </a>
-                                <span class="product-description">
-                                  Thương hiệu lớn nhất thế giới về Balo
-                                </span>
-                              </div>
-                            </li>
-                      <!-- /.item -->
+                      {{/each}}
                     </ul>
                   </div>
                   <!-- /.box-body -->
                   <div class="box-footer text-center">
-                    <a href="javascript:void(0)" class="uppercase">Xem tất cả loại sản phẩm</a>
+                    <a href="/admin/brand/list" class="uppercase">Xem tất cả loại nhà sản xuất</a>
                   </div>
                   <!-- /.box-footer -->
                 </div>
@@ -221,93 +187,18 @@
                             </tr>
                           </thead>
                           <tbody>
+                            {{#each products}}
                             <tr>
                               <td>
-                                <a href="pages/examples/invoice.html">PRO9842</a>
+                                <a href="/admin/product/edit/{{this.id}}">{{this.id}}</a>
                               </td>
-                              <td>Call of Duty IV</td>
+                              <td>{{this.name}}</td>
+                               <td>{{this.catename}}</td>
                               <td>
-                                  Điện thoại
-                              </td>
-                              <td>
-                                2.000.000đ
+                                {{this.price}}
                               </td>
                             </tr>
-                            <tr>
-                              <td>
-                                <a href="pages/examples/invoice.html">PRO1848</a>
-                              </td>
-                              <td>Samsung Smart TV</td>
-                              <td>
-                                  Điện thoại
-                              </td>
-                              <td>
-                                <div class="sparkbar" data-color="#f39c12" data-height="20">
-                                  <canvas width="34" height="20" style="display: inline-block; width: 34px; height: 20px; vertical-align: top;"></canvas>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a href="pages/examples/invoice.html">PRO7429</a>
-                              </td>
-                              <td>iPhone 6 Plus</td>
-                              <td>
-                                  Điện thoại
-                              </td>
-                              <td>
-                                  2.000.000đ
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a href="pages/examples/invoice.html">PRO7429</a>
-                              </td>
-                              <td>Samsung Smart TV</td>
-                              <td>
-                                  Điện thoại
-                              </td>
-                              <td>
-                                  2.000.000đ
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a href="pages/examples/invoice.html">PRO1848</a>
-                              </td>
-                              <td>Samsung Smart TV</td>
-                              <td>
-                                  Điện thoại
-                              </td>
-                              <td>
-                                  2.000.000đ
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a href="pages/examples/invoice.html">PRO7429</a>
-                              </td>
-                              <td>iPhone 6 Plus</td>
-                              <td>
-                                Điện thoại
-                              </td>
-                              <td>
-                                  2.000.000đ
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <a href="pages/examples/invoice.html">PRO9842</a>
-                              </td>
-                              <td>Call of Duty IV</td>
-                              <td>
-                                Game
-                              </td>
-                              <td>
-                                  2.000.000đ
-                              </td>
-                              
-                            </tr>
+                            {{/each}}
                           </tbody>
                         </table>
                       </div>
@@ -315,8 +206,8 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                      <a href="javascript:void(0)" class="btn btn-sm btn-info btn-flat pull-left">Tạo sản phẩm mới</a>
-                      <a href="javascript:void(0)" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả sản phẩm</a>
+                      <a href="/admin/product/new" class="btn btn-sm btn-info btn-flat pull-left">Tạo sản phẩm mới</a>
+                      <a href="/admin/product/list" class="btn btn-sm btn-default btn-flat pull-right">Xem tất cả sản phẩm</a>
                     </div>
                     <!-- /.box-footer -->
                   </div>
@@ -325,7 +216,7 @@
                 <div class="col-md-4">
                   <div class="box box-primary">
                     <div class="box-header with-border">
-                      <h3 class="box-title">Nhà sản xuất mới</h3>
+                      <h3 class="box-title">Loại sản phẩm mới</h3>
   
                       <!-- <div class="box-tools pull-right">
                         <button type="button" class="btn btn-box-tool" data-widget="collapse">
@@ -339,64 +230,27 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                       <ul class="products-list product-list-in-box">
+                        {{#each cates}}
                         <li class="item">
                           <div class="product-img">
                             <img src="/admin/images/default-50x50.gif" alt="Product Image">
                           </div>
                           <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title">Samsung
-                              <span class="label label-primary pull-right">Tivi</span>
+                            <a href="/admin/category/edit/{{this.id}}" class="product-title">
+                            {{this.name}}
                             </a>
                             <span class="product-description">
-                              Samsung 32" 1080p 60Hz LED Smart HDTV.
+                              {{this.description}}
                             </span>
                           </div>
                         </li>
-                        <li class="item">
-                            <div class="product-img">
-                              <img src="/admin/images/default-50x50.gif" alt="Product Image">
-                            </div>
-                            <div class="product-info">
-                              <a href="javascript:void(0)" class="product-title">Samsung
-                                <span class="label label-primary pull-right">Tivi</span>
-                              </a>
-                              <span class="product-description">
-                                Samsung 32" 1080p 60Hz LED Smart HDTV.
-                              </span>
-                            </div>
-                          </li>
-                          <li class="item">
-                          <div class="product-img">
-                            <img src="/admin/images/default-50x50.gif" alt="Product Image">
-                          </div>
-                          <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title">Samsung
-                              <span class="label label-primary pull-right">Tivi</span>
-                            </a>
-                            <span class="product-description">
-                              Samsung 32" 1080p 60Hz LED Smart HDTV.
-                            </span>
-                          </div>
-                        </li>
-                        <li class="item">
-                          <div class="product-img">
-                            <img src="/admin/images/default-50x50.gif" alt="Product Image">
-                          </div>
-                          <div class="product-info">
-                            <a href="javascript:void(0)" class="product-title">Samsung
-                              <span class="label label-primary pull-right">Tivi</span>
-                            </a>
-                            <span class="product-description">
-                              Samsung 32" 1080p 60Hz LED Smart HDTV.
-                            </span>
-                          </div>
-                        </li>
+                        {{/each}}
                         <!-- /.item -->
                       </ul>
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer text-center">
-                      <a href="javascript:void(0)" class="uppercase">Xem tất cả nhà sản xuất</a>
+                      <a href="/admin/category/list" class="uppercase">Xem tất cả loại sản phẩm</a>
                     </div>
                     <!-- /.box-footer -->
                   </div>

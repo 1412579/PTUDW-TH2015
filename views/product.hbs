@@ -1,5 +1,10 @@
+
 <link rel="stylesheet" type="text/css" href="/user/styles/product_styles.css">
 <link rel="stylesheet" type="text/css" href="/user/styles/product_responsive.css">
+	{{#section 'head'}}
+		<script src="/user/js/product.js"></script>
+	{{/section}}
+
 	<div class="single_product">
 		<div class="container">
 			<div class="row">
@@ -49,7 +54,7 @@
 									</div>
 
 									<div class="product-color no-width" style="border:0px;">
-										<button type="button" class="custom-button button cart_button"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>
+										<button type="submit" class="custom-button button cart_button" onclick="return addCart(event, {{product.product_id}});"><i class="fa fa-shopping-cart"></i>Thêm vào giỏ</button>
 									</div>
 									
 								</div>
