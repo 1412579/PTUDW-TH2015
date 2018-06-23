@@ -17,10 +17,12 @@ var product = {
     },
 	getNewestProducts: function(numberOfProducts) {
 		return new Promise((resolve,reject)=>{
-			var query = `select p.id, p.name as product_name, price, p.created_at, image, b.name as brand
+			var query = `select p.id, p.name as product_name, price, p.created_at, image, b.name as brand, c.name as sub_category, c.id sub_category_id
 						from products p
 						left join brand b
 						on p.brand_id = b.id
+						left join category c
+						on p.cate_id = c.id
 						order by created_at desc limit ${numberOfProducts}`;
             pool.query(query, function(err, result){
                 if (err){
@@ -33,10 +35,12 @@ var product = {
 	},
 	getBestSellerProducts: function(numberOfProducts) {
 		return new Promise((resolve,reject)=>{
-			var query = `select p.id, p.name as product_name, price, p.created_at, image, b.name as brand, sold_quantity
+			var query = `select p.id, p.name as product_name, price, p.created_at, image, b.name as brand, sold_quantity, c.name as sub_category, c.id sub_category_id
 						from products p
 						left join brand b
 						on p.brand_id = b.id
+						left join category c
+						on p.cate_id = c.id
 						order by sold_quantity desc limit ${numberOfProducts}`;
             pool.query(query, function(err, result){
                 if (err){
