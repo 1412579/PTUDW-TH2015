@@ -1,5 +1,7 @@
 {{> banner}}
-
+	{{#section 'head'}}
+		<script src="/user/js/cartShopping.js"></script>
+	{{/section}}
 
 	<!-- Popular Categories -->
 	<div class="popular_categories">
@@ -107,7 +109,7 @@
 													<div class="product_extras">
 														<div class="product_color">
 														</div>
-														<button class="product_cart_button"><a href="cart.html">Thêm giỏ hàng</a></button>
+														<button type="submit" class="product_cart_button" onclick="return addCart({{this.id}});">Thêm giỏ hàng</button>
 													</div>
 												</div>
 												<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -141,7 +143,7 @@
 												<div class="arrivals_single_price text-right">{{newestProducts.0.price}} đ</div>
 											</div>
 											
-											<form action="#"><button class="arrivals_single_button"><a href="cart.html">Thêm giỏ hàng</a></button></form>
+											<form action="#"><button type="submit" class="arrivals_single_button" onclick="return addCart({{newestProducts.0.id}});">Thêm giỏ hàng</button></form>
 										</div>
 										<div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
 										<ul class="arrivals_single_marks product_marks">
@@ -706,7 +708,7 @@
 												<div class="product_extras">
 													<div class="product_color">
 													</div>
-													<button class="product_cart_button"><a href="cart.html">Thêm giỏ hàng</a></button>
+													<button type="submit" class="product_cart_button" onclick="return addCart({{this.id}});">Thêm giỏ hàng</button>
 												</div>
 											</div>
 											<div class="product_fav"><i class="fas fa-heart"></i></div>
@@ -738,7 +740,7 @@
 											<div class="arrivals_single_price text-right">{{mostViewedProducts.0.price}} đ</div>
 										</div>
 										
-										<form action="#"><button class="arrivals_single_button"><a href="cart.html">Thêm giỏ hàng</a></button></form>
+										<form action="#"><button type="submit" class="arrivals_single_button" onclick="return addCart({{mostViewedProducts.0.id}});">Thêm giỏ hàng</button></form>
 									</div>
 									<div class="arrivals_single_fav product_fav active"><i class="fas fa-heart"></i></div>
 									<ul class="arrivals_single_marks product_marks">

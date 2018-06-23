@@ -14,11 +14,12 @@ function getCookie(cname) {
     return "";
 }
 
-function addCart(e,_proId){
-    e.preventDefault();
+function addCart(_proId){
 
     let Quantity = $('#quantity_input').val();
-    
+    if(Quantity === undefined){
+        Quantity = 1;
+    }
     let item = {
         ProId: _proId,
         Quantity: Quantity
@@ -43,22 +44,31 @@ function addCart(e,_proId){
     }
 }
 
-function checkout(){
-    
-    var url = "/checkout/payment";
-    $.ajax({
-        url: url,
-        type: 'POST',
-        cache: false,
-        data: { email: userName, password: passWord },
-        success: function (data) {
-            console.log(data);
-            if (data.status == 0) {
-                alert(data.msg);
-            }
-            else if(data.status == 1){
-                location.reload(false);
-            }
+function removeProduct(ProId){
+    let productsAddToCart =[];
+    productsAddToCart = JSON.parse(getCookie("cart"));
+    for (var i = productsAddToCart.length - 1; i >= 0; i--) {
+        if (parseInt(ProId) === parseInt(productsAddToCart[i].ProId)) {
+            productsAddToCart.splice(i, 1);
         }
-    });
+    }
+    
+    document.cookie = 'cart = ' + JSON.stringify(productsAddToCart) +"; path=/"; 
+    location.reload(true);
+    // var url = "cart";
+    // $.ajax({
+    //     url: url,
+    //     type: 'GET',
+    //     cache: false,
+    //     data: { ProId: ProId },
+    //     success: function (data) {
+    //         console.log(data);
+    //         if (data.status == 0) {
+    //             alert(data.msg);
+    //         }
+    //         else if(data.status == 1){
+    //             location.reload(false);
+    //         }
+    //     }
+    // });
 }
