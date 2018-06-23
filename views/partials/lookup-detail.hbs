@@ -10,12 +10,12 @@
 			              		<div class="col-lg-5 col-md-12">
 			              			<div class="row">
 			              				<div class="col-sm-6">
-			              					<label for="inputBrand" class="col-form-label"><b>Nhà sản xuất</b></label>
-					              			<input type="text" class="form-control" placeholder="Nhà sản xuất">
+			              					<label for="productBrand" class="col-form-label"><b>Nhà sản xuất</b></label>
+					              			<input type="text" class="form-control" placeholder="Nhà sản xuất" id="productBrand" name="productBrand" value="{{filters.productBrand}}">
 						              	</div>
 						              	<div class="col-sm-6">
-						              		<label for="inputBrand" class="col-form-label"><b>Đặc điểm</b></label>
-						              		<textarea class="form-control" placeholder="Mô tả..."></textarea>
+						              		<label for="description" class="col-form-label"><b>Đặc điểm</b></label>
+						              		<textarea class="form-control" placeholder="Mô tả..." id="description" name="description" value="{{filters.description}}"></textarea>
 						              		
 						              	</div>
 			              			</div>
@@ -28,7 +28,7 @@
 					              			<div class="row">
 					              				<b>$ 100.000</b>
 					              				<div class="col-sm-8">
-					              					<input id="ex2" type="text" class="span2" value="" data-slider-min="100000" data-slider-max="5000000" data-slider-step="100000" data-slider-value="[250,450]"/> 
+					              					<input id="ex2" name="priceRange" type="text" class="span2" value="{{filters.priceRange}}" data-slider-min="100000" data-slider-max="5000000" data-slider-step="100000" data-slider-value="[100000,5000000]"/> 
 					              				</div> 
 					              				
 					              				<b>$ 5.000.000</b>
@@ -36,7 +36,7 @@
 
 					              		</div>
 					              		<div class="col-sm-12 text-center">
-					              			<b><span id="min-price">1.000.000</span> <span>VNĐ</span> - <span id="max-price">2.000.000</span> <span>VNĐ</span> </b>
+					              			<b><span id="min-price">100000</span> <span>VNĐ</span> - <span id="max-price">5.000.000</span> <span>VNĐ</span> </b>
 					              		</div>
 
 				              		

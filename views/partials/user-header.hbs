@@ -24,7 +24,7 @@
 		</div>
 
 		<!-- Header Main -->
-		<form action="shop.html" method="get">
+		<form action="/products" method="post">
 			<div class="header_main">
 				<div class="container">
 					<div class="row">
@@ -42,18 +42,38 @@
 								<div class="header_search_content">
 									<div class="header_search_form_container">
 										<div action="#" class="header_search_form clearfix">
-											<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm sản phẩm...">
+											<input type="search" required="required" class="header_search_input" placeholder="Tìm kiếm sản phẩm..." id="productName" name="productName" value="{{filters.productName}}">
 											<div class="custom_dropdown">
 												<div class="custom_dropdown_list">
-													<span class="custom_dropdown_placeholder clc">Tất cả danh mục</span>
+													<span class="custom_dropdown_placeholder clc">
+														{{#if filters.categoryId}}
+															{{#each categories}}
+																{{#ifCond ../filters.categoryId '==' this.id}}
+																	{{this.name}}
+																{{/ifCond}}
+															{{/each}}
+														{{else}}
+															Tất cả danh mục
+														{{/if}}
+														
+														
+													</span>
+													<input type="hidden" name="categoryId" id="categoryId" value="{{filters.categoryId}}">
 													<i class="fas fa-chevron-down"></i>
+{{!-- 												<select name="config[mode]" class="custom_list clc">    
+													    <option value="Ba lô" ><a class="clc">Ba Lô</a></option>
+													    <option value="Túi xách" ><a class="clc">Túi xách</a></option>    
+													  </select> --}}
 													<ul class="custom_list clc">
-														<li><a class="clc" href="#">Ba lô</a></li>
-														<li><a class="clc" href="#">Túi Xách</a></li>
+														{{#each categories}}
+															<li><a class="clc" href="#" data-id="{{this.id}}">{{this.name}}</a></li>
+														{{/each}}
+														
+														{{!-- <li><a class="clc" href="#">Túi Xách</a></li> --}}
 													</ul>
 												</div>
 											</div>
-											<button type="submit" class="header_search_button trans_300" value="Submit"><img src="/user/images/search.png" alt=""></button>
+											<button type="submit" class="header_search_button trans_300" value="Submit" id="product_search"><img src="/user/images/search.png" alt=""></button>
 										</div>
 									</div>
 								</div>
@@ -116,7 +136,7 @@
 											<a href="#">{{this.name}}<i class="fas fa-chevron-right"></i></a>
 												<ul>
 													{{#each children}}
-														<li><a href="./category/bag.html">{{this.name}}<i class="fas fa-chevron-right"></i></a></li>
+														<li><a href="/products?subCategoryId={{this.id}}">{{this.name}}<i class="fas fa-chevron-right"></i></a></li>
 													{{/each}}													
 												</ul>
 											</li>

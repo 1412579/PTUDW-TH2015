@@ -1094,3 +1094,8 @@
 {
 	margin-right: 0px;
 }
+
+.selected {
+	color: #0e8ce4;
+	font-weight: bold;
+}
