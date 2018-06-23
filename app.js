@@ -27,7 +27,7 @@ var hbs = exphbs.create({ defaultLayout: 'main-user' ,
 			    return parseInt(value) + 1;
 			},
 		ifCond: function (v1, operator, v2, options) {
-			console.log(v2);
+			//console.log(v2);
 			//console.log(v1);
 		    switch (operator) {
 		        case '==':

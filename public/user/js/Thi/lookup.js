@@ -1,5 +1,6 @@
 $("document").ready(function() {
-	$("#ex2").slider({});
+	$("#ex2").slider({
+	});
 
 	$("#ex2").on("change", function(){
 		var values = $(this).val().split(",");
