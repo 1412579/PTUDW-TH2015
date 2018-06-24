@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/1412579/PTUDW-TH2015#readme",
   "dependencies": {
+    "all-the-cities": "^2.0.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.1",
     "connect-flash": "^0.1.1",

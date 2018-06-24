@@ -1,13 +1,16 @@
 var Brand = require('../model/brand.js');
+var cities = require('all-the-cities').filter(city => {
+												  return city.country.match('VN')
+												});
+var userBusiness = require('../model/user.js');
 
 
 var userController = 
 {
 	detail: function(req, res){
+		
 		var model = {
-			user: {
-				name: 'Username'
-			}
+			user: req.user
 		};
 		res.render('user-detail', model);
 	},
@@ -48,6 +51,33 @@ var userController =
 	},
 	orderDetail: function(req, res){
 		res.render('user-order-detail');
+	},
+	cities: function(req, res) {
+		var result = cities.filter(city => {
+											return city.name.toLowerCase().indexOf(req.query.search.toLowerCase()) != -1
+							   })
+							.map(city =>  {
+								return {
+								id: city.name,
+								text: city.name
+								};
+							})
+		res.send(result);
+	},
+	update: function(req, res) {
+		console.log(req.body);
+		userBusiness.update(req.body)
+			.then(function(result) {
+			// req.logIn(result, function(err) {
+			// 	if (err) { console.log(err); };
+			// 	// Redirect if it succeeds
+			// 		return res.json({status: 1,msg: "Đăng nhập thành công!",username: user.email });
+			// 	});
+				res.redirect('/user/detail');
+			})
+			.catch(function(ex) {
+				console.log(ex);
+			})
 	}
 };
 

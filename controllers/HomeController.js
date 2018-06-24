@@ -1,10 +1,12 @@
 var category = require('../model/category.js');
 var product = require('../model/product.js');
 
+
 var homeController =  
 {
 	index: function(req, res)
 	{
+		console.log(req.user);
 		let categories = [];
 		let promises = [];
 		promises.push(category.getDetailedCategory());
@@ -19,7 +21,8 @@ var homeController =
 						categories: result[0],
 						newestProducts: result[1],
 						bestSellerProducts: result[2],
-						mostViewedProducts: result[3]
+						mostViewedProducts: result[3],
+						user: req.user
 					};
 					res.render('home', model);
 			})

@@ -69,7 +69,10 @@ var middleware = {
                     
             }
             return next();
-        }
+    },
+    storeUserSession: function(user) {
+
+    }
 };
 
 module.exports = middleware;

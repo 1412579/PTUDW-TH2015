@@ -7,15 +7,21 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var bcrypt = require('bcrypt-nodejs');
 var facebook = require('./facebook.js');
 var moment = require('moment');
+var userBusiness = require('../model/user.js');
 
 module.exports = function(passport,pool) {
 
     passport.serializeUser(function(user, done) {
-        done(null, user);
+        done(null, user.id);
     });
 
-    passport.deserializeUser(function(user, done) {
-      done(null, user);
+    passport.deserializeUser(function(id, done) {
+        userBusiness.getUser(id)
+            .then(function(user) {
+                console.log(user);
+                done(null, user);
+            });
+            
     });
 
     passport.use(new FacebookStrategy({
