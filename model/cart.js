@@ -5,7 +5,7 @@ let cart = {
     update: () => {
 
     },
-    saveCartToBD: (cartInfo) => {
+    newCart: (cartInfo) => {
         return new Promise((resolve,reject)=>{
             var query = `insert into order_details(product_id,product_name,quantity,buying_price) values(${ cartInfo.ProId },${ cartInfo.name }, ${cartInfo.Quantity}, ${cartInfo.Amount})`;
             console.log(query);
@@ -20,15 +20,6 @@ let cart = {
                     
             });
         });
-    },
-
-    remove: function(cart, id){
-        for (var i = cart.length - 1; i >= 0; i--) {
-            if (proId === cart[i].ProId) {
-                cart.splice(i, 1);
-                return cart;
-            }
-        }
     },
 
     getCartCountProduct: (res, req) =>{

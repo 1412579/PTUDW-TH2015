@@ -55,20 +55,19 @@ function removeProduct(ProId){
     
     document.cookie = 'cart = ' + JSON.stringify(productsAddToCart) +"; path=/"; 
     location.reload(true);
-    // var url = "cart";
-    // $.ajax({
-    //     url: url,
-    //     type: 'GET',
-    //     cache: false,
-    //     data: { ProId: ProId },
-    //     success: function (data) {
-    //         console.log(data);
-    //         if (data.status == 0) {
-    //             alert(data.msg);
-    //         }
-    //         else if(data.status == 1){
-    //             location.reload(false);
-    //         }
-    //     }
-    // });
+}
+
+function update(ProId){
+    $(":input").bind('keyup mouseup', function () {
+        var Quantity = $(".qtyPro").val();
+        let productsAddToCart =[];
+        productsAddToCart = JSON.parse(getCookie("cart"));
+        for (var i = productsAddToCart.length - 1; i >= 0; i--) {
+            if (parseInt(ProId) === parseInt(productsAddToCart[i].ProId)) {
+                productsAddToCart[i].Quantity = Quantity.toString();
+                document.cookie = 'cart = ' + JSON.stringify(productsAddToCart) +"; path=/";
+                return
+            }
+        }
+      })
 }

@@ -6,6 +6,11 @@
         <link rel="stylesheet" type="text/css" href="/user/styles/cart_styles.css">
 		<script src="/user/js/cartShopping.js"></script>
     {{/section}}
+	{{#section 'js'}}
+	<script type="text/javascript">
+		console.log("this is cart");
+	</script>
+	{{/section}}
     <!-- Cart -->
 	<div class="cart_section">
 		<div class="container">
@@ -32,7 +37,7 @@
 											</div>
 											<div class="cart_item_quantity cart_info_col">
 												<div class="cart_item_title">Số lượng</div>
-												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" value="{{Quantity}}"></div>
+												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" onclick="update({{Product.product_id}})" value="{{Quantity}}"></div>
 											</div>
 											<div class="cart_item_price cart_info_col">
 												<div class="cart_item_title">Giá</div>
@@ -57,7 +62,7 @@
 						</div>
 
 						<div class="cart_buttons">
-							<button type="button" class="button cart_button_checkout"><a href="/checkout">Thanh toán</a>></button>
+							<button type="button" class="button cart_button_checkout"><a href="/checkout">Tiến hành đặt hàng</a>></button>
 						</div>
 					</div>
 				</div>

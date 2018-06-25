@@ -13,7 +13,7 @@ module.exports = function (app, passport, pool) {
 	var userCartController = require('../controllers/UserCartController');
 	var adminProductController = require('../controllers/AdminProductController');
 	var orderController = require('../controllers/OrderController');
-	var paymentController = require('../controllers/PaymentController');
+	var checkoutController = require('../controllers/CheckOutController');
 	var mw = require('../config/middleware');
 
 	app.use(function (req, res, next) {
@@ -37,7 +37,7 @@ module.exports = function (app, passport, pool) {
 	app.use("/admin/category",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, categoryController);
 	app.use("/admin/brand",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, brandController);
 	
-	app.use("/checkout", paymentController);
+	app.use("/checkout", checkoutController);
 	
 	
 	app.use("/cart", userCartController.index);

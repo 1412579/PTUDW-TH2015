@@ -39,13 +39,25 @@ let cartController = {
         }).catch(function(error){console.log(error);});
     },
 
-    update: function(req, res){
-
+    updateQuantityCartInHeader: function(req, res){
+        cartRepo.getCartCountProduct()
+        .then((result)=>{
+			// res.render('',{
+            //     layout: 'user'
+			// 	list: result,
+			// 	title: 'Danh sách thương hiệu'
+			// });
+			// resolve(result);			
+		})
+        .catch((err) => {
+			console.log(err);
+			// res.end();
+		});
     },
 
     delete: (req,res) =>{
         
-    }
+    },
 }
 
 module.exports = cartController;
