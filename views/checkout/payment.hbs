@@ -1,5 +1,7 @@
 {{#section 'head'}}
   <script src="/user/js/checkout.js"></script>
+  <link rel="stylesheet" type="text/css" href="/user/styles/checkout_style.css">
+  
 {{/section}}
 
 <div class="container">
@@ -20,30 +22,30 @@
               <h6 class="my-0">{{Product.name}}</h6>
               <small class="text-muted">{{Product.description}}</small>
             </div>
-            <span class="text-muted">{{Amount}} đ</span>
+            <span class="text-muted">{{number_format Amount}} đ</span>
           </li>
         {{/each}}
-        <li class="list-group-item d-flex justify-content-between bg-light">
+        {{!-- <li class="list-group-item d-flex justify-content-between bg-light">
           <div class="text-success">
             <h6 class="my-0">MÃ CODE</h6>
             <small>10XXXXx</small>
           </div>
           <span class="text-success">-100,000</span>
-        </li>
+        </li> --}}
         <li class="list-group-item d-flex justify-content-between">
           <span>TỔNG</span>
-          <strong>{{TotalAmount}} đ</strong>
+          <strong>{{number_format TotalAmount}} đ</strong>
         </li>
       </ul>
 
-      <form class="card p-2">
+      {{!-- <form class="card p-2">
         <div class="input-group">
           <input type="text" class="form-control" placeholder="MÃ CODE">
           <div class="input-group-append">
             <button type="submit" class="btn btn-secondary">Xác nhận</button>
           </div>
         </div>
-      </form>
+      </form> --}}
     </div>
     <div class="col-md-8 order-md-1">
       <h4 class="mb-3">Thông tin</h4>
@@ -101,15 +103,9 @@
             </label>
             <select class="form-control" id="province" name="select2-single-box" data-placeholder="Pick your choice" data-tabindex="1"
               onclick="startSelect2()">
-              <option value="1">First choice</option>
-              <option value="2">Second choice</option>
-              <option value="3">Third choice</option>
-              <option value="4">Fourth choice</option>
-              <option value="5">Fifth choice</option>
-              <option value="6">Sixth choice</option>
-              <option value="7">Seventh choice</option>
-              <option value="8">Eighth choice</option>
-              <option value="9">Ninth choice</option>
+              {{#each Provinces}}
+                <option value="{{id}}">{{province_name}}</option>                
+              {{/each}}
             </select>
           </div>
           <div class="col-md-5 mb-3">

@@ -15,17 +15,18 @@ function getCookie(cname) {
 
 function checkout(e){
 
-    // var forms = document.getElementsByClassName('needs-validation');
-    //   // Loop over them and prevent submission
-    //   var validation = Array.prototype.filter.call(forms, function(form) {
-    //     form.addEventListener('submit', function(event) {
-    //       if (form.checkValidity() === false) {
-    //         event.preventDefault();
-    //         event.stopPropagation();
-    //       }
-    //       form.classList.add('was-validated');
-    //     }, false);
-    //   });
+    var forms = document.getElementsByClassName('needs-validation');
+      // Loop over them and prevent submission
+      var validation = Array.prototype.filter.call(forms, function(form) {
+        if (form.checkValidity() === false) {
+            event.preventDefault();
+            event.stopPropagation();
+          }
+          form.classList.add('was-validated');
+        // form.addEventListener('submit', function(event) {
+          
+        // }, false);
+      });
     console.log("da vao check out");
     
     e.preventDefault();
@@ -45,10 +46,14 @@ function checkout(e){
         address: 'address',
         phone: "012345689",
     }
-    console.log(dataUser);
-    
+    let isLogIn = getCookie('isLogIn');
+    console.log(isLogIn)
+    if(isLogIn === ''){
+        return
+    }
+
     let productsAddToCart =[];
-        productsAddToCart = JSON.parse(getCookie("cart"));
+        productsAddToCart = JSON.parse(getCookie('cart'));
     
     var url = "/checkout/payment";
     $.ajax({
@@ -67,3 +72,9 @@ function checkout(e){
         }
     });
 }
+
+function startSelect2(){
+    $('select').select2();
+    // res.cookie('isLogIn', 'true');
+    
+  }

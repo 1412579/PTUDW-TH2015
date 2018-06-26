@@ -41,11 +41,11 @@
 											</div>
 											<div class="cart_item_price cart_info_col">
 												<div class="cart_item_title">Giá</div>
-												<div class="cart_item_text" id="price">{{Product.price}}</div>
+												<div class="cart_item_text" id="price">{{number_format Product.price}} đ</div>
 											</div>
 											<div class="cart_item_total cart_info_col">
 												<div class="cart_item_title">Tổng tiền</div>
-												<div class="cart_item_text total" id="total">{{Amount}}</div>
+												<div class="cart_item_text total" id="total">{{number_format Amount}} đ</div>
 											</div>
 										</div>
                                 </li>
@@ -57,7 +57,7 @@
 						<div class="order_total">
 							<div class="order_total_content text-md-right">
 								<div class="order_total_title">Tổng tiền của giỏ hàng:</div>
-								<div class="order_total_amount" id="subtotal">{{TotalAmount}}</div>
+								<div class="order_total_amount" id="subtotal">{{number_format TotalAmount}} đ</div>
 							</div>
 						</div>
 

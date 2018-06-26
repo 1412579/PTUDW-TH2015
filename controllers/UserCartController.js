@@ -20,10 +20,11 @@ let cartController = {
         Promise.all(arr_products).then(result => {
             for(let i = result.length -1; i >= 0; i--){
                 let pro = result[i][0];
+                pro.price = parseInt(pro.price);
                 let item = {
                     Product: pro,
                     Quantity: productsAddToCartCookie[i].Quantity,
-                    Amount: (parseInt(pro.price) * parseInt(productsAddToCartCookie[i].Quantity)).toString()
+                    Amount: (parseInt(pro.price) * parseInt(productsAddToCartCookie[i].Quantity))
                 }
                 items.push(item)
             }

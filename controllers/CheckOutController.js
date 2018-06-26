@@ -7,6 +7,7 @@ var cartRepo = require('../model/cart.js');
 var moment = require('moment');
 var orderDetail = require('../model/order-detail.js');
 var orderRepo = require('../model/order.js');
+var service = require('../model/support.service.js');
 
 
 router.get('/',  function(req, res) {
@@ -20,6 +21,15 @@ router.get('/',  function(req, res) {
         for (let i = 0; i < productsAddToCartCookie.length; i++) {
             arr_products.push(productsRepo.getProductById(parseInt(productsAddToCartCookie[i].ProId)));
         }
+        var Provinces = [];
+            service.getProvince()
+                    .then((result)=> {
+                        for(let i = 0; i < result.length; i++){
+                            Provinces.push(result[i]);
+                        }
+                        // console.log("thanh cong")
+                    })
+                    .catch(err => console.log(err));
         let items = [];
         Promise.all(arr_products).then(result => {
             for(let i = result.length -1; i >= 0; i--){
@@ -27,7 +37,7 @@ router.get('/',  function(req, res) {
                 let item = {
                     Product: pro,
                     Quantity: productsAddToCartCookie[i].Quantity,
-                    Amount: (parseInt(pro.price) * parseInt(productsAddToCartCookie[i].Quantity)).toString()
+                    Amount: (parseInt(pro.price) * parseInt(productsAddToCartCookie[i].Quantity))
                 }
                 items.push(item)
             }
@@ -35,11 +45,14 @@ router.get('/',  function(req, res) {
             for(let i = 0; i < items.length; i++){
                 TotalAmount+= parseInt(items[i].Amount);
             }
+            
             var vm = {
                 items: items,
                 TotalAmount: TotalAmount,
-                Quantity_Products: items.length
+                Quantity_Products: items.length,
+                Provinces: Provinces
             };
+            // console.log(Provinces);            
             res.render('checkout/payment', vm);
         }).catch(function(error){console.log(error);});
 });
@@ -73,21 +86,24 @@ router.post('/payment', (req, res)=>{
             Total+= parseInt(cartInfo.Amount);
             orderDetail.newOrderDetail(cartInfo)
             .then(()=>{
-                // req.flash('messageCate', 'Đã thêm chi tiết đơn hàng thành công!');
-                console.log("them duoc laf ngon");
+                req.flash('messageCate', 'Đã thêm chi tiết đơn hàng thành công!');
+                console.log("Đã thêm chi tiết đơn hàng thành công");
             }).catch(err => console.log(err));
         }
-        // let orderInfo = {
-        //     User_id: 3,
-        //     Total: Total,
-        //     adress: req.body.dataUser.adress,
-        //     email: req.body.dataUser.email,
-        //     phone: req.body.dataUser.phone,
-        //     order_status_id: 2
-        // }
-        // orderRepo.newOrder(orderInfo).then(()=>{
-        //     console.log("them duoc laf ngon");
-        // }).catch(err => console.log(err));
+        let getTimeNow = moment().format('YYYY-MM-DD HH:mm:ss');        
+        let orderInfo = {
+            User_id: 10,
+            Total: Total,
+            adress: req.body.dataUser.address,
+            created_at: getTimeNow,
+            updated_at: getTimeNow,
+            email: req.body.dataUser.email,
+            phone: req.body.dataUser.phone,
+            order_status_id: 2
+        }
+        orderRepo.newOrder(orderInfo).then(()=>{
+            console.log("Đã thêm đơn hàng thành công");
+        }).catch(err => console.log(err));
 
     }).catch(function(error){console.log(error);});
 });
