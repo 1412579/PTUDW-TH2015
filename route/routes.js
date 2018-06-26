@@ -26,7 +26,8 @@ module.exports = function (app, passport, pool) {
 	app.get('/user/detail', userController.detail);
 	app.get('/user/orders', userController.orders);
 	app.get('/user/order/:orderId', userController.orderDetail)
-	app.post('/user/detail', userController.update);
+	app.post('/user/detail', userController.update, userController.detail);
+	app.post('/user/changePass', userController.changePassword, userController.detail);
 	app.get('/product/:productId', productController.detail);
 	app.get('/brand', userBrandController.index);
 	app.get('/user/cities', userController.cities);

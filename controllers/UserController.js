@@ -8,10 +8,12 @@ var userBusiness = require('../model/user.js');
 var userController = 
 {
 	detail: function(req, res){
-		
+		console.log(res.locals.pageInfo);
 		var model = {
-			user: req.user
+			user: req.user,
+			pageInfo: res.locals.pageInfo
 		};
+		res.locals.pageInfo = undefined;
 		res.render('user-detail', model);
 	},
 	orders: function(req, res){
@@ -64,20 +66,56 @@ var userController =
 							})
 		res.send(result);
 	},
-	update: function(req, res) {
+	update: function(req, res, next) {
 		console.log(req.body);
 		userBusiness.update(req.body)
-			.then(function(result) {
-			// req.logIn(result, function(err) {
-			// 	if (err) { console.log(err); };
-			// 	// Redirect if it succeeds
-			// 		return res.json({status: 1,msg: "Đăng nhập thành công!",username: user.email });
-			// 	});
+			.then(function(updateCode) {
+				var message;
+				switch (updateCode)
+				{
+					case 0:
+						message = 'Hệ thống gặp lỗi, vui lòng thử lại sau!';
+						break;
+					case 1: 
+						message = 'Cập nhật thông tin thành công';
+						break;
+				}
+
+				var model = {
+					updateSuccess: updateCode == 1 ? true : false,
+					message: message
+				};
+				res.locals.pageInfo = model;
 				res.redirect('/user/detail');
-			})
-			.catch(function(ex) {
-				console.log(ex);
-			})
+			});
+	},
+	changePassword: function(req, res, next) {
+		userBusiness.changePassword(req.body.userId, req.body.oldPassword, req.body.newPassword, req.body.retypeNewPassword)
+			.then(function(updateCode) {
+				var message;
+				switch (updateCode)
+				{
+					case -1:
+						message = 'Mật khẩu mới không khớp, vui lòng nhập lại!';
+						break;	
+					case 0:
+						message = 'Nhập sai mật khẩu cũ, vui lòng nhập lại!';
+						break;
+					case 1: 
+						message = 'Cập nhật mật khẩu thành công';
+						break;
+					default:
+						message = 'Hệ thống gặp lỗi, vui lòng thử lại sau!';
+						break;
+				}
+				var model = {
+					updateSuccess: updateCode == 1 ? true : false,
+					message: message
+				};
+				res.locals.pageInfo = model;
+				return next();
+			});
+		 
 	}
 };
 

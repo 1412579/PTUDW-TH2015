@@ -14,6 +14,7 @@
 
                     <div class="col-md-9 clearfix" id="customer-account">
 
+                        {{> alert pageInfo}}
                         <h3>Thay đổi thông tin cá nhân và mật khẩu</h3>
 
 
@@ -23,13 +24,13 @@
                                 <h3 class="text-uppercase">Đổi mật khẩu</h3>
                             </div>
 
-                            <form>
+                            <form action="/user/changePass" method="POST">
                                 <input type="hidden" id="userId" name="userId" value="{{user.id}}">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="password_old">Mật khẩu cũ</label>
-                                            <input type="password" class="form-control" id="password_old" placeholder="Mật khẩu cũ">
+                                            <input type="password" class="form-control" id="password_old" placeholder="Mật khẩu cũ" name="oldPassword">
                                         </div>
                                     </div>
                                 </div>
@@ -37,13 +38,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="password_1">Mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="password_1" placeholder="Mật khẩu mới">
+                                            <input type="password" class="form-control" id="password_1" placeholder="Mật khẩu mới" name="newPassword">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="password_2">Nhập lại mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="password_2" placeholder="Nhập lại mật khẩu mới">
+                                            <input type="password" class="form-control" id="password_2" placeholder="Nhập lại mật khẩu mới" name="retypeNewPassword">
                                         </div>
                                     </div>
                                 </div>
