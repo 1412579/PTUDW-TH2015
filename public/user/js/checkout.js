@@ -23,9 +23,7 @@ function checkout(e){
             event.stopPropagation();
           }
           form.classList.add('was-validated');
-        // form.addEventListener('submit', function(event) {
-          
-        // }, false);
+          return;
       });
     console.log("da vao check out");
     
@@ -33,22 +31,19 @@ function checkout(e){
 
     var fullName = $('#firstName').val() +" " + $('#lastName').val();
     var email = $('#email').val();
+    // console.log();
     var address =$('#address').val();
-    // var dataUser = {
-    //     fullName: fullName,
-    //     email: email,
-    //     address: address,
-    //     phone: "012345689",
-    // }
     var dataUser = {
-        fullName: 'fullName',
-        email: 'email@gmail.com',
-        address: 'address',
+        fullName: fullName,
+        email: email,
+        address: address,
         phone: "012345689",
     }
+    
     let isLogIn = getCookie('isLogIn');
     console.log(isLogIn)
     if(isLogIn === ''){
+        alert("Bạn vui lòng đăng nhập vào hệ thống trước khi thanh toán")
         return
     }
 
@@ -74,6 +69,7 @@ function checkout(e){
 }
 
 function startSelect2(){
+
     $('select').select2();
     // res.cookie('isLogIn', 'true');
     

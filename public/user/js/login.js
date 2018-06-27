@@ -18,6 +18,7 @@ function UserLogin(e){
                 alert(data.msg);
             }
             else if(data.status == 1){
+                document.cookie = "isLogIn = true";
                 location.reload(false);
             }
         }

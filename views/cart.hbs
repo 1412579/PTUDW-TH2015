@@ -12,7 +12,9 @@
 	</script>
 	{{/section}}
     <!-- Cart -->
-	<div class="cart_section">
+
+	{{#if items}}
+		<div class="cart_section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
@@ -69,4 +71,8 @@
 			</div>
 		</div>
 	</div>
+	{{else}}
+	<p>No co san pham</p>
+	{{/if}}
+	
   

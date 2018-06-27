@@ -45,25 +45,19 @@ router.get('/',  function(req, res) {
             for(let i = 0; i < items.length; i++){
                 TotalAmount+= parseInt(items[i].Amount);
             }
-            
+           // Provinces.sort((referenceStr, compareString) => referenceStr.localeCompare(compareString));
             var vm = {
                 items: items,
                 TotalAmount: TotalAmount,
                 Quantity_Products: items.length,
                 Provinces: Provinces
             };
-            // console.log(Provinces);            
+            console.log(Provinces);            
             res.render('checkout/payment', vm);
         }).catch(function(error){console.log(error);});
 });
 
 router.post('/payment', (req, res)=>{
-    // console.log(req.body.dataUser);
-    
-    // for(let i = 0; i < req.body.dataCart.length; i++){
-    //     console.log(req.body.dataCart[i]);
-    // }
-
 
     let arr_products = [];
     for (let i = 0; i < req.body.dataCart.length; i++) {

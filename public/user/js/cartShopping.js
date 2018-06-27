@@ -14,7 +14,7 @@ function getCookie(cname) {
     return "";
 }
 
-function addCart(_proId){
+function addCart(_proId, price){
 
     let Quantity = $('#quantity_input').val();
     if(Quantity === undefined){
@@ -24,8 +24,8 @@ function addCart(_proId){
         ProId: _proId,
         Quantity: Quantity
     }
-   
     let productsAddToCart =[];
+    let TotalProducts =0;
     if(getCookie("cart")===""){
         productsAddToCart.push(item);
         document.cookie = "cart = " +  JSON.stringify(productsAddToCart) +  "; path=/";
@@ -35,13 +35,18 @@ function addCart(_proId){
         for(let i = 0; i < productsAddToCart.length; i++){
             if(productsAddToCart[i].ProId === item.ProId){
                 productsAddToCart[i].Quantity = (parseInt(productsAddToCart[i].Quantity) + parseInt(item.Quantity)).toString();
-                document.cookie = "cart = " +  JSON.stringify(productsAddToCart) + "; path=/";
+                document.cookie = "cart = " +  JSON.stringify(productsAddToCart) + "; path=/";                 
                 return
             }
         }
         productsAddToCart.push(item);
-        document.cookie = "cart = " +  JSON.stringify(productsAddToCart) + "; path=/";        
+        document.cookie = "cart = " +  JSON.stringify(productsAddToCart) + "; path=/"; 
     }
+
+    for(let i =0; i < productsAddToCart.length; i++){
+        TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
+    }
+    $('.cart_counts').text(TotalProducts.toString());    
 }
 
 function removeProduct(ProId){
@@ -53,7 +58,13 @@ function removeProduct(ProId){
         }
     }
     
-    document.cookie = 'cart = ' + JSON.stringify(productsAddToCart) +"; path=/"; 
+    document.cookie = 'cart = ' + JSON.stringify(productsAddToCart) +"; path=/";
+    
+    let TotalProducts =0;    
+    for(let i =0; i < productsAddToCart.length; i++){
+        TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
+    }
+    $('.cart_counts').text(TotalProducts.toString());
     location.reload(true);
 }
 
@@ -70,4 +81,10 @@ function update(ProId){
             }
         }
       })
+      
+    let TotalProducts =0;      
+      for(let i =0; i < productsAddToCart.length; i++){
+        TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
+    }
+    $('.cart_counts').text(TotalProducts.toString());
 }
