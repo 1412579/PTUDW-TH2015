@@ -1,14 +1,17 @@
 var passport = require('passport');
 const pool = require('../model/pg');
 
+
 var SignUpController =  
 {
 	sign_up: function(req, res,next)
 	{
 		passport.authenticate('local-signup', function(err, user, info) {
-            console.log('day là ìno'+info);
+            console.log('day là '+user);
 			if (err) { return next(err); }
 			// Redirect if it fails
+			if(user === "Lỗi chưa nhập captcha"){return res.json({status: 3,msg: "Please insert captcha!"});}
+			if(user === "Failed captcha"){return res.json({status: 4,msg: "Failed captcha!"});}
 			if (!user) { return res.json({status: 0,msg: "Existed Email!"}); }
 			req.logIn(user, function(err) {
 				if (err) { return next(err); }
