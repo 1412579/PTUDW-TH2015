@@ -20,4 +20,17 @@ $("document").ready(function() {
 	    }
 	  }
 	});
+
+	$('#logOut').on('click', function(e) {
+		e.preventDefault();
+		var choice = confirm($(this).data('confirm'));
+		//confirm($(this).data('confirm'));
+		if (choice)
+		{
+			window.location.href = $(this).attr('href');
+		}
+
+		
+		return false;
+	});
 });

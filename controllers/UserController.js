@@ -12,7 +12,8 @@ var userController =
 		console.log(res.locals.pageInfo);
 		var model = {
 			user: req.user,
-			pageInfo: res.locals.pageInfo
+			pageInfo: res.locals.pageInfo,
+			onUserDetailPage:  1
 		};
 		res.locals.pageInfo = undefined;
 		res.render('user-detail', model);
@@ -21,7 +22,7 @@ var userController =
 		orderBusiness.getOrdersByUserId(req.user.id)
 						.then(function(products) {
 							//console.log(products);
-							res.render('user-order', {products: products});
+							res.render('user-order', {products: products, onOrderPage: 1});
 						})
 						.catch(function(err) {
 							console.log(err);
@@ -40,7 +41,8 @@ var userController =
 					res.render('user-order-detail', 
 					 { 
 						products: products,
-						order: order
+						order: order,
+						onOrderPage: 1
 					 })
 				})
 				.catch(function(err) {

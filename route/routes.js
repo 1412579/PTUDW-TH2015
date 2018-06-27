@@ -24,6 +24,7 @@ module.exports = function (app, passport, pool) {
 
 	app.get('/', homeController.index);
 	app.get('/user/detail', userController.detail);
+	app.get('/user/logout', loginController.logout);
 	app.get('/user/orders', userController.orders);
 	app.get('/user/order/:orderId', userController.orderDetail)
 	app.post('/user/detail', userController.update, userController.detail);

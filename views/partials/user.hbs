@@ -11,12 +11,19 @@
                               <b class="text-center">{{user.fullname}}</b>
                               <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                        <a href="/user/orders" class="list-group-item list-group-item-action"><i class="fa fa-list"></i> Đơn hàng</a>
+                                        {{#if onOrderPage}}
+                                          <a href="/user/orders" class="list-group-item list-group-item-action active"><i class="fa fa-list"></i> Đơn hàng</a>
+                                        {{else}}
+                                          <a href="/user/orders" class="list-group-item list-group-item-action"><i class="fa fa-list"></i> Đơn hàng</a>
+                                        {{/if}}
+                                        
+                                        {{#if onUserDetailPage}}
+                                          <a href="/user/orders" class="list-group-item list-group-item-action active"><i class="fa fa-user"></i> Tài khoản</a>
+                                        {{else}}
+                                          <a href="/user/detail" class="list-group-item list-group-item-action " ><i class="fa fa-user"></i> Tài khoản</a>
+                                        {{/if}}
 
-
-                                        <a href="/user/detail" class="list-group-item list-group-item-action active" ><i class="fa fa-user"></i> Tài khoản</a>
-
-                                        <a href="/user/logout" class="list-group-item list-group-item-action"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
+                                        <a href="/user/logout" data-confirm="Bạn có muốn đăng xuất?" class="list-group-item list-group-item-action"  id="logOut"><i class="fas fa-sign-out-alt" ></i> Đăng xuất</a>
 
                                 </ul>
                               </div>
