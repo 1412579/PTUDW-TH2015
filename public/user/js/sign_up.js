@@ -1,8 +1,23 @@
 function UserSignUp(e){
+    // var forms = document.getElementsByClassName('needs-validation');
+    // //   Loop over them and prevent submission
+    //   var validation = Array.prototype.filter.call(forms, function(form) {
+    //     if (form.checkValidity() === false) {
+    //         event.preventDefault();
+    //         event.stopPropagation();
+    //       }
+    //       form.classList.add('was-validated');
+    //       return;
+    //   });
     e.preventDefault();
     let email = $('#inputEmailSU').val();
     let passWord = $('#inputPasswordSU').val();
     let userName = $('#inputName').val();
+    if(!email || !passWord || !userName){
+        alert("Vui lòng nhập đủ họ tên, emai, password!")
+        return false;
+    }
+    
     let isGenderMale = $('#gender-male-checkbox').prop('checked');
     let dob = $('#inputDOB').val();
     let address = $('#inputAddressSU').val();

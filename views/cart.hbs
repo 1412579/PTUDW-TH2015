@@ -6,8 +6,15 @@
         <link rel="stylesheet" type="text/css" href="/user/styles/cart_styles.css">
 		<script src="/user/js/cartShopping.js"></script>
     {{/section}}
+	{{#section 'js'}}
+	<script type="text/javascript">
+		console.log("this is cart");
+	</script>
+	{{/section}}
     <!-- Cart -->
-	<div class="cart_section">
+
+	{{#if items}}
+		<div class="cart_section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
@@ -32,15 +39,15 @@
 											</div>
 											<div class="cart_item_quantity cart_info_col">
 												<div class="cart_item_title">Số lượng</div>
-												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" value="{{Quantity}}"></div>
+												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" onclick="update({{Product.product_id}})" value="{{Quantity}}"></div>
 											</div>
 											<div class="cart_item_price cart_info_col">
 												<div class="cart_item_title">Giá</div>
-												<div class="cart_item_text" id="price">{{Product.price}}</div>
+												<div class="cart_item_text" id="price">{{number_format Product.price}} đ</div>
 											</div>
 											<div class="cart_item_total cart_info_col">
 												<div class="cart_item_title">Tổng tiền</div>
-												<div class="cart_item_text total" id="total">{{Amount}}</div>
+												<div class="cart_item_text total" id="total">{{number_format Amount}} đ</div>
 											</div>
 										</div>
                                 </li>
@@ -52,16 +59,20 @@
 						<div class="order_total">
 							<div class="order_total_content text-md-right">
 								<div class="order_total_title">Tổng tiền của giỏ hàng:</div>
-								<div class="order_total_amount" id="subtotal">{{TotalAmount}}</div>
+								<div class="order_total_amount" id="subtotal">{{number_format TotalAmount}} đ</div>
 							</div>
 						</div>
 
 						<div class="cart_buttons">
-							<button type="button" class="button cart_button_checkout"><a href="/checkout">Thanh toán</a>></button>
+							<button type="button" class="button cart_button_checkout"><a href="/checkout">Tiến hành đặt hàng</a>></button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	{{else}}
+	<p>No co san pham</p>
+	{{/if}}
+	
   

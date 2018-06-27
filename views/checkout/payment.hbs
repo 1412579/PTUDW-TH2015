@@ -1,196 +1,190 @@
-   <div class="container">
-    <div class="py-5 text-center">
+{{#section 'head'}}
+  <script src="/user/js/checkout.js"></script>
+{{/section}}
+
+<div class="container">
+  {{!--
+  <div class="py-5 text-center">
+  </div> --}}
+
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">Đơn hàng</span>
+        <span class="badge badge-secondary badge-pill">{{Quantity_Products}}</span>
+      </h4>
+      <ul class="list-group mb-3">
+        {{#each items}}	
+          <li class="list-group-item d-flex justify-content-between lh-condensed">
+            <div>
+              <h6 class="my-0">{{Product.name}}</h6>
+              <small class="text-muted">{{Product.description}}</small>
+            </div>
+            <span class="text-muted">{{number_format Amount}} đ</span>
+          </li>
+        {{/each}}
+        {{!-- <li class="list-group-item d-flex justify-content-between bg-light">
+          <div class="text-success">
+            <h6 class="my-0">MÃ CODE</h6>
+            <small>10XXXXx</small>
+          </div>
+          <span class="text-success">-100,000</span>
+        </li> --}}
+        <li class="list-group-item d-flex justify-content-between">
+          <span>TỔNG</span>
+          <strong>{{number_format TotalAmount}} đ</strong>
+        </li>
+      </ul>
+
+      {{!-- <form class="card p-2">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="MÃ CODE">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary">Xác nhận</button>
+          </div>
+        </div>
+      </form> --}}
     </div>
+    <div class="col-md-8 order-md-1">
+      <h4 class="mb-3">Thông tin</h4>
+      <form class="needs-validation" novalidate>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="firstName">Họ</label>
+            <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Nhập vào giá trị.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="lastName">Tên</label>
+            <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+            <div class="invalid-feedback">
+              Nhập vào giá trị.
+            </div>
+          </div>
+        </div>
 
-    <div class="row">
-      <div class="col-md-4 order-md-2 mb-4">
-        <h4 class="d-flex justify-content-between align-items-center mb-3">
-          <span class="text-muted">Đơn hàng</span>
-          <span class="badge badge-secondary badge-pill">3</span>
-        </h4>
-        <ul class="list-group mb-3">
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Ba Lô KPOp</h6>
-              <small class="text-muted">Mô tả cho đơn hàng</small>
-            </div>
-            <span class="text-muted">199,000 đ</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Ba Lô KPOp</h6>
-              <small class="text-muted">Mô tả cho đơn hàng</small>
-            </div>
-            <span class="text-muted">199,000 đ</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">Ba Lô KPOp</h6>
-              <small class="text-muted">Mô tả cho đơn hàng</small>
-            </div>
-            <span class="text-muted">199,000 đ</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between bg-light">
-            <div class="text-success">
-              <h6 class="my-0">MÃ CODE</h6>
-              <small>10XXXXx</small>
-            </div>
-            <span class="text-success">-100,000</span>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
-            <span>TỔNG</span>
-            <strong>1,000,000 đ</strong>
-          </li>
-        </ul>
-
-        <form class="card p-2">
+        {{!-- <div class="mb-3">
+          <label for="../username">Tên đăng nhập</label>
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="MÃ CODE">
-            <div class="input-group-append">
-              <button type="submit" class="btn btn-secondary">Xác nhận</button>
+            <div class="input-group-prepend">
+            </div>
+            <input type="text" class="form-control" id="../username" placeholder="../username" required>
+            <div class="invalid-feedback" style="width: 100%;">
+              Nhập vào tên đăng nhập.
             </div>
           </div>
-        </form>
-      </div>
-      <div class="col-md-8 order-md-1">
-        <h4 class="mb-3">Thông tin</h4>
-        <form class="needs-validation" novalidate>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="firstName">Họ</label>
-              <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Nhập vào giá trị.
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="lastName">Tên</label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-              <div class="invalid-feedback">
-                Nhập vào giá trị.
-              </div>
-            </div>
-          </div>
+        </div> --}}
 
-          <div class="mb-3">
-            <label for="../username">Tên đăng nhập</label>
-            <div class="input-group">
-              <div class="input-group-prepend">
-              </div>
-              <input type="text" class="form-control" id="../username" placeholder="../username" required>
-              <div class="invalid-feedback" style="width: 100%;">
-                Nhập vào tên đăng nhập.
-              </div>
-            </div>
+        <div class="mb-3">
+          <label for="email">Email
+            <span class="text-muted">(Optional)</span>
+          </label>
+          <input type="email" class="form-control" id="email" placeholder="you@example.com">
+          <div class="invalid-feedback">
+            Vui lòng điền Email vào trường này.
           </div>
+        </div>
 
-          <div class="mb-3">
-            <label for="email">Email
-              <span class="text-muted">(Optional)</span>
+        <div class="mb-3">
+          <label for="address">Địa chỉ</label>
+          <input type="text" class="form-control" id="address" placeholder="131/12 Tân Bình, Hồ Chí Minh" required>
+          <div class="invalid-feedback">
+            Vui lòng nhập địa chỉ chuyển hàng.
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-5 mb-3">
+            <label class="control-label">Tỉnh/ Thành phố
             </label>
-            <input type="email" class="form-control" id="email" placeholder="you@example.com">
-            <div class="invalid-feedback">
-              Vui lòng điền Email vào trường này.
-            </div>
+            <select class="js-example-basic-single form-control" id="province" name="state" data-placeholder="Pick your choice" data-tabindex="1"
+              onclick="startSelect2()">
+              {{#each Provinces}}
+                <option value="{{id}}">{{province_name}}</option>                
+              {{/each}}
+            </select>
+          </div>
+          <div class="col-md-5 mb-3">
+            {{!-- <select class="js-example-basic-single" name="state">
+              <option value="AL">Alabama</option>
+                
+              <option value="WY">Wyoming</option>
+            </select> --}}
+            <label class="control-label">Quận/ Huyện</label>
+            <select class="form-control" id="distric" name="select2-single-box" data-placeholder="Pick your choice" data-tabindex="1"
+              onclick="startSelect2()">
+              <option value="1">First choice</option>
+              <option value="2">Second choice</option>
+              <option value="3">Third choice</option>
+              <option value="4">Fourth choice</option>
+              <option value="5">Fifth choice</option>
+              <option value="6">Sixth choice</option>
+              <option value="7">Seventh choice</option>
+              <option value="8">Eighth choice</option>
+              <option value="9">Ninth choice</option>
+            </select>
           </div>
 
-          <div class="mb-3">
-            <label for="address">Địa chỉ</label>
-            <input type="text" class="form-control" id="address" placeholder="131/12 Tân Bình, Hồ Chí Minh" required>
-            <div class="invalid-feedback">
-              Vui lòng nhập địa chỉ chuyển hàng.
-            </div>
-          </div>
+        </div>
+        <hr class="mb-4">
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Địa chỉ giao hàng giông như trên hóa đơn</span>
+        </label>
+        <label class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input">
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">Lưu thông tin cho lần sau</span>
+        </label>
+        <hr class="mb-4">
 
+        <h4 class="mb-3">Hình thức thanh toán</h4>
+
+        <div class="d-block my-3">
           <div class="row">
-              <div class="col-md-5 mb-3">
-                  <label class="control-label">Tỉnh/ Thành phố
-                  </label>
-                  <select class="form-control" id="province" name="select2-single-box" data-placeholder="Pick your choice" data-tabindex="1" onclick="startSelect2()">
-                    <option value="1">First choice</option>
-                    <option value="2">Second choice</option>
-                    <option value="3">Third choice</option>
-                    <option value="4">Fourth choice</option>
-                    <option value="5">Fifth choice</option>
-                    <option value="6">Sixth choice</option>
-                    <option value="7">Seventh choice</option>
-                    <option value="8">Eighth choice</option>
-                    <option value="9">Ninth choice</option>
-                  </select>
-                </div>
-            <div class="col-md-5 mb-3">
-              <label class="control-label">Quận/ Huyện</label>
-              <select class="form-control" id="distric" name="select2-single-box" data-placeholder="Pick your choice" data-tabindex="1" onclick="startSelect2()">
-                <option value="1">First choice</option>
-                <option value="2">Second choice</option>
-                <option value="3">Third choice</option>
-                <option value="4">Fourth choice</option>
-                <option value="5">Fifth choice</option>
-                <option value="6">Sixth choice</option>
-                <option value="7">Seventh choice</option>
-                <option value="8">Eighth choice</option>
-                <option value="9">Ninth choice</option>
-              </select>
-            </div>
-            
-          </div>
-          <hr class="mb-4">
-          <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Địa chỉ giao hàng giông như trên hóa đơn</span>
-          </label>
-          <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input">
-            <span class="custom-control-indicator"></span>
-            <span class="custom-control-description">Lưu thông tin cho lần sau</span>
-          </label>
-          <hr class="mb-4">
-
-          <h4 class="mb-3">Hình thức thanh toán</h4>
-
-          <div class="d-block my-3">
-            <div class="row">
-              <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">Credit card</span>
-              </label>
-            </div>
-            <div class="row">
-              <label class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input">
-                <span class="custom-control-indicator"></span>
-                <span class="custom-control-description">Debit card</span>
-              </label>
-            </div>
-           <div class="row">
-              <label class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input">
-                  <span class="custom-control-indicator"></span>
-                  <span class="custom-control-description">Paypal</span>
-                </label>
-           </div>
+            <label class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Credit card</span>
+            </label>
           </div>
           <div class="row">
-            <div class="col-md-6 mb-3">
-              <label for="cc-name">Tên thẻ</label>
-              <input type="text" class="form-control" id="cc-name" placeholder="" required>
-              <small class="text-muted">Tên đầy đủ hiển thị trên thẻ</small>
-              <div class="invalid-feedback">
-                Tên thẻ phải được nhập
-              </div>
-            </div>
-            <div class="col-md-6 mb-3">
-              <label for="cc-number">Số thẻ</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required>
-              <div class="invalid-feedback">
-                Nhập số thẻ
-              </div>
+            <label class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Debit card</span>
+            </label>
+          </div>
+          <div class="row">
+            <label class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input">
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">Paypal</span>
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="cc-name">Tên thẻ</label>
+            <input type="text" class="form-control" id="cc-name" placeholder="" required>
+            <small class="text-muted">Tên đầy đủ hiển thị trên thẻ</small>
+            <div class="invalid-feedback">
+              Tên thẻ phải được nhập
             </div>
           </div>
-          <hr class="mb-4">
-          <button class="btn btn-primary btn-lg btn-block" type="submit" onclick="CheckForm()">Thanh toán</button>
-        </form>
-      </div>
+          <div class="col-md-6 mb-3">
+            <label for="cc-number">Số thẻ</label>
+            <input type="text" class="form-control" id="cc-number" placeholder="" required>
+            <div class="invalid-feedback">
+              Nhập số thẻ
+            </div>
+          </div>
+        </div>
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block"  onclick="checkout(event)">Thanh toán</button>
+      </form>
     </div>
+  </div>

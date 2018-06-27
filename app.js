@@ -6,7 +6,8 @@ var session  = require('express-session');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var morgan = require('morgan');
-var exphbs = require('express-handlebars')
+var exphbs = require('express-handlebars');
+var wnumb = require('wnumb');
 
 var moment = require('moment');
 
@@ -81,7 +82,13 @@ var hbs = exphbs.create({ defaultLayout: 'main-user' ,
 			for(var i = 0; i < n; ++i)
 				accum += block.fn(i);
 			return accum;
-		}
+		},
+		number_format: n => {
+            var nf = wnumb({
+                thousand: ','
+            });
+            return nf.to(n);
+        }
 	},
 });
 

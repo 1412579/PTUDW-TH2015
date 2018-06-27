@@ -20,10 +20,11 @@ let cartController = {
         Promise.all(arr_products).then(result => {
             for(let i = result.length -1; i >= 0; i--){
                 let pro = result[i][0];
+                pro.price = parseInt(pro.price);
                 let item = {
                     Product: pro,
                     Quantity: productsAddToCartCookie[i].Quantity,
-                    Amount: (parseInt(pro.price) * parseInt(productsAddToCartCookie[i].Quantity)).toString()
+                    Amount: (parseInt(pro.price) * parseInt(productsAddToCartCookie[i].Quantity))
                 }
                 items.push(item)
             }
@@ -39,13 +40,25 @@ let cartController = {
         }).catch(function(error){console.log(error);});
     },
 
-    update: function(req, res){
-
+    updateQuantityCartInHeader: function(req, res){
+        cartRepo.getCartCountProduct()
+        .then((result)=>{
+			// res.render('',{
+            //     layout: 'user'
+			// 	list: result,
+			// 	title: 'Danh sách thương hiệu'
+			// });
+			// resolve(result);			
+		})
+        .catch((err) => {
+			console.log(err);
+			// res.end();
+		});
     },
 
     delete: (req,res) =>{
         
-    }
+    },
 }
 
 module.exports = cartController;

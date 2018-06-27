@@ -47,7 +47,27 @@ var Category = {
                     resolve( result.rows);
             });
         });
-    }
+    },
+    newOrder: (orderInfo) => {
+        console.log(orderInfo)
+        return new Promise((resolve,reject)=>{
+            var query = `insert into orders(user_id,total,adress,email,created_at,
+                        updated_at,phone,order_status_id) 
+                        values(${orderInfo.User_id},${ orderInfo.Total }, '${orderInfo.adress}',
+                        '${orderInfo.email}','${orderInfo.created_at}','${orderInfo.updated_at}','${orderInfo.phone}',${orderInfo.order_status_id})`;
+            console.log(query);
+            pool.query(query, function(err, res){
+                if (err){
+                    reject(err);
+                }
+                else{
+                    console.log(res);
+                    resolve(res);
+                }
+                    
+            });
+        });
+    },
 }
 
 module.exports = Category;
