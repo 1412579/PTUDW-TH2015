@@ -3,6 +3,7 @@ var cities = require('all-the-cities').filter(city => {
 												  return city.country.match('VN')
 												});
 var userBusiness = require('../model/user.js');
+var orderBusiness = require('../model/order.js');
 
 
 var userController = 
@@ -17,42 +18,34 @@ var userController =
 		res.render('user-detail', model);
 	},
 	orders: function(req, res){
-		var products = [
-			{
-				id: 1,
-				createdDate: '22/06/2018',
-				total: 150000,
-				beingDelivered: true
-			},
-			{
-				id: 2,
-				createdDate: '22/06/2018',
-				total: 150000,
-				beingDelivered: true
-			},
-			{
-				id: 3,
-				createdDate: '22/06/2018',
-				total: 100000,
-				isDelivered: true
-			},
-			{
-				id: 4,
-				createdDate: '22/06/2018',
-				total: 120000,
-				isCancelled: true
-			},
-			{
-				id: 5,
-				createdDate: '22/06/2018',
-				total: 220000,
-				beingPrepared: true
-			}
-		]
-		res.render('user-order', {products: products});
+		orderBusiness.getOrdersByUserId(req.user.id)
+						.then(function(products) {
+							//console.log(products);
+							res.render('user-order', {products: products});
+						})
+						.catch(function(err) {
+							console.log(err);
+						});
+		
 	},
 	orderDetail: function(req, res){
-		res.render('user-order-detail');
+		var promises = [];
+		promises.push(orderBusiness.getOrderDetail(req.params.orderId));
+		promises.push(orderBusiness.getById(req.params.orderId));
+		Promise.all(promises)
+				.then(function(result) {
+					var products = result[0];
+					var order = result[1];
+					console.log(products);
+					res.render('user-order-detail', 
+					 { 
+						products: products,
+						order: order
+					 })
+				})
+				.catch(function(err) {
+					console.log(err);
+				});
 	},
 	cities: function(req, res) {
 		var result = cities.filter(city => {
