@@ -18,7 +18,9 @@ module.exports = function (app, passport, pool) {
 
 	app.use(function (req, res, next) {
 		res.locals = ({
-			user: req.user
+			user: req.user,
+			isLogin: req.isLogin,
+            QuantityProducts: req.QuantityProducts
 		});
 		return next();
 	});
