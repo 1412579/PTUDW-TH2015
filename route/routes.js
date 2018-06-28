@@ -49,7 +49,7 @@ module.exports = function (app, passport, pool) {
 	//app.use("/admin/category", mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, categoryController);
 	
 	app.use("/admin/product",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, adminProductController);
-	app.use("/admin/order", orderController);
+	app.use("/admin/order",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, orderController);
 
 
 	app.get('/logout', loginController.logout);

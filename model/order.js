@@ -3,7 +3,7 @@ var Category = {
 	getAll: ()=>{
         return new Promise((resolve,reject)=>{
             //select orders.*, order_details.*, users.*,order_status.name as status from orders,order_details,users,order_status where orders.id = order_details.order_id and orders.order_status_id = order_status.id and orders.user_id = users.id order by orders.id
-            pool.query(`select orders.created_at as timeorder, orders.id as orderid, users.fullname as username, users.phone as userphone,order_status.name as status,order_status.id as statusid, orders.total as total from orders,users,order_status where orders.order_status_id = order_status.id and orders.user_id = users.id order by orders.id`, function(err, result){
+            pool.query(`select orders.created_at as timeorder, orders.id as orderid, users.fullname as username, users.phone as userphone,order_status.name as status,order_status.id as statusid, orders.total as total from orders,users,order_status where orders.order_status_id = order_status.id and orders.user_id = users.id order by timeorder desc`, function(err, result){
                 if (err){
                     reject(err);
                 }
