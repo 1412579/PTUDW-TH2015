@@ -62,6 +62,8 @@ function checkout(e){
                 alert(data.msg);
             }
             else if(data.status == 1){
+                alert("Thanh toán thành công");
+                redirect('/home');
                 // location.reload(false);
             }
         }
