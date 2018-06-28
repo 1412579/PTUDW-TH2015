@@ -3,6 +3,7 @@
 // load all the things we need
 var LocalStrategy   = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
+const request = require('request');
 
 var bcrypt = require('bcrypt-nodejs');
 var facebook = require('./facebook.js');
@@ -96,6 +97,26 @@ module.exports = function(passport,pool) {
         function(req, email, password, done) {
             console.log('start passport js');
             //check user input
+            if(req.body.captcha === undefined ||
+                req.body.captcha ==='' ||
+                req.body.captcha === null
+            ){
+                console.log("Loi chua nhap");
+                return done(null, "Lỗi chưa nhập captcha.", req.flash('signupMessage', 'Vui lòng nhập vào captcha!.'));
+            }
+
+            const secretKey = "6LeGA2EUAAAAAEcWVUvVuIzOShViScf0fMATCeU3";
+            const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&reponse=
+            ${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
+            request(verifyUrl, (err, res, body)=>{
+                body = JSON.parse(body);
+                if(body.success !== undefined && !body.success){
+                    console.log("lôi failed captcha")                    
+                    return done(null, 'Failed captcha', req.flash('signupMessage', 'Falied captcha!.'));
+                }
+            })
+
+
             pool.query(`SELECT * FROM users WHERE email = '${email}'`, function(err, rows) {
                 if (err) //error
                     return done(err);

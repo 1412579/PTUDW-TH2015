@@ -2,44 +2,35 @@ const pool = require('../model/pg');
 var productsRepo = require('../model/product.js')
 
 let cart = {
-    getCookie: (cname)=> {
-        var name = cname + "=";
-        var ca = window.document.cookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-                return c.substring(name.length,c.length);
-            }
-        }
-        return "";
-    },
     update: () => {
 
     },
-    add: (cart, item) => {
+    newCart: (cartInfo) => {
+        return new Promise((resolve,reject)=>{
+            var query = `insert into order_details(product_id,product_name,quantity,buying_price) values(${ cartInfo.ProId },${ cartInfo.name }, ${cartInfo.Quantity}, ${cartInfo.Amount})`;
+            console.log(query);
+            pool.query(query, function(err, res){
+                if (err){
+                    reject(err);
+                }
+                else{
+                    console.log(res);
+                    resolve(res);
+                }
+                    
+            });
+        });
     },
 
-    remove: function(req, res, next){
-        for (var i = cart.length - 1; i >= 0; i--) {
-            if (proId === cart[i].ProId) {
-                cart.splice(i, 1);
-                return;
-            }
-        }
-    },
-
-    getListProductInCart: () =>{
+    getCartCountProduct: (res, req) =>{
         let productsAddToCartCookie =[];
         let arr_products = [];
-        productsAddToCartCookie = JSON.parse(this.getCookie("cart"));
-        for (let i = 0; i < productsAddToCartCookie.length; i++) {
-            let p = productsRepo.getProductById(productsRepo[i].ProId);
-            arr_products.push(p);
+        if(req.cookies.cart){
+            req.cookies.cart ={}
+            res.end();
         }
-        return arr_products;
+        productsAddToCartCookie = JSON.parse(req.cookies.cart);
+        return productsAddToCartCookie.length
     }
 }
 

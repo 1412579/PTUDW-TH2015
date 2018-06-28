@@ -4,21 +4,29 @@
     
 	{{#section 'head'}}
         <link rel="stylesheet" type="text/css" href="/user/styles/cart_styles.css">
+		<script src="/user/js/cartShopping.js"></script>
     {{/section}}
+	{{#section 'js'}}
+	<script type="text/javascript">
+		console.log("this is cart");
+	</script>
+	{{/section}}
     <!-- Cart -->
-	<div class="cart_section">
+
+	{{#if items}}
+		<div class="cart_section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
 					<div class="cart_container">
 						<div class="cart_title">Giỏ hàng</div>
 						<div class="cart_items">
+							{{#each items}}							
 							<ul class="cart_list">
 								<li class="cart_item clearfix">
-									{{#each items}}
 										<div class="cart_item_image">
 											<img src="{{Product.main_picture}}" alt="">
-											<a href="javascript:" class="del">✖</a>
+											<button type="submit" onclick="removeProduct({{Product.product_id}})"><a href="javascript:" class="del">✖</a></button>
 										</div>
 										<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
 											<div class="cart_item_name cart_info_col">
@@ -31,36 +39,40 @@
 											</div>
 											<div class="cart_item_quantity cart_info_col">
 												<div class="cart_item_title">Số lượng</div>
-												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" value="{{Quantity}}"></div>
+												<div class="cart_item_text"><input type="number" class="qtyPro" cla min="1" id="qty" onclick="update({{Product.product_id}})" value="{{Quantity}}"></div>
 											</div>
 											<div class="cart_item_price cart_info_col">
 												<div class="cart_item_title">Giá</div>
-												<div class="cart_item_text" id="price">{{Product.price}}</div>
+												<div class="cart_item_text" id="price">{{number_format Product.price}} đ</div>
 											</div>
 											<div class="cart_item_total cart_info_col">
 												<div class="cart_item_title">Tổng tiền</div>
-												<div class="cart_item_text total" id="total">{{Amount}}</div>
+												<div class="cart_item_text total" id="total">{{number_format Amount}} đ</div>
 											</div>
 										</div>
-									{{/each}}
                                 </li>
 							</ul>
+							{{/each}}							
 						</div>
 						
 						<!-- Order Total -->
 						<div class="order_total">
 							<div class="order_total_content text-md-right">
 								<div class="order_total_title">Tổng tiền của giỏ hàng:</div>
-								<div class="order_total_amount" id="subtotal">{{TotalAmount}}</div>
+								<div class="order_total_amount" id="subtotal">{{number_format TotalAmount}} đ</div>
 							</div>
 						</div>
 
 						<div class="cart_buttons">
-							<button type="button" class="button cart_button_checkout"><a href="checkout/payment.html">Thanh toán</a>></button>
+							<button type="button" class="button cart_button_checkout"><a href="/checkout">Tiến hành đặt hàng</a>></button>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	{{else}}
+	<p>No co san pham</p>
+	{{/if}}
+	
   

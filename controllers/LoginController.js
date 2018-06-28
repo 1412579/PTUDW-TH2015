@@ -27,6 +27,14 @@ var logInController =
 							return res.json({username: user.email});
         }
 	},
+	formLoginUser : function(req, res) {
+		//console.log(req.flash('loginMessage'));
+		// render the page and pass in any flash data if it exists
+		res.render('/login', { 
+			layout: false,
+			message: req.flash('loginMessage')[0] 
+		});
+	},
 	formLoginAdmin : function(req, res) {
 		//console.log(req.flash('loginMessage'));
 		// render the page and pass in any flash data if it exists

@@ -3,7 +3,7 @@ module.exports = function (app, passport, pool) {
 	//Home
 	var homeController = require('../controllers/HomeController');
 	var userController = require('../controllers/UserController');
-	var productController = require('../controllers/productController');
+	var productController = require('../controllers/ProductController');
 	var loginController = require('../controllers/LoginController');
 	var signUpController = require('../controllers/SignUpController');
 	var adminController = require('../controllers/AdminController');
@@ -13,11 +13,14 @@ module.exports = function (app, passport, pool) {
 	var userCartController = require('../controllers/UserCartController');
 	var adminProductController = require('../controllers/AdminProductController');
 	var orderController = require('../controllers/OrderController');
+	var checkoutController = require('../controllers/CheckOutController');
 	var mw = require('../config/middleware');
 
 	app.use(function (req, res, next) {
 		res.locals = ({
-			user: req.user
+			user: req.user,
+			isLogin: req.isLogin,
+            QuantityProducts: req.QuantityProducts
 		});
 		return next();
 	});
@@ -40,14 +43,17 @@ module.exports = function (app, passport, pool) {
 	app.use("/admin/category",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, categoryController);
 	app.use("/admin/brand",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, brandController);
 	
-	app.get("/cart", userCartController.index);
+	app.use("/checkout", checkoutController);
+	
+	
+	app.use("/cart", userCartController.index);
 	// app.post("/addCart", userCartController.addCart);
 	
 	
 	//app.use("/admin/category", mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, categoryController);
 	
 	app.use("/admin/product",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, adminProductController);
-	app.use("/admin/order", orderController);
+	app.use("/admin/order",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, orderController);
 
 
 	app.get('/logout', loginController.logout);
