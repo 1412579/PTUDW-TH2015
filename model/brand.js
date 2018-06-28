@@ -106,7 +106,6 @@ var Brand = {
     },
     getAllBrandByCategory: function(categoryId) {
         var _self = this;
-        console.log(_self);
         if (categoryId == undefined || categoryId == '')
             return _self.getAll();
         return new Promise((resolve,reject)=>{

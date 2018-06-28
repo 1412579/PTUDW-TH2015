@@ -24,45 +24,22 @@
 					<div class="popular_categories_slider_container">
 						<div class="owl-carousel owl-theme popular_categories_slider">
 
+							{{#each brands}}
+								<div class="owl-item">
+									<div class="popular_category d-flex flex-column align-items-center justify-content-center">
+										<div class="popular_category_image"><img src="{{this.image_brand}}" alt=""></div>
+										<div class="popular_category_text"><a href="/products?brandId={{this.id}}" class="popular_lables">{{this.name}}</a></div>
+									</div>
+								</div>								
+							{{/each}}
 							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="user/images/popular_1.gif" alt=""></div>
-									<div class="popular_category_text"><a href="shop.html" class="popular_lables">Túi xách</a></div>
-								</div>
-							</div>
+
 
 							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="user/images/popular_2.gif" alt=""></div>
-									<div class="popular_category_text"><a href="shop.html" class="popular_lables">Ba lô</a></div>
-								</div>
-							</div>
 
 							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="user/images/popular_3.gif" alt=""></div>
-									<div class="popular_category_text"><a href="shop.html" class="popular_lables">Ba lô</a></div>
-								</div>
-							</div>
 
 							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="user/images/popular_4.gif" alt=""></div>
-									<div class="popular_category_text"><a href="shop.html" class="popular_lables">Ba lô</a></div>
-								</div>
-							</div>
-
-							<!-- Popular Categories Item -->
-							<div class="owl-item">
-								<div class="popular_category d-flex flex-column align-items-center justify-content-center">
-									<div class="popular_category_image"><img src="user/images/popular_5.gif" alt=""></div>
-									<div class="popular_category_text"><a href="shop.html" class="popular_lables">Túi xách</a></div>
-								</div>
-							</div>
 
 						</div>
 					</div>
@@ -104,7 +81,7 @@
 													<div class="product_price">{{this.price}} đ</div>
 													<div class="product_name"><div><a href="/product/{{this.id}}">{{this.product_name}}</a></div></div>
 													<div class="product_name" style="font-size: 10px;">
-														{{this.created_at}}
+														{{dateFormat this.created_at}}
 													</div>
 													<div class="product_extras">
 														<div class="product_color">

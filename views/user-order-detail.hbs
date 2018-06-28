@@ -12,9 +12,9 @@
 
                             <div class="col-md-9" id="customer-orders">
                       <!-- <div class="infor-order"> -->
-                          <h4 class="infor-detail"><b>Mã đơn hàng: </b>#1234</h4>
-                          <h4 class="infor-detail"><b>Ngày đặt: </b>20/10/20xx</h4>
-                          <h4 class="infor-detail"><b>Tổng cộng: </b>10000000 đ</h4>
+                          <h4 class="infor-detail"><b>Mã đơn hàng: </b>#{{order.orderid}}</h4>
+                          <h4 class="infor-detail"><b>Ngày đặt: </b>{{dateFormat order.timeorder}}</h4>
+                          <h4 class="infor-detail"><b>Tổng cộng: </b>{{order.total}} đ</h4>
                       <!-- </div> -->
                         <table class="table display" style="width:100%" id="user-order">
                             <thead>
@@ -28,66 +28,22 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <th>
-                                        <div class="detail_item_image">
-                                          <img src="/user/images/new_1.jpg" alt="">
-                                        </div>
-                                    </th>
-                                    <td>Ba lô</td>
-                                    <td>2</td>
-                                    <td>225,000 đ</td>
-                                    <td>450,000 đ</td>                    
-                                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <div class="detail_item_image">
-                                          <img src="/user/images/new_1.jpg" alt="">
-                                        </div>
-                                    </th>
-                                    <td>Ba lô</td>
-                                    <td>2</td>
-                                    <td>225,000 đ</td>
-                                    <td>450,000 đ</td>                    
-                                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <div class="detail_item_image">
-                                          <img src="/user/images/new_1.jpg" alt="">
-                                        </div>
-                                    </th>
-                                    <td>Ba lô</td>
-                                    <td>2</td>
-                                    <td>225,000 đ</td>
-                                    <td>450,000 đ</td>                    
-                                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <div class="detail_item_image">
-                                          <img src="/user/images/new_1.jpg" alt="">
-                                        </div>
-                                    </th>
-                                    <td>Ba lô</td>
-                                    <td>2</td>
-                                    <td>225,000 đ</td>
-                                    <td>450,000 đ</td>                    
-                                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <div class="detail_item_image">
-                                          <img src="/user/images/new_1.jpg" alt="">
-                                        </div>
-                                    </th>
-                                    <td>Ba lô</td>
-                                    <td>2</td>
-                                    <td>225,000 đ</td>
-                                    <td>450,000 đ</td>                    
-                                    <td><a href="product.html" class="btn btn-primary">Chi tiết</a></td>
-                                </tr>
+                                {{#each products}}
+                                    <tr>
+                                        <th>
+                                            <div class="detail_item_image">
+                                              <img src="{{this.image}}" alt="">
+                                            </div>
+                                        </th>
+                                        <td>{{this.product_name}}</td>
+                                        <td>{{this.quantity}}</td>
+                                        <td>{{this.unit_price}} đ</td>
+                                        <td>{{this.bought_price}} đ</td>                    
+                                        <td><a href="/product/{{this.product_id}}" class="btn btn-primary">Chi tiết</a></td>
+                                    </tr>
+
+                                {{/each}}
+                                
                             </tbody>
                         </table>
                             <!-- /.table-responsive -->

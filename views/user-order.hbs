@@ -27,22 +27,25 @@
                                         {{#each products}}
                                             <tr>
                                                 <th># {{this.id}}</th>
-                                                <td>{{this.createdDate}}</td>
+                                                <td>{{this.createddate}}</td>
                                                 <td>$ {{this.total}}</td>
-                                                {{#if this.beingDelivered}}
-                                                <td><span class="label label-info">Đang giao hàng</span>
+                                                {{#ifCond this.statusid "==" 2}}
+                                                <td><span class="label label-info">{{this.status}}</span>
                                                 </td>
-                                                {{else if this.isDelivered}}
-                                                    <td><span class="label label-success">Đã giao</span>
+                                                {{/ifCond}}
+                                                {{#ifCond this.statusid "==" 3}}
+                                                    <td><span class="label label-success">{{this.status}}</span>
                                                     </td>
-                                                {{else if this.isCancelled}}
-                                                    <td><span class="label label-danger">Đã hủy</span>
+                                                {{/ifCond}}
+                                                {{#ifCond this.statusid "==" 0}}
+                                                    <td><span class="label label-danger">{{this.status}}</span>
                                                     </td>
-                                                {{else}}
-                                                    <td><span class="label label-warning">Đang xử lý</span>
+                                                {{/ifCond}}
+                                                {{#ifCond this.statusid "==" 1}}
+                                                    <td><span class="label label-warning">{{this.status}}</span>
                                                     </td>
-                                                {{/if}}
-                                                <td><a href="user-order-detail.html" class="btn btn-primary">Chi tiết</a>
+                                                {{/ifCond}}
+                                                <td><a href="user/order/{{this.id}}" class="btn btn-primary">Chi tiết</a>
                                                 </td>
                                             </tr>
                                         {{/each}}

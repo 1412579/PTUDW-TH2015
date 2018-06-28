@@ -27,10 +27,14 @@ module.exports = function (app, passport, pool) {
 
 	app.get('/', homeController.index);
 	app.get('/user/detail', userController.detail);
+	app.get('/user/logout', loginController.logout);
 	app.get('/user/orders', userController.orders);
 	app.get('/user/order/:orderId', userController.orderDetail)
+	app.post('/user/detail', userController.update, userController.detail);
+	app.post('/user/changePass', userController.changePassword, userController.detail);
 	app.get('/product/:productId', productController.detail);
 	app.get('/brand', userBrandController.index);
+	app.get('/user/cities', userController.cities);
 	//http://localhost:8080/products?subCategoryId=3&brandId=2
 	app.get('/products', productController.index);
 	app.post('/products', productController.search);

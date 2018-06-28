@@ -17,7 +17,7 @@ var productController =
 			if (brandId == undefined)
 				req.query.subCategoryId = 3;
 		}
-		console.log(req.query);
+		// console.log(req.query);
 		if (req.query.isAjax != undefined && req.query.isAjax == 1)
 		{
 			productBusiness.getProducts(req.query)
@@ -48,7 +48,8 @@ var productController =
 						selectedBrandId: brandId,
 						products: products,
 						isFromSearching: false,
-						numberOfProducts: result[2].count
+						numberOfProducts: result[2].count,
+						user: req.user
 					};
 					res.render('shop', model);
 				})
@@ -86,7 +87,8 @@ var productController =
 							product: product,
 							photos: photos,
 							sameTypeProducts: sameTypeProducts,
-							sameBrandProducts: sameBrandProducts
+							sameBrandProducts: sameBrandProducts,
+							user: req.user
 						};
 						res.render('product', model);
 					})
@@ -135,7 +137,8 @@ var productController =
 						products: products,
 						isFromSearching: true,
 						filters: req.body,
-						numberOfProducts: result[2].count
+						numberOfProducts: result[2].count,
+						user: req.user
 					};
 					res.render('shop', model);
 				})
