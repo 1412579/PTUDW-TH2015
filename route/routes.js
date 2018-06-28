@@ -3,7 +3,7 @@ module.exports = function (app, passport, pool) {
 	//Home
 	var homeController = require('../controllers/HomeController');
 	var userController = require('../controllers/UserController');
-	var productController = require('../controllers/productController');
+	var productController = require('../controllers/ProductController');
 	var loginController = require('../controllers/LoginController');
 	var signUpController = require('../controllers/SignUpController');
 	var adminController = require('../controllers/AdminController');
