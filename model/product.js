@@ -70,7 +70,8 @@ var product = {
 	getProductById: function(id) {
 		return new Promise((resolve,reject)=>{
 			var query = `select p.id product_id, 
-								p.price, 
+								p.price,
+								p.quantity, 
 								p.view, 
 								p.sold_quantity, 
 								p.description, 
@@ -255,6 +256,7 @@ var product = {
         })
 	},
 	updateById: function(proInfo){
+		console.log(proInfo);
         return new Promise((resolve,reject)=>{
             var query = `update products set sold_quantity = ${proInfo.sold_quantity},inventory = ${ proInfo.inventory } where id = ${ proInfo.id}`;
             console.log(query);

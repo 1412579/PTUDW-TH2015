@@ -16,28 +16,32 @@ router.get('/',  function(req, res) {
         if(req.cookies.cart === undefined){
             req.cookies.cart ={}
         }
+        arr_products.push(service.getProvince());
         productsAddToCartCookie = JSON.parse(req.cookies.cart);
 
         for (let i = 0; i < productsAddToCartCookie.length; i++) {
             arr_products.push(productsRepo.getProductById(parseInt(productsAddToCartCookie[i].ProId)));
         }
         var Provinces = [];
-            service.getProvince()
-                    .then((result)=> {
-                        for(let i = 0; i < result.length; i++){
-                            Provinces.push(result[i]);
-                        }
-                        // console.log("thanh cong")
-                    })
-                    .catch(err => console.log(err));
+            // service.getProvince()
+            //         .then((result)=> {
+            //             for(let i = 0; i < result.length; i++){
+            //                 Provinces.push(result[i]);
+            //             }
+            //             // console.log("thanh cong")
+            //         })
+            //         .catch(err => console.log(err));
         let items = [];
         Promise.all(arr_products).then(result => {
-            for(let i = result.length -1; i >= 0; i--){
+            Provinces = result[0];
+            for(let i = result.length -1; i > 0; i--){
                 let pro = result[i][0];
+                console.log(pro)
+                
                 let item = {
                     Product: pro,
-                    Quantity: productsAddToCartCookie[i].Quantity,
-                    Amount: (parseInt(pro.price) * parseInt(productsAddToCartCookie[i].Quantity))
+                    Quantity: productsAddToCartCookie[i-1].Quantity,
+                    Amount: (parseInt(pro.price) * parseInt(productsAddToCartCookie[i-1].Quantity))
                 }
                 items.push(item)
             }
@@ -52,7 +56,6 @@ router.get('/',  function(req, res) {
                 Quantity_Products: items.length,
                 Provinces: Provinces
             };
-            console.log(Provinces);            
             res.render('checkout/payment', vm);
         }).catch(function(error){console.log(error);});
 });
@@ -77,10 +80,12 @@ router.post('/payment', (req, res)=>{
                 order_id: 13,
                 Amount: (parseInt(pro.price) * parseInt(req.body.dataCart[i].Quantity))
             };
+            
+            
             let proInfo = {
-                id: pro.id,
-                sold_product: parseInt(pro.sold_product)+parseInt(req.body.dataCart[i].Quantity),
-                inventory: parseInt(pro.quantity)-parseInt(sold_product)
+                id: pro.product_id,
+                sold_quantity: parseInt(pro.sold_quantity)+parseInt(req.body.dataCart[i].Quantity),
+                inventory: parseInt(pro.quantity)-parseInt(pro.sold_quantity)-parseInt(req.body.dataCart[i].Quantity)
             }
 
             productsRepo.updateById(proInfo)
@@ -106,10 +111,10 @@ router.post('/payment', (req, res)=>{
             phone: req.body.dataUser.phone,
             order_status_id: 2
         }
-        orderRepo.newOrder(orderInfo).then(()=>{
+        Promise.all(orderRepo.newOrder(orderInfo)).then(()=>{
             console.log("Đã thêm đơn hàng thành công");
         }).catch(err => console.log(err));
-
+        return res.json({status: 1,msg: "Thanh toán thành công"});
     }).catch(function(error){console.log(error);});
 });
 
