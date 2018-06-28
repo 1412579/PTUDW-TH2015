@@ -30,12 +30,6 @@ router.get('/new', (req, res) => {
         }); 
     })
     .catch(err => console.log(err));
-
-    // res.render('admin/new-cate',{
-    //         layout: 'main-admin',
-    //         title: 'Thêm thương hiệu mới',
-    //         // catalog: result
-    // }); 
 });
 
 router.post('/new', (req, res) => {

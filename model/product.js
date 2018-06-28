@@ -2,7 +2,7 @@ const pool = require('../model/pg');
 const itemsPerPage = 5;
 
 var product = {
-  getAll: ()=>{
+  	getAll: ()=>{
         return new Promise((resolve,reject)=>{
             pool.query(`select * from products order by id desc`, function(err, result){
                 if (err){
@@ -253,7 +253,20 @@ var product = {
                     resolve(result.rows);
             });
         })
-	}
+	},
+	updateById: function(proInfo){
+        return new Promise((resolve,reject)=>{
+            var query = `update products set sold_quantity = ${proInfo.sold_quantity},inventory = ${ proInfo.inventory } where id = ${ proInfo.id}`;
+            console.log(query);
+            pool.query(query, function(err, result){
+                if (err){
+                    reject(err);
+                }
+                else
+                    resolve( result.rows);
+            });
+        });
+    },
 }
 
 module.exports = product;

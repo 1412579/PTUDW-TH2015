@@ -77,7 +77,18 @@ router.post('/payment', (req, res)=>{
                 order_id: 13,
                 Amount: (parseInt(pro.price) * parseInt(req.body.dataCart[i].Quantity))
             };
+            let proInfo = {
+                id: pro.id,
+                sold_product: parseInt(pro.sold_product)+parseInt(req.body.dataCart[i].Quantity),
+                inventory: parseInt(pro.quantity)-parseInt(sold_product)
+            }
+
+            productsRepo.updateById(proInfo)
+            .then(console.log("Cap nhat thanh cong"))
+            .catch(err => console.log(err))
+
             Total+= parseInt(cartInfo.Amount);
+            
             orderDetail.newOrderDetail(cartInfo)
             .then(()=>{
                 req.flash('messageCate', 'Đã thêm chi tiết đơn hàng thành công!');

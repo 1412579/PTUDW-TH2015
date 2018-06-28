@@ -102,13 +102,29 @@ module.exports = function(passport,pool) {
             const secretKey = "6LeGA2EUAAAAAEcWVUvVuIzOShViScf0fMATCeU3";
             const verifyUrl = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&reponse=
             ${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;
-            request(verifyUrl, (err, res, body)=>{
-                body = JSON.parse(body);
-                if(body.success !== undefined && !body.success){
-                    console.log("lôi failed captcha")                    
-                    return done(null, 'Failed captcha', req.flash('signupMessage', 'Falied captcha!.'));
-                }
-            })
+            console.log(req.body.captcha);
+            var options = {
+                uri: verifyUrl,
+                method: 'POST',
+                    json: {
+                        secret: secretKey,
+                        reponse: req.body.captcha,
+                        remoteip: req.connection.remoteAddress
+                    }
+               };
+               request(options, function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                    console.log(body.id) // Print the shortened url.
+                    }
+               });
+            // request.post(verifyUrl, (err, res, body)=>{
+            //     body = JSON.parse(body);
+            //     if(body.success !== undefined && !body.success){
+            //         console.log(body);
+            //         console.log("lôi failed captcha")                    
+            //         return done(null, 'Failed captcha', req.flash('signupMessage', 'Falied captcha!.'));
+            //     }
+            // })
 
 
             pool.query(`SELECT * FROM users WHERE email = '${email}'`, function(err, rows) {
