@@ -1,6 +1,6 @@
 var category = require('../model/category.js');
 var product = require('../model/product.js');
-
+var brand = require('../model/brand.js');
 
 var homeController =  
 {
@@ -15,16 +15,20 @@ var homeController =
 		promises.push(product.getMostViewdProducts(10));
 		Promise.all(promises)
 			.then(function(result) {
-				// console.log(result);
-				var model = {
-						title: 'Trang chủ',
-						categories: result[0],
-						newestProducts: result[1],
-						bestSellerProducts: result[2],
-						mostViewedProducts: result[3],
-						user: req.user
-					};
-					res.render('home', model);
+				brand.getAll()
+						.then(brands => {
+							var model = {
+								title: 'Trang chủ',
+								categories: result[0],
+								newestProducts: result[1],
+								bestSellerProducts: result[2],
+								mostViewedProducts: result[3],
+								brands: brands,
+								user: req.user
+							};
+							res.render('home', model);
+						});
+				
 			})
 			.catch(function(error) {
 				console.log(error);

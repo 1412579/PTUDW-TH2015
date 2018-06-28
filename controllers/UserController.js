@@ -4,25 +4,63 @@ var cities = require('all-the-cities').filter(city => {
 												});
 var userBusiness = require('../model/user.js');
 var orderBusiness = require('../model/order.js');
-
+var category = require('../model/category.js');
 
 var userController = 
 {
 	detail: function(req, res){
-		console.log(res.locals.pageInfo);
-		var model = {
-			user: req.user,
-			pageInfo: res.locals.pageInfo,
-			onUserDetailPage:  1
-		};
-		res.locals.pageInfo = undefined;
-		res.render('user-detail', model);
+		//console.log(res.locals.pageInfo);
+		let promises = [];
+		promises.push(category.getDetailedCategory());
+		
+		if (res.locals.pageInfo != undefined)
+		{
+			promises.push(userBusiness.getUser(req.user.id));
+			Promise.all(promises)
+						.then(function(result) {
+							var model = {
+								categories: result[0],
+								user: result[1],
+								pageInfo: res.locals.pageInfo,
+								onUserDetailPage:  1
+							};
+							res.locals.pageInfo = undefined;
+							res.render('user-detail', model);
+
+						}).catch(function(err) {
+							console.log(err);
+						});
+		}
+		else{
+			Promise.all(promises)
+				    .then(function(result) {
+				    	var model = {
+				    		categories: result[0],
+							user: req.user,
+							onUserDetailPage:  1
+						};
+						res.render('user-detail', model);
+				    }).catch(function(err) {
+							console.log(err);
+					});
+
+		}
+
 	},
 	orders: function(req, res){
-		orderBusiness.getOrdersByUserId(req.user.id)
-						.then(function(products) {
+		let promises = [];
+		promises.push(category.getDetailedCategory());
+		promises.push(orderBusiness.getOrdersByUserId(req.user.id));
+		Promise.all(promises)
+						.then(function(result) {
+							var categories= result[0];
+							var products = result[1];
 							//console.log(products);
-							res.render('user-order', {products: products, onOrderPage: 1});
+							res.render('user-order', 
+								{products: products, 
+								 onOrderPage: 1,
+								 categories: categories
+								 });
 						})
 						.catch(function(err) {
 							console.log(err);
@@ -33,15 +71,18 @@ var userController =
 		var promises = [];
 		promises.push(orderBusiness.getOrderDetail(req.params.orderId));
 		promises.push(orderBusiness.getById(req.params.orderId));
+		promises.push(category.getDetailedCategory());
 		Promise.all(promises)
 				.then(function(result) {
 					var products = result[0];
 					var order = result[1];
+
 					console.log(products);
 					res.render('user-order-detail', 
 					 { 
 						products: products,
 						order: order,
+						categories: result[2],
 						onOrderPage: 1
 					 })
 				})
@@ -62,7 +103,7 @@ var userController =
 		res.send(result);
 	},
 	update: function(req, res, next) {
-		console.log(req.body);
+		//console.log(req.body);
 		userBusiness.update(req.body)
 			.then(function(updateCode) {
 				var message;
@@ -81,7 +122,7 @@ var userController =
 					message: message
 				};
 				res.locals.pageInfo = model;
-				res.redirect('/user/detail');
+				return next();
 			});
 	},
 	changePassword: function(req, res, next) {

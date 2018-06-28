@@ -11,7 +11,7 @@ var user = {
 				{
 					resolve(-1);
 				}
-				if (bcrypt.compareSync(oldPassword, user.password))
+				else if (bcrypt.compareSync(oldPassword, user.password))
 				{
 					var hashedNewPassword = bcrypt.hashSync(newPassword, null, null);
 					var query = `update users set password = '${hashedNewPassword}' where id = ${userId}`;
