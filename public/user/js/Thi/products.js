@@ -155,6 +155,7 @@ function SetUpProduct(product)
 								<div class="product_name"><div><a href="/product/${product.id}" tabindex="0">${product.name}</a></div></div>
 							</div>
 						<div class="product_fav"><i class="fas fa-heart"></i></div>
+						<button class="btn" style="margin-top: 20px; background: #0e8ce4; color: #FFFFFF;">Thêm vào giỏ</button>
 				</div>`;
 	return html;							
 }

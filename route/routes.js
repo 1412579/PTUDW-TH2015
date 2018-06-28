@@ -3,7 +3,7 @@ module.exports = function (app, passport, pool) {
 	//Home
 	var homeController = require('../controllers/HomeController');
 	var userController = require('../controllers/UserController');
-	var productController = require('../controllers/productController');
+	var productController = require('../controllers/ProductController');
 	var loginController = require('../controllers/LoginController');
 	var signUpController = require('../controllers/SignUpController');
 	var adminController = require('../controllers/AdminController');
@@ -27,10 +27,14 @@ module.exports = function (app, passport, pool) {
 
 	app.get('/', homeController.index);
 	app.get('/user/detail', userController.detail);
+	app.get('/user/logout', loginController.logout);
 	app.get('/user/orders', userController.orders);
 	app.get('/user/order/:orderId', userController.orderDetail)
+	app.post('/user/detail', userController.update, userController.detail);
+	app.post('/user/changePass', userController.changePassword, userController.detail);
 	app.get('/product/:productId', productController.detail);
 	app.get('/brand', userBrandController.index);
+	app.get('/user/cities', userController.cities);
 	//http://localhost:8080/products?subCategoryId=3&brandId=2
 	app.get('/products', productController.index);
 	app.post('/products', productController.search);
@@ -49,7 +53,7 @@ module.exports = function (app, passport, pool) {
 	//app.use("/admin/category", mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, categoryController);
 	
 	app.use("/admin/product",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, adminProductController);
-	app.use("/admin/order", orderController);
+	app.use("/admin/order",mw.isLoggedInAdmin, mw.isSysAdminAccess,mw.isAdminAccess, orderController);
 
 
 	app.get('/logout', loginController.logout);

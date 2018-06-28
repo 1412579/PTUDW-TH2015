@@ -10,8 +10,8 @@ var exphbs = require('express-handlebars');
 var wnumb = require('wnumb');
 
 var moment = require('moment');
-
-var app      = express();
+ 
+var app      = express(); 
 var port     = process.env.PORT || 8080;
 
 var passport = require('passport');
@@ -105,5 +105,7 @@ require('./route/routes.js')(app, passport, pool); // load our routes and pass i
 
 
 // launch ======================================================================
-app.listen(port);
+app.listen(port,function(){
+	console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
 console.log('Server started on port ' + port);

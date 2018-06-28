@@ -1,5 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/user/styles/product_styles.css">
 <link rel="stylesheet" type="text/css" href="/user/styles/product_responsive.css">
+<link rel="stylesheet" type="text/css" href="/user/plugins/select2/dist/css/select2.min.css">
+
     <div class="single_product">
         <div id="content" class="clearfix">
 
@@ -12,7 +14,9 @@
 
                     <div class="col-md-9 clearfix" id="customer-account">
 
+                        {{> alert pageInfo}}
                         <h3>Thay đổi thông tin cá nhân và mật khẩu</h3>
+
 
                         <div class="box">
 
@@ -20,12 +24,13 @@
                                 <h3 class="text-uppercase">Đổi mật khẩu</h3>
                             </div>
 
-                            <form>
+                            <form action="/user/changePass" method="POST">
+                                <input type="hidden" id="userId" name="userId" value="{{user.id}}">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="password_old">Mật khẩu cũ</label>
-                                            <input type="password" class="form-control" id="password_old" placeholder="Mật khẩu cũ">
+                                            <input type="password" class="form-control" id="password_old" placeholder="Mật khẩu cũ" name="oldPassword">
                                         </div>
                                     </div>
                                 </div>
@@ -33,13 +38,13 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="password_1">Mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="password_1" placeholder="Mật khẩu mới">
+                                            <input type="password" class="form-control" id="password_1" placeholder="Mật khẩu mới" name="newPassword">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="password_2">Nhập lại mật khẩu mới</label>
-                                            <input type="password" class="form-control" id="password_2" placeholder="Nhập lại mật khẩu mới">
+                                            <input type="password" class="form-control" id="password_2" placeholder="Nhập lại mật khẩu mới" name="retypeNewPassword">
                                         </div>
                                     </div>
                                 </div>
@@ -59,18 +64,19 @@
                                 <h3 class="text-uppercase">Thông tin cá nhân</h3>
                             </div>
 
-                            <form>
+                            <form action="/user/detail" method="post">
+                                <input type="hidden" id="userId" name="id" value="{{user.id}}">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="firstname">Họ tên</label>
-                                            <input type="text" class="form-control" id="name" placeholder="Họ tên">
+                                            <input type="text" class="form-control" id="fullname" placeholder="Họ tên" value="{{user.fullname}}" name="fullname">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="lastname">Email</label>
-                                            <input type="text" class="form-control" id="email" placeholder="Email">
+                                            <input type="text" class="form-control" id="email" placeholder="Email" value="{{user.email}}" name="email">
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +89,11 @@
                                         <div class="row col-form-label">
                                           <div class="col-sm-6">
                                             <label class="custom-control custom-radio">
-                                            <input id="male" name="radio" type="radio" class="custom-control-input">
+                                            {{#ifCond user.sexual "==" "male"}}
+                                                <input name="sexual" type="radio" class="custom-control-input" checked="checked" value="male">
+                                            {{else}}
+                                                <input name="sexual" type="radio" class="custom-control-input" value="male">
+                                            {{/ifCond}}
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description" style="font-weight: normal;">Nam</span>
                                           </label>
@@ -91,7 +101,11 @@
                                           </div>
                                           <div class="col-sm-6">
                                             <label class="custom-control custom-radio">
-                                            <input id="female" name="radio" type="radio" class="custom-control-input">
+                                            {{#ifCond user.sexual "==" "female"}}
+                                                <input name="sexual" type="radio" class="custom-control-input" checked="checked" value="female">
+                                            {{else}}
+                                                <input name="sexual" type="radio" class="custom-control-input" value="female">
+                                            {{/ifCond}}
                                             <span class="custom-control-indicator"></span>
                                             <span class="custom-control-description" style="font-weight: normal;">Nữ</span>
                                           </label>
@@ -105,7 +119,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="street">Ngày sinh</label>
-                                            <input class="form-control datepicker" id="dob" placeholder="Ngày sinh">
+                                            <input class="form-control datepicker" id="dob" placeholder="Ngày sinh" value="{{user.birth}}" name="birth">
                                         </div>
                                     </div>
                                 </div>
@@ -117,13 +131,16 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="address">Địa chỉ</label>
-                                            <input type="text" class="form-control" id="address" placeholder="Địa chỉ">
+                                            <input type="text" class="form-control" id="address" placeholder="Địa chỉ" value="{{user.address}}" name="address">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="city">Tỉnh/Thành phố</label>
-                                            <input type="text" class="form-control" id="city" placeholder="Thành phố">
+                                            <select class="form-control" id="city" name="province">
+                                                 <option value="{{user.province}}" selected="selected">{{user.province}}</option>
+                                            </select>
+                                            {{!-- <input type="text" class="form-control" id="city" placeholder="Thành phố" value="{{user.province}}"> --}}
                                         </div>
                                     </div>
                                     <div class="col-sm-12 text-center">
@@ -149,3 +166,9 @@
         <!-- /#content -->
 
     </div>
+
+{{#section 'scripts'}}
+    <script src="/user/js/Thi/user.js"></script>
+    <script src="/user/plugins/select2/dist/js/select2.full.min.js"></script>
+{{/section}}
+

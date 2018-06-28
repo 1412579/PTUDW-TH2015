@@ -159,25 +159,26 @@ router.post('/edit/:id', (req,res)=>{
         .then((result)=>{
             console.log(req.body.cate);
             var asyncCalls = [];
-            for (var i = 0; i < req.body.cate.length; i++) {
-                var data = {
-                    cate:  req.body.cate[i],
-                    brand: req.body.id
+            if(req.body.cate){
+                for (var i = 0; i < req.body.cate.length; i++) {
+                    var data = {
+                        cate:  req.body.cate[i],
+                        brand: req.body.id
+                    }
+                    asyncCalls.push(
+                        Brand.insertCateBrand(data).then(function(productObj){
+                            console.log(`Thêm brand ${data.brand} và cate ${data.cate} `);
+                        })
+                    )
                 }
-                asyncCalls.push(
-                    Brand.insertCateBrand(data).then(function(productObj){
-                        console.log(`Thêm brand ${data.brand} và cate ${data.cate} `);
-                    })
-                )
+                Promise.all(asyncCalls).then(function(value) { 
+                    req.flash('messageCate', 'Đã sửa thương hiệu thành công!');
+                    res.redirect('/admin/brand/list');
+                }, function(reason) {
+                    console.log(reason);
+                    res.end("Lỗi: " + reason);
+                });
             }
-            Promise.all(asyncCalls).then(function(value) { 
-                req.flash('messageCate', 'Đã sửa thương hiệu thành công!');
-                res.redirect('/admin/brand/list');
-            }, function(reason) {
-                console.log(reason);
-                res.end("Lỗi: " + reason);
-            });
-            
         })
         .catch(err=>console.log(err));
         
