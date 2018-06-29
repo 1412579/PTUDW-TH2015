@@ -1,5 +1,5 @@
 $("document").ready(function() {
-	var numberOfProductsPerPage = 5;
+	var numberOfProductsPerPage = 10;
 	LoadPagination(numberOfProductsPerPage);
 	BindPaginationEvents(numberOfProductsPerPage);
 });

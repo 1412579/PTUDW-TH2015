@@ -1,7 +1,7 @@
 var productBusiness = require('../model/product.js');
 var categoryBusiness = require('../model/category.js');
 var brandBusiness = require('../model/brand.js');
-const itemsPerPage = 5;
+const itemsPerPage = 10;
 
 var productController = 
 {
