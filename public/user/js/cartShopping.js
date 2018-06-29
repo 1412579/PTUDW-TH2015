@@ -46,7 +46,8 @@ function addCart(_proId, price){
     for(let i =0; i < productsAddToCart.length; i++){
         TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
     }
-    $('.cart_counts').text(TotalProducts.toString());    
+    document.cookie = "QuantityProductInCart = " +  JSON.stringify(TotalProducts) + "; path=/"; 
+    location.reload(true);
 }
 
 function removeProduct(ProId){
@@ -64,27 +65,44 @@ function removeProduct(ProId){
     for(let i =0; i < productsAddToCart.length; i++){
         TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
     }
-    $('.cart_counts').text(TotalProducts.toString());
+    document.cookie = "QuantityProductInCart = " +  JSON.stringify(TotalProducts) + "; path=/";     
+    // $('.cart_counts').text(TotalProducts.toString());
     location.reload(true);
 }
 
-function update(ProId){
+function update(ProId,price, SubTotal){
+    console.log(SubTotal);
+    
     $(":input").bind('keyup mouseup', function () {
         var Quantity = $(".qtyPro").val();
+        if(Quantity === ""){
+            
+            var Quantity = $("#quantity_input").val();
+        }
         let productsAddToCart =[];
+        var Total = 0;
         productsAddToCart = JSON.parse(getCookie("cart"));
         for (var i = productsAddToCart.length - 1; i >= 0; i--) {
             if (parseInt(ProId) === parseInt(productsAddToCart[i].ProId)) {
+                SubTotal = SubTotal - parseInt(productsAddToCart[i].Quantity)*price;
                 productsAddToCart[i].Quantity = Quantity.toString();
                 document.cookie = 'cart = ' + JSON.stringify(productsAddToCart) +"; path=/";
+                Total = parseInt(Quantity)*price;
+                SubTotal = SubTotal + parseInt(Quantity)*price
+                // console.log(SubTotal);
+                // $('#total').text(Total.toString());
+                // $('#subtotal').text(SubTotal.toString());
+                let TotalProducts =0;      
+                for(let i =0; i < productsAddToCart.length; i++){
+                    TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
+                }
+                document.cookie = "QuantityProductInCart = " +  JSON.stringify(TotalProducts) + "; path=/"; 
+                //location.reload(true);
+                
                 return
             }
         }
       })
       
-    let TotalProducts =0;      
-      for(let i =0; i < productsAddToCart.length; i++){
-        TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
-    }
-    $('.cart_counts').text(TotalProducts.toString());
+    
 }
