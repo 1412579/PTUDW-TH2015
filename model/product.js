@@ -57,6 +57,7 @@ var product = {
 						from products p
 						left join brand b
 						on p.brand_id = b.id
+						where view is not null
 						order by view desc limit ${numberOfProducts}`;
             pool.query(query, function(err, result){
                 if (err){

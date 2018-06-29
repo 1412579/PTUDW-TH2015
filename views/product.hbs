@@ -38,7 +38,15 @@
 					        </div>
 					    </div>
 						<div class="product_text"><p>{{product.description}}</p></div>
-						<div class="sub-header"><p><i class="fas fa-eye"></i>    {{product.view}}</p></div>
+						<div class="sub-header">
+							<p><i class="fas fa-eye"></i>
+							{{#ifCond product.view "==" null}} 
+								0
+							{{else}}   
+							{{product.view}}
+							{{/ifCond}}
+							</p>
+						</div>
 						<div class="order_info d-flex flex-row" style="margin-top: 20px;">
 							<form action="#">
 								<div class="product_price" style="margin-bottom: 50px; margin-top: 20px;">{{product.price}} VND</div>
