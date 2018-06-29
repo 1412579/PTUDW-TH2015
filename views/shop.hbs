@@ -1,3 +1,6 @@
+	{{#section 'head'}}
+		<script src="/user/js/cartShopping.js"></script>
+	{{/section}}
 	<link rel="stylesheet" type="text/css" href="/user/styles/shop_styles.css">
 	<link rel="stylesheet" type="text/css" href="/user/styles/shop_responsive.css">
 	<div class="home">
@@ -88,7 +91,8 @@
 										<div class="product_name"><div><a href="/product/{{this.id}}" tabindex="0">{{this.name}}</a></div></div>
 									</div>
 									<div class="product_fav"><i class="fas fa-heart"></i></div>
-									<button class="btn" style="margin-top: 20px; background: #0e8ce4; color: #FFFFFF;">Thêm vào giỏ</button>
+									<button class="btn" onclick="return addCart({{this.id}}, {{this.price}});" 
+									style="margin-top: 20px; background: #0e8ce4; color: #FFFFFF;">Thêm vào giỏ</button>
 								</div>
 							{{/each}}
 							
