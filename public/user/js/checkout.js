@@ -58,11 +58,10 @@ function checkout(e){
         data: { dataUser: dataUser, dataCart: productsAddToCart },
         success: function (data) {
             console.log(data);
-            if (data.status == 0) {
+            if (data.status == 1) {
                 alert(data.msg);
-            }
-            else if(data.status == 1){
-                // location.reload(false);
+                document.cookie = 'cart' + '=; expires=Thu, 01-Jan-70 00:00:01 GMT;';
+                window.location.href = '/';                
             }
         }
     });
