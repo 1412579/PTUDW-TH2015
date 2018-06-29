@@ -46,7 +46,10 @@ function addCart(_proId, price){
     for(let i =0; i < productsAddToCart.length; i++){
         TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
     }
-    $('.cart_counts').text(TotalProducts.toString());    
+    document.cookie = "QuantityProductInCart = " +  JSON.stringify(TotalProducts) + "; path=/"; 
+    location.reload(true);
+    
+    // $('.cart_counts').text(TotalProducts.toString());    
 }
 
 function removeProduct(ProId){
@@ -64,7 +67,8 @@ function removeProduct(ProId){
     for(let i =0; i < productsAddToCart.length; i++){
         TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
     }
-    $('.cart_counts').text(TotalProducts.toString());
+    document.cookie = "QuantityProductInCart = " +  JSON.stringify(TotalProducts) + "; path=/";     
+    // $('.cart_counts').text(TotalProducts.toString());
     location.reload(true);
 }
 
@@ -86,5 +90,7 @@ function update(ProId){
       for(let i =0; i < productsAddToCart.length; i++){
         TotalProducts+=parseInt(productsAddToCart[i].Quantity);            
     }
-    $('.cart_counts').text(TotalProducts.toString());
+    document.cookie = "QuantityProductInCart = " +  JSON.stringify(TotalProducts) + "; path=/"; 
+    
+    // $('.cart_counts').text(TotalProducts.toString());
 }

@@ -13,8 +13,15 @@
 	{{/section}}
     <!-- Cart -->
 
-	{{#if items}}
-		<div class="cart_section">
+	{{#if NoProducts}}
+		<div class="order_total">
+			<div class="order_total_content text-md-right" style="text-align: center !important;">
+				<div class="title" style="font-size: 30px;">Không có sản phẩm nào trong giỏ hàng</div>
+				{{!-- <div class="order_total_amount" id="subtotal">{{number_format TotalAmount}} đ</div> --}}
+			</div>
+		</div>
+	{{else}}
+			<div class="cart_section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
@@ -71,8 +78,6 @@
 			</div>
 		</div>
 	</div>
-	{{else}}
-	<p>No co san pham</p>
 	{{/if}}
 	
   

@@ -7,6 +7,14 @@ var productController =
 {
 	index: function(req, res)
 	{
+		var QuantityProductInCart;
+		if(req.cookies.QuantityProductInCart === undefined)
+		{
+			QuantityProductInCart = 0;
+		}
+		else{
+			QuantityProductInCart = parseInt(req.cookies.QuantityProductInCart);
+        }
 		var promises =  [];
 		var subCategoryId, brandId;
 		
@@ -49,7 +57,8 @@ var productController =
 						products: products,
 						isFromSearching: false,
 						numberOfProducts: result[2].count,
-						user: req.user
+						user: req.user,
+						QuantityProductInCart: QuantityProductInCart
 					};
 					res.render('shop', model);
 				})
@@ -64,6 +73,15 @@ var productController =
 	},
 	detail: function(req, res)
 	{
+		var QuantityProductInCart;
+		if(req.cookies.QuantityProductInCart === undefined)
+		{
+			QuantityProductInCart = 0;
+		}
+		else{
+			QuantityProductInCart = parseInt(req.cookies.QuantityProductInCart);
+        }
+
 		var promises =  [];
 		promises.push(categoryBusiness.getDetailedCategory());
 		promises.push(productBusiness.getProductById(req.params.productId));
@@ -88,7 +106,8 @@ var productController =
 							photos: photos,
 							sameTypeProducts: sameTypeProducts,
 							sameBrandProducts: sameBrandProducts,
-							user: req.user
+							user: req.user,
+							QuantityProductInCart: QuantityProductInCart
 						};
 						res.render('product', model);
 					})
@@ -103,6 +122,16 @@ var productController =
 			});
 	},
 	search: function(req, res) {
+
+		var QuantityProductInCart;
+		if(req.cookies.QuantityProductInCart === undefined)
+		{
+			QuantityProductInCart = 0;
+		}
+		else{
+			QuantityProductInCart = parseInt(req.cookies.QuantityProductInCart);
+        }
+
 		console.log(req.body);
 		var promises = [];
 		var subCategoryId;
@@ -138,7 +167,8 @@ var productController =
 						isFromSearching: true,
 						filters: req.body,
 						numberOfProducts: result[2].count,
-						user: req.user
+						user: req.user,
+						QuantityProductInCart: QuantityProductInCart
 					};
 					res.render('shop', model);
 				})

@@ -11,6 +11,15 @@ var service = require('../model/support.service.js');
 
 
 router.get('/',  function(req, res) {
+    var QuantityProductInCart;
+		if(req.cookies.QuantityProductInCart === undefined)
+		{
+			QuantityProductInCart = 0;
+		}
+		else{
+			QuantityProductInCart = parseInt(req.cookies.QuantityProductInCart);
+        }
+
     let productsAddToCartCookie =[];
         let arr_products = [];
         if(req.cookies.cart === undefined){
@@ -54,7 +63,8 @@ router.get('/',  function(req, res) {
                 items: items,
                 TotalAmount: TotalAmount,
                 Quantity_Products: items.length,
-                Provinces: Provinces
+                Provinces: Provinces,
+                QuantityProductInCart: QuantityProductInCart
             };
             res.render('checkout/payment', vm);
         }).catch(function(error){console.log(error);});

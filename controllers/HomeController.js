@@ -7,6 +7,15 @@ var homeController =
 	index: function(req, res)
 	{
 		console.log(req.user);
+		console.log(req.cookies.QuantityProductInCart);
+		var QuantityProductInCart;
+		if(req.cookies.QuantityProductInCart === undefined)
+		{
+			QuantityProductInCart = 0;
+		}
+		else{
+			QuantityProductInCart = parseInt(req.cookies.QuantityProductInCart);
+		}
 		let categories = [];
 		let promises = [];
 		promises.push(category.getDetailedCategory());
@@ -24,7 +33,8 @@ var homeController =
 								bestSellerProducts: result[2],
 								mostViewedProducts: result[3],
 								brands: brands,
-								user: req.user
+								user: req.user,
+								QuantityProductInCart: QuantityProductInCart
 							};
 							res.render('home', model);
 						});
