@@ -32,6 +32,33 @@
 
 
 {{!-- <script src="/user/js/recaptcha.js"></script> --}}
+
+<script>
+	//FB.Event.subscribe('send_to_messenger', function(e) {
+    // callback for events triggered by the plugin
+	//	console.log("Hello mess");
+  
+  //});
+
+	window.fbAsyncInit = function() {
+		console.log("hello mess")
+    FB.init({
+      appId            : '232414094236202',
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.6'
+    });
+  };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
+
 {{{_sections.head}}}
 </head>
 
@@ -41,6 +68,16 @@
 			{{{body}}}
 		{{> user-footer}}
 	</div>
+<div class="fb-customerchat" page_id="1782421205170500"></div>
+	<div class="fb-customerchat"  
+  page_id="1782421205170500"
+  messenger_app_id="232414094236202"
+  prechecked="true"
+  allow_login="true"
+  size="standard"
+  skin="dark"
+  center_align="false">
+</div>
 
 	  <div id="myModal"  class="modal fade" tabindex="-1" role="dialog">
 	      <div class="modal-dialog modal-lg" role="document">
